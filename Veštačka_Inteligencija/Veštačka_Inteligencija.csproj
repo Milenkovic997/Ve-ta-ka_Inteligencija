@@ -89,24 +89,20 @@
     <None Include="wwwroot\Media\Vezba 6\14.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 6\15.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 6\16.JPG.jpg" />
-    <None Include="wwwroot\Media\Vezba 6\CarDetection.rar" />
     <None Include="wwwroot\Media\Vezba 6\CarDetection.zip" />
     <None Include="wwwroot\Media\Vezba 6\cats.JPG.jpg" />
-    <None Include="wwwroot\Media\Vezba 6\Cats.rar" />
     <None Include="wwwroot\Media\Vezba 6\Cats.zip" />
     <None Include="wwwroot\Media\Vezba 6\cats1.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 6\face.jpg" />
     <None Include="wwwroot\Media\Vezba 6\faces1.jpg" />
     <None Include="wwwroot\Media\Vezba 6\faces2.jpg" />
     <None Include="wwwroot\Media\Vezba 6\faces3.jpg" />
-    <None Include="wwwroot\Media\Vezba 6\haarcascade_frontalface_default.rar" />
     <None Include="wwwroot\Media\Vezba 6\haarcascade_frontalface_default.zip" />
     <None Include="wwwroot\Media\Vezba 6\Informatika.jpg" />
     <None Include="wwwroot\Media\Vezba 6\jednacina.jpg" />
     <None Include="wwwroot\Media\Vezba 6\message.jpg" />
     <None Include="wwwroot\Media\Vezba 6\OCR.png" />
     <None Include="wwwroot\Media\Vezba 6\python-detection-example.gif" />
-    <None Include="wwwroot\Media\Vezba 6\ReadingTextSlike.rar" />
     <None Include="wwwroot\Media\Vezba 6\ReadingTextSlike.zip" />
     <None Include="wwwroot\Media\Vezba 6\rez1.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 6\rez2.JPG.jpg" />
@@ -122,7 +118,6 @@
     <None Include="wwwroot\Media\Vezba 6\rezPrimer1.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 6\rezPrimer2.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 6\rezPrimer3.JPG.jpg" />
-    <None Include="wwwroot\Media\Vezba 6\SlikeLica.rar" />
     <None Include="wwwroot\Media\Vezba 6\SlikeLica.zip" />
     <None Include="wwwroot\Media\Vezba 6\Tesseract.zip" />
   </ItemGroup>
