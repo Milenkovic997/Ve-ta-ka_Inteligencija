@@ -1,0 +1,142 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Media\Other\Capture.PNG.png" />
+    <None Include="wwwroot\Media\Other\horizontalni.jpg" />
+    <None Include="wwwroot\Media\Vezba 2\1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\15 - 3D Linearna Regresija.mp4" />
+    <None Include="wwwroot\Media\Vezba 2\2.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\3.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\4.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\5.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\7.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\8.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\Capture2.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\carsSpecifications.csv" />
+    <None Include="wwwroot\Media\Vezba 2\cig1.csv" />
+    <None Include="wwwroot\Media\Vezba 2\cig2.csv" />
+    <None Include="wwwroot\Media\Vezba 2\cig3.csv" />
+    <None Include="wwwroot\Media\Vezba 2\IncomePerHomeAverage.csv" />
+    <None Include="wwwroot\Media\Vezba 2\Konacno 1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\Konacno 2.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\Konacno 3.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\Konacno 4.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\Konacno 5.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\Slika 1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\Slika 2.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\Slika 3.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\Slika 4.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 2\testVrednostiTrećiStepen.csv" />
+    <None Include="wwwroot\Media\Vezba 2\WeatherDataP.csv" />
+    <None Include="wwwroot\Media\Vezba 2\y1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\33.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Konacno 1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Objasnjenje 1.jpg" />
+    <None Include="wwwroot\Media\Vezba 3\Objasnjenje 2.png" />
+    <None Include="wwwroot\Media\Vezba 3\OveriUnder.csv" />
+    <None Include="wwwroot\Media\Vezba 3\Primer Resenje.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Slika 1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Slika 2.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Slika 3.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Slika 4.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Slika 5.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Slika 6.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Zadatak 1 Resenje.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Zadatak 1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 3\Zadatak 2.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\c1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\geyser.csv" />
+    <None Include="wwwroot\Media\Vezba 4\Konačno 1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Primer_Klasifikacije.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Rezultat.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 10.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 11.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 2.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 3.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 4.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 5.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 6.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 7.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 8.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Slika 9.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Titanic_data_set.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 4\Zadatak 1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 5\1.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 5\2.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 5\3.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 5\4.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 5\5.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 5\6.png" />
+    <None Include="wwwroot\Media\Vezba 5\7.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 5\Capture.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 5\data.csv" />
+    <None Include="wwwroot\Media\Vezba 5\example.png" />
+    <None Include="wwwroot\Media\Vezba 5\k1.png" />
+    <None Include="wwwroot\Media\Vezba 5\rez.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 5\RezultatZadatak1.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 5\rezviz.PNG.png" />
+    <None Include="wwwroot\Media\Vezba 6\10 - video5.mp4" />
+    <None Include="wwwroot\Media\Vezba 6\11 - video5.mp4" />
+    <None Include="wwwroot\Media\Vezba 6\11.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\12.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\13.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\14.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\15.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\16.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\CarDetection.rar" />
+    <None Include="wwwroot\Media\Vezba 6\CarDetection.zip" />
+    <None Include="wwwroot\Media\Vezba 6\cats.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\Cats.rar" />
+    <None Include="wwwroot\Media\Vezba 6\Cats.zip" />
+    <None Include="wwwroot\Media\Vezba 6\cats1.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\face.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\faces1.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\faces2.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\faces3.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\haarcascade_frontalface_default.rar" />
+    <None Include="wwwroot\Media\Vezba 6\haarcascade_frontalface_default.zip" />
+    <None Include="wwwroot\Media\Vezba 6\Informatika.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\jednacina.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\message.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\OCR.png" />
+    <None Include="wwwroot\Media\Vezba 6\python-detection-example.gif" />
+    <None Include="wwwroot\Media\Vezba 6\ReadingTextSlike.rar" />
+    <None Include="wwwroot\Media\Vezba 6\ReadingTextSlike.zip" />
+    <None Include="wwwroot\Media\Vezba 6\rez1.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez2.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez31.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez32.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez41.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez42.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez5.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez51.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez52.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez53.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rez54.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rezPrimer1.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rezPrimer2.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\rezPrimer3.JPG.jpg" />
+    <None Include="wwwroot\Media\Vezba 6\SlikeLica.rar" />
+    <None Include="wwwroot\Media\Vezba 6\SlikeLica.zip" />
+    <None Include="wwwroot\Media\Vezba 6\Tesseract.rar" />
+    <None Include="wwwroot\Media\Vezba 6\Tesseract.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Media\Vezba 1\1.JPG">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

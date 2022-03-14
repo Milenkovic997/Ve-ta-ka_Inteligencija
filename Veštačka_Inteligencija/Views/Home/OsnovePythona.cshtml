@@ -1,0 +1,423 @@
+﻿<title>Osnove Python-a</title>
+<style>
+	.sticky {
+		position: sticky;
+		top: 75px;
+	}
+</style>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
+				<div class="sidebar-sticky sticky">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a class="nav-link active" href="#printiinput">
+								<span data-feather="home"></span>
+								Print() i Input()
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#promenljive">
+								<span data-feather="file"></span>
+								Promenljive
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#nizovi">
+								<span data-feather="shopping-cart"></span>
+								Nizovi
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#if">
+								<span data-feather="users"></span>
+								If petlja
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#for">
+								<span data-feather="bar-chart-2"></span>
+								For petlja
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#while">
+								<span data-feather="layers"></span>
+								While petlja
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#funkcije">
+								<span data-feather="layers"></span>
+								Funkcije
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#klase">
+								<span data-feather="layers"></span>
+								Klase
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#konstruktori">
+								<span data-feather="layers"></span>
+								Konstruktori
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#breakicontinue">
+								<span data-feather="layers"></span>
+								Break i Continue
+							</a>
+						</li>
+					</ul>
+
+					<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+						<span>Reference:</span>
+						<a class="d-flex align-items-center text-muted">
+							<span data-feather="plus-circle"></span>
+						</a>
+					</h6>
+					<ul class="nav flex-column mb-2">
+						<li class="nav-item">
+							<a class="nav-link" href="https://www.w3schools.com/python/python_intro.asp" target="_blank">
+								<span data-feather="file-text"></span>
+								W3Schools
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="https://www.programiz.com/python-programming" target="_blank">
+								<span data-feather="file-text"></span>
+								Programiz
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="https://pythonbasics.org/" target="_blank">
+								<span data-feather="file-text"></span>
+								PythonBasics.org
+							</a>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="col-lg-10 pt-3">
+				<div class="text-center card-header">
+					<h4>OSNOVE PYTHON-A </h4>
+					<h4>(FUNKCIJE, KLASE, PETLJE...)</h4>
+				</div>
+
+				<br />
+				<div class="card" id="printiinput">
+					<div class="card-header text-center">
+						<h4>print() i input()</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							Prilikom ispisivanja bilo kakvih vrednosti u konzoli,
+							funkcija koja se koristi je print(), gde bismo unutar zagrade uneli brojeve,
+							tekstove ili promenljive koje smo prethodno deklarisali u projektu. Input()
+							funkcija nam služi da iz konzole uzme bilo kakvu vrednost koju unesemo i
+							sačuva u vidu promenljive.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/1.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							Veštačka Inteligencija<br />
+							3<br />
+							Neki tekst<br /><br />
+							Unesite tekst: Veštačka Inteligencija<br />
+							Vaš tekst je: Veštačka Inteligencija
+						</p>
+					</div>
+				</div>
+
+				<br />
+				<div class="card" id="promenljive">
+					<div class="card-header text-center">
+						<h4>Promenljive</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							Promenljive vrednosti u pythonu, za razliku od ostalih
+							programskih jezika ne zahteva definisanje kog je tipa sama promenljiva kao
+							što su int, string, float isl. Promenljive su svakako definisane, ali to se
+							dešava automatski prilikom dodele njihovih vrednosti. Ukoliko dodelimo brojnu
+							vrednost nekoj promenljivoj, ta vrednost će biti definisana kao int, float,
+							double... dok ukoliko dodelimo tekst, promenljiva će se tretirati kao string.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/2.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							5<br />
+							5.5<br />
+							11.0<br />
+							3.0<br />
+							Veštačka Inteligencija
+						</p>
+					</div>
+				</div>
+
+				<br />
+				<div class="card" id="nizovi">
+					<div class="card-header text-center">
+						<h4>Nizovi</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							Nizovi se definišu kao normalne promenljive vrednosti, osim što se upisuju
+							sa uglastom zadragom koja sadrži više različitih vrednosti koji mogu biti int,string isl.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/3.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							[10, 15, 22, 35, 42]<br />
+							22<br />
+							5<br />
+							['Vestacka', 'Inteligencija']
+						</p>
+					</div>
+				</div>
+
+				<br />
+				<div class="card" id="if">
+					<div class="card-header text-center">
+						<h4>IF petlja</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							If petlja se koristi kako bi definisao uslov koji ispituje vrednost
+							jedne ili više promenljivih. Ukoliko je uslov ispunjen, izvšrava se
+							sve što je definisano uvučenim redom nakon uslova. Osim same if petlje,
+							dodatne ključne reči kao što su elif i else postoje. Elif se koristi kao
+							naredni uslov ukoliko prvi uslov nije ispunjen. U drugim programskim
+							jezicima se definiše kao else if. Else se koristi ukoliko svi prethodni
+							uslovi nisu ispunjeni, gde će izvršiti sve funkcije koje su za else definisane.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/4.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							karakter je t
+						</p>
+					</div>
+				</div>
+
+				<br />
+				<div class="card" id="for">
+					<div class="card-header text-center">
+						<h4>FOR petlja</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							For petlja funkcioniše nalik if petlje, samo što će umesto jedne
+							iteracije gde ispituje vrednost pa izvršava funkciju, izvršiće je
+							više puta. U prvoj for petlji sa slike definišemo range(3) što
+							nam formira nedefinisanu promenljivo od vrednosti 0,1,2 i promenljivu
+							I koja definiše sve te vrednosti u svakoj iteraciji posebno, gde
+							je onda ispisujemo. U drugom primeru definišemo niz i promenljivu
+							br koja uzima sve vrednosti iz niza. U prvoj for petlji imamo 3
+							iteracije dok u drugoj imamo 5.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/5.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							0<br />
+							1<br />
+							2<br />
+							0 1 2<br /><br />
+							10<br />
+							15<br />
+							35<br /><br />
+							0<br />
+							4<br />
+							8
+						</p>
+					</div>
+				</div>
+
+				<br />
+				<div class="card" id="while">
+					<div class="card-header text-center">
+						<h4>While petlja</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							While petlja sadrži uslov koji mora biti ispunjem poput if petlja, ali za
+							razliku od nje, while petlja će se stalno izvršavati dokle god je uslov tačan.
+							U ovoj petlji bi morali da menjamo vrednosti koje se nalaze u uslovu,
+							ili eventualno iskoristiti reč break, tako da ne napravimo jednu beskonačnu
+							petlju iz koje ne možemo izaći.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/6.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							0<br />
+							1<br />
+							2<br />
+							3<br />
+							4
+						</p>
+					</div>
+				</div>
+
+				<br />
+				<div class="card" id="funkcije">
+					<div class="card-header text-center">
+						<h4>Funkcije</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							Funkcije u python-u se definišu kao deo koda koji se pokreće tek kada je
+							referenciran. Koristi se za korišćenje koda na više od jednog mesta u programu.
+							Postoje već neke definisane funkcije kao što su print() funkcija. Vrednosti
+							koje se nalaze van svih funkcija se nazivaju globalne promenljive dok vrednost
+							unutar su lokalne, i ukoliko menjamo lokalne promenljive, van tih funkcija
+							neće biti promena, kao u primeru ispod.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/7.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							10<br />
+							400<br />
+							10
+						</p>
+					</div>
+				</div>
+
+				<br />
+				<div class="card" id="klase">
+					<div class="card-header text-center">
+						<h4>Klase</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							Python klasa je poput nacrta za kreiranje novog objekta. Objekt je bilo šta
+							čime želimo da manipulišemo ili promenimo dok radimo kroz kod. Svaki put
+							kada se instancira objekat klase, a to je kada deklarišemo promenljivu,
+							novi objekat se pokreće od nule. Za razliku od funkcija, klase se izvršavaju
+							iako se ne pozivaju kao u primeru prve klase ispod.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/8.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							5<br />
+							Tekst za ispisivanje
+						</p>
+					</div>
+				</div>
+
+				<br />
+				<div class="card" id="konstruktori">
+					<div class="card-header text-center">
+						<h4>Konstruktori</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							Konstruktori su posebni tipovi metoda (funkcija) koji se koriste za
+							inicijalizaciju članova instance klasa. Metod __init__() simulira
+							konstruktor klase. Ovaj metod se poziva kada je klasa instancirana.
+							On prihvata samo ključnu reč kao prvi argument koji omogućava pristup
+							atributima ili metodu klase. Funkcija __str__() se koristi kada želimo
+							da ispišemo neku vrednost koja je definisana za samu klasu, i poziva se
+							korišćenjem print za sam objekat definisane klase.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/9.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							Vrednost 1 je: Veštačka<br />
+							Vrednost 2 je: Inteligencija
+						</p>
+					</div>
+				</div>
+
+				<br />
+				<div class="card" id="breakicontinue">
+					<div class="card-header text-center">
+						<h4>Break i Continue</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							Break komanda prilikom korišćenja unutar for petlje prekida samu
+							petlju i izlazi iz nje. U datom primeru, u nizu od pet uzastopnih
+							vrednosti, prilikom nailaska na vrednost 3 koju proverava if petlja,
+							izvršava se break komanda i nakon ispisanih vrednosti 0,1,2, for petlja se prekida.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/10.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							0<br />
+							1<br />
+							2
+						</p>
+					</div>
+					<div class="card-body">
+						<p class="card-text">
+							Za razliku od break komande, continue komanda će umesto prekidanja for petlje,
+							samo preskočiti trenutnu iteraciju i preći na sledeću ukoliko postoji. U datom
+							primeru, u vrednostima 0-4, brojevi 0 i 3 su deljivi sa 3, koji bi rezultirali
+							0 i 1 respektivno, tako da se deo koda koji bi ih ispisao (print) preskače i
+							zapisuju samo 1,2,4.
+						</p><br />
+						<div class="col-md-8">
+							<img class="card-img-top" src="@Url.Content("~/Media/Osnove/11.JPG")">
+						</div>
+					</div>
+					<div class="alert alert-light" role="alert">
+						<p>
+							Output: <hr />
+							1<br />
+							2<br />
+							4
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+	<script src="../../assets/js/vendor/popper.min.js"></script>
+	<script src="../../dist/js/bootstrap.min.js"></script>
+</body>

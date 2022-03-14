@@ -1,0 +1,223 @@
+﻿<title>Vežba 5 - Klasterizacija</title>
+<style>
+      .sticky {
+        position: sticky;
+        top: 75px;
+      }
+</style>
+
+<body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
+            <div class="sidebar-sticky sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                <a class="nav-link active" href="#objasnjenje">
+                    <span data-feather="home"></span>
+                    Objašnjenje
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#primer">
+                    <span data-feather="file"></span>
+                    Primer
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#zadatak">
+                    <span data-feather="shopping-cart"></span>
+                    Zadatak
+                </a>
+                </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Reference:</span>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                <a class="nav-link" href="https://machinelearningmastery.com/clustering-algorithms-with-python/" target="_blank">
+                    <span data-feather="file-text"></span>
+                    MachineLearningMastery
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="https://realpython.com/k-means-clustering-python/" target="_blank">
+                    <span data-feather="file-text"></span>
+                    RealPython
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="https://towardsdatascience.com/an-introduction-to-clustering-algorithms-in-python-123438574097" target="_blank">
+                    <span data-feather="file-text"></span>
+                    TowardsDataScience
+                </a>
+                </li>
+            </ul>
+            </div>
+        </nav>
+
+        <div class="col-lg-10 pt-3">
+          <div class="text-center card-header">
+              <h4>KLASTERIZACIJA</h4>
+          </div>
+
+          <br />
+          <div class="card" id="objasnjenje">
+            <div class="card-header text-center">
+            <h4>Objašnjenje termina</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Analiza klastera ili grupisanje je zadatak grupisanja skupa objekata na takav način da su objekti
+                    u istoj grupi (koji se nazivaju klaster) sličniji (u nekom smislu) jedni drugima nego onima u 
+                    drugim grupama (klasterima). To je glavni zadatak istraživačke analize podataka i uobičajena tehnika
+                    za statističku analizu podataka, koja se koristi u mnogim oblastima, uključujući prepoznavanje 
+                    obrazaca, analizu slika, pronalaženje informacija, bioinformatiku, kompresiju podataka, kompjutersku
+                    grafiku i mašinsko učenje. Za razliku od klasifikacije, klasterizacija spada u nenadgledanom tipu 
+                    mašinskog učenja zato što ne odvaja vrednosti po predefinisanim grupama, već po njenim lokacijama
+                    u koordinatnom sistemu zato što se koristi k-means odnosno KNearestNeightbour sistem grupisanja.
+                </p><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/example.png")">
+                </div><br />
+                <p class="card-text">
+                    Slika iznad predstavlja primer jedne klasterizacije u kojoj se iz slike 1 formirala tri klastera 
+                    koje su predstavljene različitim bojama. U naredno delu, klasterizacija će biti korišćena i za 
+                    predvidjanje kom klasteru bi neka nova vrednost odgovarala.
+                </p>
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="primer">
+            <div class="card-header text-center">
+                <h4>Primer</h4>
+            </div>
+            <div class="card-body">
+            <p class="card-text">
+                Primer za ovu oblast je predstavljena u nastavku ovih vežbi i cilj je da napravimo klasterizaciju 
+                od ulaznih vrednosti i to po 2, 4 i 6 klastera, nakon koga će biti izvršena predikcija za konkretnu 
+                vrednost [43, 70], kako bi videli kom klasteru ta tačka pripada u sva tri primera.
+            </p><br />
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/1.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Iz scitlearn biblioteke koristimo KMeans klasu za formiranje klastera, iz matplotlib standardni 
+                pyplot za formiranje koordinatnih sistema za prikazivanje rezultata, pandas za rad sa podacima iz 
+                tabele i random pomoću kog generišemo nasumične boje za svaki od različitih klastera.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/2.PNG.png")">
+            </div><br />
+            <a href="@Url.Content("~/Media/Vezba 5/data.csv")" download>Download - data.csv</a>
+            <p class="card-text"><br />
+                Prvo se počinje sa učitavanjem fajla koji je okačen iznad. Formira se niz u kome se definiše broj svih
+                klastera koje želimo da formiramo (2, 4, 6). Kao što je prethodno već rečeno, boje kojima će biti obojeni 
+                klasteri su nasumično generisani preko random biblioteke. U zavisnosti od maksimalnog broja klastera koji 
+                se moraju napraviti, formira se niz koji će biti popunjen sa onoliko nasumičnih heksadekadnih vrednosti 
+                boja za maksimalnu vrednost broja u nizu. Dodavanje nove boje se koristi preko ključne reči append, i u 
+                zagradi se preko random.choice biraju 6 nasumičnih karaktera u listu svih heksadekadnih vrednosti i čuva u nizu.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/3.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                U ovom delu koda se podešava veličina prozora ( svaki koordinatni sistem biće veličine 4x4), 
+                plt.show koji pokreće prozor sa svim rezultatima i for petlja za svaki broj klastera posebno 
+                ( 3 iteracija u našem primeru).
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/4.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Funkcija plt.subplot dodeljuje lokaciju, odnosno redosled koordinatnih sistema u figuri, kmeans
+                promenljiva formira sistem koji nam izvršava klasterizaciju ( u kome definišemo k kao broj klastera 
+                koje želimo da formiramo), kmeans.fit koji daje sve podatke algoritmu. Gcenters nam odredjuje sredine 
+                svih klastera dok labels čuva podatke o tome koji red ( X i Y kolone) pripada kom klasteru.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/5.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Formiramo dve for petlje. U prvoj for petlji upisujemo sve vrednosti iz tabele u koordinatni sistem, 
+                koristeći boje koje smo na početku definisali kao boje svakih od vrednosti unutar klastera.<br /><br />
+                Druga for petlja nam upisuje tekst na sredini svakog klastera, u kome je smešten redni broj klastera na
+                koordinatnom sistemu, podešen da mu veličina bude 15 i boldiran.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/6.png")">
+            </div><br />
+            <p class="card-text">
+                Kao što je to napomenuto na početku, možemo koristiti ove klasterizacije da bi predvideli kom klasteru
+                bi pripadala neka nova vrednost koja prethodno nije definisana u tabeli. Dodeljujemo joj, radi primera,
+                vrednosti 43 za X i 70 za Y. Preko funkcije plt.scatter dodajemo vrednost na svaki koordinatni sistem 
+                ( da bi mi kao korisnici mogli sami da se uverimo da je predvidjanje zapravo onakvo kako ispisuje, i 
+                preko printa dobijamo rezultat kom klasteru on pripada.<br /><br />
+                Rezultat u konzoli treba da izgleda nalik rezultatu sa naredne slike ( redni broj klastera je nasumično
+                dodeljen, nakon svakog novog pokretanja koda se raspored rednih brojeva menja).         
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/rez.PNG.png")">
+            </div><br />
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/7.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Poslednji korak dodaje naziv iznad koordinatnog sistema da bi bilo preglednije koji primer on izvršava.
+                Xlabel i ylabel postavlja tekst na koordinatnim osama. I na kraju se upisuje kako bi uvećali brojač i 
+                započeli novu iteraciju (brojač menjamo zbog rasporeda koordinatnih sistema na prozoru.<br /><br />
+                Rezultat pokretanja koda izgleda kao na slici:
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/rezviz.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Redni broj klastera je zapisan počevši od nule. Takodje, crna tačka koja je dodata na svim koordinatnim 
+                sistemima je vrednost koju predvidjamo kom klasteru on pripada. U prvom primeru pripadada klasteru 0, 
+                drugom takodje 0, a trećem sistemu pripada klasteru 4. Rezultat u terminatu je upisan na jednoj od slika
+                iznad, u kome se jasno vidi isti rezultat koji je i ovde predstavljen na prozorima.
+            </p>
+            <h4>Kompletan kod primera<br /></h4>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/k1.png")">
+            </div><br />
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="zadatak">
+            <div class="card-header text-center">
+            <h4>Zadatak</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Izvršiti klasterizaciju nad ulaznim vrednostima datim na sledećem <a target="_blank" href="https://raw.githubusercontent.com/Milenkovic997/CSV/main/Klasterizacija.csv">linku</a>:<br /><br />
+                    Napraviti četri koordinatna sistema, poređanim u 2x2 sistemu, na kome se formiraju 2,4,8 i 
+                    16 klastera. Odrediti predviđanje u kom klasteru pripada tačka sa vrednostima [20, 10] u svim 
+                    formiranim koordinatniim sistemima.<br /><br />
+                    Primer rezultata ovog zadatka je dat na slici ispod:
+                </p>
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/Capture.PNG.png")">
+                </div><br />
+                <h4>Rešenje zadatka</h4><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/RezultatZadatak1.JPG.jpg")">
+                </div><br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+</body>

@@ -1,0 +1,279 @@
+﻿<title>Vežba 3 - Underfitting i Overfitting</title>
+<style>
+      .sticky {
+        position: sticky;
+        top: 75px;
+      }
+</style>
+
+<body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
+            <div class="sidebar-sticky sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                <a class="nav-link active" href="#objasnjenje">
+                    <span data-feather="home"></span>
+                    Objašnjenje
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#primer">
+                    <span data-feather="file"></span>
+                    Primer
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#zadatak">
+                    <span data-feather="shopping-cart"></span>
+                    Zadatak
+                </a>
+                </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Reference:</span>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                <a class="nav-link" href="https://www.geeksforgeeks.org/underfitting-and-overfitting-in-machine-learning/" target="_blank">
+                    <span data-feather="file-text"></span>
+                    GeeksForGeeks
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="https://www.javatpoint.com/overfitting-and-underfitting-in-machine-learning" target="_blank">
+                    <span data-feather="file-text"></span>
+                    java T point
+                </a>
+                </li>
+            </ul>
+            </div>
+        </nav>
+
+        <div class="col-lg-10 pt-3">
+          <div class="text-center card-header">
+              <h4>UNDERFITTING I OVERFITTING</h4>
+          </div>
+
+          <br />
+          <div class="card" id="objasnjenje">
+            <div class="card-header text-center">
+            <h4>Objašnjenje termina</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Svaki skup podataka će imati neke čudne ili nedostajuće delove ili neuravnotežene podatke. 
+                    Implikacija je da se izvedeni model dobro uklapa u podatke modeliranja, ali da se ne generalizuje
+                    dovoljno na druge uzorke koji nisu uključeni u proces modeliranja. Postoji terminologija koja 
+                    opisuje koliko dobro model mašinskog učenja uči i generalizuje nove podatke, ovo je overfitting 
+                    i underfitting. Cilj dobrog modela mašinskog učenja je da se dobro generalizuje iz skupa podataka
+                    za obuku na bilo koji skup podataka iz domena problema. Ovo nam omogućava da napravimo predviđanja
+                    na osnovu skupa podataka koji model nikada nije video.
+                </p><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Objasnjenje 1.jpg")">
+                </div><br />
+                <p class="card-text">
+                    <b>Overfitting</b> se odnosi na scenario gde model mašinskog učenja ne može da generalizuje ili
+                    da se dobro uklopi u nevidljiv skup podataka. Jasan znak preopterećenja mašinskog učenja je ako 
+                    je njegova greška u skupu podataka za testiranje ili validaciju mnogo veća od greške u skupu podataka
+                    za obuku. To je termin koji se koristi u statistici koji se odnosi na grešku modeliranja koja se
+                    javlja kada funkcija previše odgovara skupu podataka. Kao rezultat toga, prekomerno prilagođavanje
+                    možda neće uspeti da uklopi dodatne podatke, a to može uticati na tačnost predviđanja budućih posmatranja.<br /><br />
+                    Underfitting se odnosi na model koji ne može niti da modelira skup podataka za obuku niti da se 
+                    generalizuje na novi skup podataka. Nedovoljan model mašinskog učenja nije prikladan model i biće 
+                    očigledan jer će imati loše performanse na skupu podataka za obuku.
+                </p><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Objasnjenje 2.png")">
+                </div><br />
+                <p class="card-text">
+                    Kada iterativno trenirate algoritam učenja, možete izmeriti koliko dobro svaka iteracija modela radi.
+                    Do određenog broja iteracija, nove iteracije poboljšavaju model. Međutim, nakon te tačke, sposobnost
+                    modela da generalizuje može oslabiti jer počne da se uklapa u podatke o obuci. Rano zaustavljanje se 
+                    odnosi na zaustavljanje procesa obuke pre nego što učenik prođe tu tačku. Danas se ova tehnika uglavnom
+                    koristi u dubokom učenju (deep learning), dok se druge tehnike (npr. regularizacija) preferiraju za 
+                    klasično mašinsko učenje.
+                </p><br />
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="primer">
+            <div class="card-header text-center">
+                <h4>Primer</h4>
+            </div>
+            <div class="card-body">
+            <p class="card-text">
+                Primer koji će biti objašnjen i na kome će biti predstavljen overfitting i underfitting počinjemo 
+                standardnim instaliranjem potrebnih biblioteka (numpy, matplotlib i scikit-learn). U ovom primeru, 
+                za razliku od vežbe 2 u kome se radile regresije, nećemo učitati CSV fajl sa podacima (možemo ako želimo,
+                ali odradićemo primer na drugi način). Podaci sa kojima radimo, biće generisani nizom od 30 brojeva.<br /><br />
+                Kako bismo formirali veću preciznost, ali ne preveliku, moraćemo formirati regresije n-tog reda. 
+                U primeru, da bismo predstavili oblasti underfitting i overfitting, radićemo sa tri različita reda 
+                polinomske regresije.
+            </p><br />
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 1.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Primer koji će biti objašnjen i na kome će biti predstavljen overfitting i underfitting počinjemo standardnim
+                instaliranjem potrebnih biblioteka (numpy, matplotlib i scikit-learn). U ovom primeru, za razliku od vežbe
+                2 u kome se radile regresije, nećemo učitati CSV fajl sa podacima (možemo ako želimo, ali odradićemo primer
+                na drugi način). Podaci sa kojima radimo, biće generisani nizom od 30 brojeva.<br /><br />
+                Kako bismo formirali veću preciznost, ali ne preveliku, moraćemo formirati regresije n-tog reda. U primeru,
+                da bismo predstavili oblasti underfitting i overfitting, radićemo sa tri različita reda polinomske regresije.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 2.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                U ovom delu koda se odrađuje sledeće:            
+            <ul>
+                <li>
+                    <b>np.random.seed(0) </b>- predefiniše nasumične vrednosti koje ćemo koristiti da bismo popunili
+                    koordinatni sistem sa vrednostima
+                </li>
+                <li>
+                    <b>broj_vrednosti = 30 </b>- definišemo prvih 30 vrednosti koje unosimo u koordinatni sistem
+                </li>
+                <li>
+                    <b>red_jednacine = [1, 4, 30] </b>- definišemo sa koliko broja reda ćemo formirati koordinatni 
+                    sisteme kako bismo testirali da li je overfitting ili underfitting.
+                </li>
+                <li>
+                    <b>funkcija </b>koja nam X vrednost pretvara u Y tako što je pomnoži sa 3.14 (pi) i 1.5 pa 
+                    je pretvori u kosinus.
+                </li>
+            </ul>
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 3.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                U ovom delu koda se odrađuje sledeće:          
+            <ul>
+                <li>
+                    <b>X = np.sort(np.random.rand(broj_vrednosti)) </b>- generišemo vrednosti koje ćemo uneti u X osu 
+                    koordinatnog sistema. Dobijamo je tako što od generišemo 30 (broj_vrednosti) nasuminih brojeva, 
+                    sortiramo ih, i pamtimo kao vrednosti za X
+                </li>
+                <li>
+                    <b>broj_vrednosti = 30 </b>- definišemo prvih 30 vrednosti koje unosimo u koordinatni sistem
+                </li>
+                <li>
+                    <b>Y = funkcija(X) + np.random.randn(broj_vrednosti) * 0.1 </b>- od X vrednosti formiramo Y 
+                    vrednost, kako bismo formirali odgovarajući raspored vrednosti koordinatnog sistema.
+                </li>
+            </ul>
+            <br />
+                Umesto ovakvog kreiranja vrednosti X i Y niza, učitavanje kolona sa bibliotekom pandas je bio takođe
+                prihvatljiv način dobijanja vrednosti za popunjavanje osa.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 4.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                U ovom delu koda se odrađuje sledeće:      
+            <ul>
+                <li>
+                    <b>plt.figure(figsize=(15, 5))  </b>- ovom funkcijom definišemo dužinu i širinu prozora u kome
+                    nam se predstavlja koordinatni sistem. S obzirom da ćemo imati tri koordinatna sistema 
+                    (za 1. 4. i 30. red polinomske regresije) postavićemo da je dužina prozora 15 a visina 5.
+                </li>
+                <li>
+                    <b>for i in range(len(red_jednacine)): </b>- for petlja sa kojom formiramo sva tri koordinatna 
+                    sistema zato što len nam vraća dužinu niza, koja sadrži tri elemenata.
+                </li>
+                <li>
+                    <b>plt.show() </b>- funkcija koja pokreće prozor na kome vidimo koordinatne sisteme. 
+                    Ovu funkciju dodajemo na samom kraju van for petlje.
+                </li>
+            </ul>
+            <br />
+                For petlja nam se sastoji od sledećih delova:
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 5.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                U prva dva reda koda definišemo to, da želimo da imamo tri koordinatna sistema na jednom prozoru. 
+                Kroz svaku iteraciju (3 ukupno) definišemo lokacije na mestima 1,2,3. <br /><br />
+                U trećem redu koda kreiramo regresiju koju koristimo u datom koordinatnom sistemu i gde određujemo
+                red polinomske funkcije (degree) koju smo definisali nizom nazvanom red_jednacine.<br /><br />
+                U narednom delu koristimo Pipeline koja pripada Scikit-learn biblioteci. Svrha pipeline biblioteke
+                je da sklopi nekoliko koraka koji se mogu unakrsno proveriti zajedno dok se postavljaju različiti 
+                parametri. Omogućava nam da kroz korišćenje for petlje proveravamo koji red polinomske regresije 
+                se koristi i kako će ona biti formirana ( prvi red kao linearna, bilo koja nakon toga kao polinomska).<br /><br />
+                Sada testiramo kod za stepen=1 (linearni model), stepen=4 (regresija polinoma 4. reda) i stepen=30 
+                (prilagođavanje polinoma 30. visokog reda). Grafikoni pokazuju predviđene vrednosti i za različite 
+                vrednosti stepena. Jasno je primećeno da stepen=1 dovodi do nedovoljnog prilagođavanja (underfitting
+                kao sinusna funkcija), dok stepen=30 dovodi do preteranog prilagođavanja (overfitting kao kosinusna 
+                funkcija). np.newaxis nam uvećava dimenziju nekog niza, što je potrebno iskoristiti u fit funkciji za
+                vrednost X kako bi se popunio dvodimenzionalan koordinatni sistem. Vrednost Y popunjavamo unutar X-a, 
+                tako da nije potrebno povećati dimenziju vrednosti Y, ali bi kod funkcionisao identično ako bi to uradili.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 6.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                U ovom drugom delu for petlje popunjavamo vrednosti u koordinatnim sistemima kao i linije koje ukazuju 
+                na regresiju. Prvi deo plt.plot popunjava regresijom u odnosu na red polinomske regresije. Drugi plt.plot 
+                popunjava regresiju u zavisnosti od vrednosti koje su unesene u koordinatni sistem. Plt.scatter popunjava
+                tačkama koordinatni sistem iz vrednosti X i Y. <br /><br />
+                plt.xlabel i plt.ylabel definiše naziv X i Y ose dok plt.xlim i plt.ylim definiše od koje do koje 
+                vrednosti se prikazuje koordinatni sistem (vrednosti sa kojima se radi u ovom primeru su uglavnom u
+                decimalnom zapisu od nule do jedinice).  Plt.title ispisuje naziv iznad koordinatnog sistema koji je
+                red polinomske regresije.<br /><br />
+                Kompletan kod primera sa rezultatima je ispisan ispod teksta.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Konacno 1.PNG.png")">
+            </div><br />
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/33.PNG.png")">
+            </div><br />
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="zadatak">
+            <div class="card-header text-center">
+            <h4>Zadatak</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Napraviti polinomsku regresiju drugog stepena sa CSV fajlom koji sadrži samo kolonu X sa
+                    vrednostima od -10 do 10. Napisati funkciju koja formira vrednost Y dobijenu funkcijom 
+                    Y = 3X^2 + 6. Vrednosti koje se unose u koordinatni sistem obeležiti velikim slovom X zelenom 
+                    bojom, dok regresiju obeležiti žutom bojom. Na prozoru dodati još jedan koordinatni sistem na
+                    kome je prikazan underfitting. Primer kako rezultat treba da izgleda nakon pokretanja koda je sledeći:
+                </p><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Zadatak 1 Resenje.PNG.png")">
+                </div><br />
+                <h4>Rešenje 1 (korišćenjem Pipeline metode)</h4>
+                <a href="@Url.Content("~/Media/Vezba 3/OveriUnder.csv")" download>Download - OveriUnder.csv</a><br /><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Zadatak 1.PNG.png")">
+                </div><br />
+                <h4>Rešenje 2 (posebno određivanje oba stepena)</h4>
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Zadatak 2.PNG.png")">
+                </div><br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+</body>

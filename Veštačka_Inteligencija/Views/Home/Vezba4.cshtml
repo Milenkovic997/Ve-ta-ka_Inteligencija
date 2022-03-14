@@ -1,0 +1,273 @@
+﻿<title>Vežba 4 - Klasifikacija</title>
+<style>
+      .sticky {
+        position: sticky;
+        top: 75px;
+      }
+</style>
+
+<body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
+            <div class="sidebar-sticky sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                <a class="nav-link active" href="#objasnjenje">
+                    <span data-feather="home"></span>
+                    Objašnjenje
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#primer">
+                    <span data-feather="file"></span>
+                    Primer
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#zadatak">
+                    <span data-feather="shopping-cart"></span>
+                    Zadatak
+                </a>
+                </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Reference:</span>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                <a class="nav-link" href="https://medium.com/analytics-vidhya/building-classification-model-with-python-9bdfc13faa4b" target="_blank">
+                    <span data-feather="file-text"></span>
+                    Medium
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="https://developer.ibm.com/tutorials/learn-classification-algorithms-using-python-and-scikit-learn/" target="_blank">
+                    <span data-feather="file-text"></span>
+                    IBM Developer
+                </a>
+                </li>
+            </ul>
+            </div>
+        </nav>
+
+        <div class="col-lg-10 pt-3">
+          <div class="text-center card-header">
+              <h4>KLASIFIKACIJE</h4>
+          </div>
+
+          <br />
+          <div class="card" id="objasnjenje">
+            <div class="card-header text-center">
+            <h4>Objašnjenje termina</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Klasifikacija se, u oblastima veštačke inteligencije, koristi da bi se na koordinatnom sistemu 
+                    predstavile grupe ulaznih vrednosti jedne baze znanja, koja pored dve kolone koja definiše kao
+                    X i Y koordinatu (kao u primerima iz prethodnih oblasti) grupiše vrednosti po njihovim odgovarajućim 
+                    vrednostima neke treće kolone.<br /><br />Primer tabele po kojoj se može uraditi klasifikacija je sledeća:
+                </p><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Titanic_data_set.PNG.png")">
+                </div><br />
+                <p class="card-text">
+                    Navedena tabela sa podacima koja prikazuje putnike na titaniku se može koristiti za klasifikaciju zato 
+                    što po njoj možemo popuniti koordinatne sisteme vrednostima ( npr. klasa i godine se koriste za X i Y 
+                    osu) i da onda se izvrši klasifikacija npr. po polu gde bi tačke jedne boje ukazale da je putnik bio 
+                    muško tj. ili žensko.<br /><br />
+                    Nakon odredjivanja i bojenja tačaka u koordinatnom sistemu odgovarajućih bojama, potrebno je dodati
+                    klasifikator koji će vizuelno odvojiti dve grupe vrednosti i obojiti pozadinu na taj način da se može
+                    pretpostaviti, odnosno predvideti kojoj grupi bi mogla da pripada neka nova vrednost bez dodavanja u osu.<br /><br />
+                    Klasifikacija na ovaj način predstavlja nadgledano mašinsko učenje zato što već postoje podaci po kojima 
+                    se klasifikacija izvršava. Primer ose nakon klasifikovanja izgleda kao primer na slici ispod:                </p><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Primer_Klasifikacije.PNG.png")">
+                </div><br />
+                <p class="card-text">
+                    Primer slike predstavlja jednu od klasifikatora koji će se odraditi u narednom delu vežbi (slikane 
+                    odgovara tabeli za putnike na titanuku, data je radi primera klasifikacije). Klasifikatori koji će
+                    biti odradjeni su:
+                    <ul>
+                        <li>
+                            K-nearest Neighbors Klasifikacija
+                        </li>
+                        <li>
+                            Gausov Proces Klasifikacije
+                        </li>
+                        <li>
+                            Klasifikacija Binarnog Stabla
+                        </li>
+                        <li>
+                            Klasifikacija Neuronskih Mreža
+                        </li>
+                    </ul>
+                    Pored ova četri klasifikatora postoje mnogo više njih koji neče biti radjeni uokviru ovih vežbi,
+                    ali princip rada u kodu je identičan kao svi ostali klasifikatori.
+                </p><br />
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="primer">
+            <div class="card-header text-center">
+                <h4>Primer</h4>
+            </div>
+            <div class="card-body">
+            <p class="card-text">
+                Primer za ovu oblast je predstavljena u nastavku ovih vežbi:
+            </p><br />
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 1.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                U prvog grupi importa koju definišemo kako bi koristili u primeru su standardne biblioteke koje 
+                su i do sada bile korišćene, i to numpy za rad sa višedimenzionalnim nizovima, matplotlib za 
+                vizuelno kreiranje koordinatnih osa i pandas za rad sa fajlovima, odnosno CSV fajlom iz kog se 
+                uzimaju podaci za rad. Drugi deo importa se odnosi na sve klasifikatora sa kojima se radi u primeru.            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 2.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Na samom početku se definišu svi klasifikatori koji će biti korišćeni. U tekstu iznad su svi
+                klasifikatori dodati u jedan niz zato što će se prolaskom kroz niz, odnosno prolazak kroz sve
+                iteracije uraditi svaki element niza posebno. Ukoliko je potreno raditi sa samo jednim klasifikatorom,
+                nije potrebno formirati ovakav niz. U redu kako su zapisani, klasifikatori kao elementi niza su sledeći:
+                K-Nearest Neighbor, Gausova proces, Binarno stablo i neuronska mreža u tom redosledu.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 3.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Za razliku od prethodnih primera za učitavanje podataka za rad u kome se ili učitao CSV fajl ili su se
+                vrednosti za rad same formirale, u ovom kodu je primer učitavanja podataka sa linka, na kome se nalaze 
+                podaci jednog excel fajla.<br /><br />
+                Nakon učitavanja, promenljiva df funkcioniše isto kao i prethodnim primerima sa običnim CSV fajlom. Od 
+                te promenljive, u kome se nalaze tri kolone, prve dve se definišu kao X vrednost (dvodimenzionalni niz 
+                koji će dodati tačke u koordinatni sistem) i Y promenljiva koja predstavlja vrednost na kojoj se vrši 
+                klasifikacija (naravno, umesto dvodimenzionalnog niza su se mogla formirati dve posebne promenljive za 
+                svaku kolonu posebno).
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 4.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Početak ovog dela koda počinje sa definisanje promenljive figure preko koje sa funkcijom plt.figure menjamo
+                veličinu prozora aplikacije nakon pokretanja. Primer će prikazati četri klasifikatora kao i osnovni raspored
+                tačaka tako da, ako se uzme u obzir da veličina svakog koordinatnog sistema je veličine 3x3, postaviće se
+                dužina 15x3.<br /><br />Definiše se promenljiva x_min, x_max, y_min, y_max koji će podesiti početak i kraj
+                koordinatnog sistema kako bi se prilikom pokretanja koda tačno videla razlika svih klasifikacija bez potrebe
+                da se zoomira ili zoomout-uje sa ose.<br /><br />Meshgrid u poslednjem redu će obojiti pozadinu da bi ukazalo
+                na njihov položaj kao pretpostavku za teritoriju nekih vrednosti za koje se može uraditi pretpostavka kojoj 
+                klasi bi ona mogla da pripada, u zavisnosti od njene lokacije u osi.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 5.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Potrebno je da, s obzirom da je potrebno predstaviti koordinatni sistem za svaku klasifikaciju posebno, 
+                koristiti plt.subplot funkciju koja je bila prikazana na prethodnim vežbama, i ima za cilj da odvoji sve 
+                koordinatne sisteme i poredja ih jedan do drugog. U ovom delu koda je definisan samo koordinatni sistem u 
+                kome su predstavljene samo tačke, bez pozadine ili rada klasifikatora.<br /><br />
+                Scatter rasporedjuje tačke po koordinatnom sistemu tako da prva vrednost X-a odgovara x osi dok druga 
+                vrednost odgovara Y osi, a za boju tačaka se koristi treća kolona. Edgecolors koji je definisan obeležava 
+                obim tačaka i označava ih crne boje (k). <br /><br />
+                set_xlim i ylim podešava pogled na koordinatni sistem, odnosno od koje do koje vrednosti počinje i 
+                završava se sistem, kako bi na svakom koordinatnom sistemu imali identičnu poziciju vrednosti na
+                koordinatnom sistemu.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 6.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Pomoću for petlje se primenjuju svi klasifikatori, i for petlja bi napravila četri iteracije, tj. 
+                za svaki klasifikator posebno. Na kraju koda nakon funkcije se dodaje plt.show kako bi prikazao prozor
+                i tight_layout koji približava sve koordinatne sisteme bliže jedan drugom zbog bolje preglednosti rezultata.            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 7.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                For petlja počinje novom subplot funkcijom, kako bi odredio poziciju koordinatnog sistema za datu
+                klasifikaciju. Klasifikator je označen promenljivom clf i potrebno je dati klasifikatoru sve podatke
+                za rad i odrediti score tj preciznost klasifikacije koja će biti napisana kasnije, radi uporedjivanja 
+                svih klasifikacija.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 8.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Pomoću ovog koda odredjujemo 'teritoriju' svake klase, predvidja se njihova pozicija koristeći 
+                klasifikator sa kojim radi, i dodaje ga na koordinatni sistem.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 9.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Ovaj deo teksta je prethodno odradjen za prvu koordinatnu osu na kome su predstavljene
+                samo tačke, tako da je potrebno to odraditi i za ove ostale ose.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 10.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Prolaskom kroz jednu IF petlju proveriće se sa kojom se klasifikacijom radi, i dodaće tekst 
+                iznad svake koordinatne ose radi bolje preglednosti rezultata.
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 11.PNG.png")">
+            </div><br />
+            <p class="card-text">
+                Poslednji deo koda koji dodaje score, odnosno preciznost klasifikacije u donjem desnom uglu 
+                svakog koordinatnog sistema. Rezultat pri pokretanju koda je sledeći:
+            </p>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Rezultat.PNG.png")">
+            </div><br />
+            <h4>Kompletan kod primera</h4>
+            <div class="col-md-8">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Konačno 1.PNG.png")">
+            </div><br />
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="zadatak">
+            <div class="card-header text-center">
+            <h4>Zadatak</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Korišćene CSV fajla koji je dodat ispod teksta, potrebno je formirati klasifikaciju za gejzere, 
+                    koja po podacima za njeno trajanje, vreme čekanja i tipa, formirati klasifikaciju koja odvaja dva
+                    tipa koristeći klasifikaciju neuronskih mreža. Napraviti tri koordinatna sistema gde bi prvi predstavio
+                    vrednosti sa tačkama, drugi kao klasifikaciju NM sa 50 i 1000 iteracija.<br /><br />
+                    <i>*Napomena*</i><br />
+                    S obzirom da se boje obeležavaju vrednostima za tip, pre dodele vrednosti promenljivama potrebno 
+                    je zameniti sve vrednosti tipa string u brojne vrednosti 0 i 1.
+                </p>
+                <a href="@Url.Content("~/Media/Vezba 4/geyser.csv")" download>Download - geyser.csv</a>
+                <p class="card-text"><br />
+                    Primer kako bi rezultat trebao da izgleda je kao na slici:
+                </p><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Zadatak 1.PNG.png")">
+                </div><br />
+                <h4>Rešenje zadatka</h4><br />
+                <div class="col-md-8">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/c1.PNG.png")">
+                </div><br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+</body>
