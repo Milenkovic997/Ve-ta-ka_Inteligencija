@@ -83,7 +83,6 @@
     <None Include="wwwroot\Media\Vezba 5\RezultatZadatak1.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 5\rezviz.PNG.png" />
     <None Include="wwwroot\Media\Vezba 6\10 - video5.mp4" />
-    <None Include="wwwroot\Media\Vezba 6\11 - video5.mp4" />
     <None Include="wwwroot\Media\Vezba 6\11.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 6\12.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 6\13.JPG.jpg" />
@@ -125,7 +124,6 @@
     <None Include="wwwroot\Media\Vezba 6\rezPrimer3.JPG.jpg" />
     <None Include="wwwroot\Media\Vezba 6\SlikeLica.rar" />
     <None Include="wwwroot\Media\Vezba 6\SlikeLica.zip" />
-    <None Include="wwwroot\Media\Vezba 6\Tesseract.rar" />
     <None Include="wwwroot\Media\Vezba 6\Tesseract.zip" />
   </ItemGroup>
 
