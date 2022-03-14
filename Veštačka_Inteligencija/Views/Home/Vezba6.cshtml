@@ -11,6 +11,12 @@
       <div class="row">
         <nav class="col-md-2 d-none d-md-block sidebar bg-sidebar">
             <div class="sidebar-sticky sticky">
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Sadržaj</span>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
                 <a class="nav-link active" href="#objasnjenje">
@@ -50,12 +56,12 @@
                 </li>
             </ul>
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Reference:</span>
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Reference</span>
                 <a class="d-flex align-items-center text-muted" >
                 <span data-feather="plus-circle"></span>
                 </a>
-            </h6>
+            </h4>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                 <a class="nav-link" href="https://towardsdatascience.com/implementing-real-time-object-detection-system-using-pytorch-and-opencv-70bac41148f7" target="_blank">
@@ -181,23 +187,26 @@
                 Kao što je u prethodnom tekstu napomenuto, prošle biblioteke sada neće biti korišćene, pa je potrebno 
                 pozvati nove biblioteke za ovaj primer na sledeći način:
             </p>
-            <div class="col-md-5">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/11.JPG.jpg")">
-            </div>
+            <pre class="python-exec"> <code>	
+    import cv2
+    import pytesseract
+                </code></pre>
             <p class="card-text"><br />
                 Deo koda koji treba da analizira učitanu sliku i ispiše šta ta slika sadrži je relativno prost i zapisuje
                 se sa samo tri linije koda:
             </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/12.JPG.jpg")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    pytesseract.pytesseract.tesseract_cmd = 'Tesseract/tesseract.exe'
+    img = cv2.imread('Informatika.jpg')
+    print(pytesseract.image_to_string(img))
+                </code></pre><br />
             <p class="card-text">
                 Prva linija koda povezuje OCR koji ste prethodno preuzeli i postavili u projektni folder rada. Druga linija,
                 koristeči cv2, odnosno OpenCV biblioteku učitava sliku i u trećem redu je preko funkcije image_to_string(img)
                 analizira i ispisuje u vidu stringe šta ona sadrži. Rezultat zavisi od preciznosti analize.
             </p>
             <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez1.JPG.jpg")">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/vezba6Resenje1.jpg")">
             </div><br />
             <p class="card-text">
                 Rezultat pokretanja koda daje ispis kao na slici iznad. Rezultat je poprilično precizan, što nije neobično
@@ -205,9 +214,16 @@
                 prvom primeru imaju dodatne funkcije koje pomažu u razumevanju kako je sistem analizirao sliku, kako je 
                 sagledao karaktere i dodatne informacije o svakom karakteru ili reči.
             </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/13.JPG.jpg")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    boxes = pytesseract.image_to_data(img)
+    for x, b in enumerate(boxes.splitlines()):
+        if x != 0:
+            b = b.split()
+            if len(b) == 12:
+                x, y, w, h = int(b[6]), int(b[7]), int(b[8]), int(b[9])
+                cv2.rectangle(img, (x, y), (w + x, h + y), (0, 0, 255), 1)
+                cv2.putText(img, b[11], (x, y), cv2.WINDOW_NORMAL, 0.5, (50, 50, 255), 2)
+                </code></pre><br />
             <p class="card-text">
                 Ovaj deo koda predstavlja jednu od dve varijante kako možemo videti rad OCR sistema i u kodu primera treba
                 dodati samo jedan ili drugi način analize u kome se postavljaju pravougaonici na slovima ili rečima 
@@ -224,7 +240,7 @@
                 </ul>
             </p>
             <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez2.JPG.jpg")">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/vezba6Resenje2.jpg")">
             </div><br />
             <p class="card-text">
                 <ul>
@@ -274,9 +290,15 @@
                     </li>
                 </ul>
             </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/14.JPG.jpg")">
-            </div><br /> 
+            <pre class="python-exec"> <code>	
+    hImg, wImg, _ = img.shape
+    boxes = pytesseract.image_to_boxes(img)
+    for b in boxes.splitlines():
+        b = b.split(' ')
+        x, y, w, h = int(b[1]), int(b[2]), int(b[3]), int(b[4])
+        cv2.rectangle(img, (x, hImg - y), (w, hImg - h), (0, 0, 255), 1)
+        cv2.putText(img, b[0], (x, hImg - y + 10), cv2.WINDOW_NORMAL, 0.5, (50, 50, 255), 2)
+                </code></pre><br /> 
             <p class="card-text">
                 Drugi način na kome se može ispisati pravougaonici kako bi se video rad OCR-a je da se formiraju i 
                 posave na lokaciji svakog karaktera. Kod je relativno isti, osim što se sada kod promenljive boxes
@@ -286,18 +308,18 @@
             </p>
             <div class="row">
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez32.JPG.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/vezba6Resenje4.jpg")">
                 </div>
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez31.JPG.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/vezba6Resenje3.jpg")">
                 </div>
             </div><br />
             <div class="row">
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez41.JPG.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/vezba6Resenje5.jpg")">
                 </div>
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez42.JPG.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/vezba6Resenje6.jpg")">
                 </div>
             </div><br />
             <p class="card-text">
@@ -308,9 +330,15 @@
                 Sympy predstavlja biblioteku za izvršavanje simboličke matematike, u vidu pronalaženja nepoznatih 
                 vrednosti jedne jednačine. Primer kako bi se to odradilo je nastavak već postojećeg koda.
             </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/15.JPG.jpg")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    from sympy import symbols, solve, Eq, sympify
+
+    text = pytesseract.image_to_string(img).replace("\n\x0c","")
+    left, right = text.split("=")
+    x = symbols('x')
+    eq1 = Eq(sympify(left), sympify(right))
+    print('Za jednačinu: ', text.replace('**', '^'), ' rešenje je: ', solve(eq1))
+                </code></pre><br />
             <p class="card-text">
                 Na samom početku je import za sympy biblioteku, koja uključuje funkcije koje će biti korišćene nadalje. 
                 Promenljiva tekst jednostavno uzima tekst sa slike koju učitavamo sa funkcijom replace koja će zameniti 
@@ -325,19 +353,53 @@
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/jednacina.jpg")">
             </div><br />
             <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez5.JPG.jpg")">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/vezba6Resenje7.jpg")">
             </div><br />
             <p class="card-text">
                 Na samom kraju potrebno je ispisati kod koji prikazuje prozor u kome se nalazi slika, slično kao što je 
                 plt.show ispisivao koordinatni sistem.
             </p>
-            <div class="col-md-5">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/16.JPG.jpg")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    cv2.imshow('', img)
+    cv2.waitKey(0)
+                </code></pre><br />
             <h4 align="center">Kompletan kod primera 1</h4><br />
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rezPrimer1.JPG.jpg")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    import cv2
+    import pytesseract
+
+    pytesseract.pytesseract.tesseract_cmd = 'Tesseract/tesseract.exe'
+    img = cv2.imread('Informatika.jpg')
+    print(pytesseract.image_to_string(img))
+
+    #boxes = pytesseract.image_to_data(img)
+    #for x, b in enumerate(boxes.splitlines()):
+    #    if x != 0:
+    #        b = b.split()
+    #        if len(b) == 12:
+    #            x, y, w, h = int(b[6]), int(b[7]), int(b[8]), int(b[9])
+    #            cv2.rectangle(img, (x, y), (w + x, h + y), (0, 0, 255), 1)
+    #            cv2.putText(img, b[11], (x, y), cv2.WINDOW_NORMAL, 0.5, (50, 50, 255), 2)
+
+    #hImg, wImg, _ = img.shape
+    #boxes = pytesseract.image_to_boxes(img)
+    #for b in boxes.splitlines():
+    #    b = b.split(' ')
+    #    x, y, w, h = int(b[1]), int(b[2]), int(b[3]), int(b[4])
+    #    cv2.rectangle(img, (x, hImg - y), (w, hImg - h), (0, 0, 255), 1)
+    #    cv2.putText(img, b[0], (x, hImg - y + 10), cv2.WINDOW_NORMAL, 0.5, (50, 50, 255), 2)
+
+    #from sympy import symbols, solve, Eq, sympify
+    #
+    #text = pytesseract.image_to_string(img).replace("\n\x0c","")
+    #left, right = text.split("=")
+    #x = symbols('x')
+    #eq1 = Eq(sympify(left), sympify(right))
+    #print('Za jednačinu: ', text.replace('**', '^'), ' rešenje je: ', solve(eq1))
+
+    cv2.imshow('', img)
+    cv2.waitKey(0)
+                </code></pre><br />
             </div>
           </div>
 
@@ -353,9 +415,20 @@
                 podataka preuzetih sa interneta koji se koriste za klasifikaciju slika i određivanjem objekta na slici
                 preko OpenCV biblioteke.
             </p><br />
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rezPrimer2.JPG.jpg")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    import cv2
+
+    trained_face_data = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
+    img = cv2.imread('face1.jpg')
+    face_coordinates = trained_face_data.detectMultiScale(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY))
+
+    for(x, y, w, h) in face_coordinates:
+        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 3)
+
+    cv2.imshow(' ',img)
+    cv2.waitKey()
+                </code></pre><br />
             <p class="card-text">
                 Slika iznad predstavlja kompletan kod drugog primera. Kao klasifikacija koristi se fajl koji je definisan
                 u trćem redu. Počinje se promenljivom kojoj se dodljuje klasifikator, čija je lokacija smeštena u projektnom
@@ -377,34 +450,34 @@
             </p>
             <div class="row">
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face1.jpg")">
                 </div>
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez51.JPG.jpg")">
-                </div>
-            </div><br />
-            <div class="row">
-                <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/faces1.jpg")">
-                </div>
-                <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez52.JPG.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face1Resenje.jpg")">
                 </div>
             </div><br />
             <div class="row">
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/faces2.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face2.jpg")">
                 </div>
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez53.JPG.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face2Resenje.jpg")">
                 </div>
             </div><br />
             <div class="row">
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/faces3.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face3.jpg")">
                 </div>
                 <div class="col-md-6">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez54.JPG.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face3Resenje.jpg")">
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face4.jpg")">
+                </div>
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face4Resenje.jpg")">
                 </div>
             </div><br />
             <p class="card-text"><br />
@@ -428,9 +501,27 @@
                     primeru biće korišćen dataset podataka preuzetih sa interneta koji se koriste za klasifikaciju 
                     slika i određivanjem objekta na slici preko OpenCV biblioteke.
                 </p>
-                <div class="col-md-10 offset-md-1">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rezPrimer3.JPG.jpg")">
-                </div><br />
+                <pre class="python-exec"> <code>	
+    import cv2
+
+    video_file = cv2.VideoCapture('video.mp4')
+    car_tracker = cv2.CascadeClassifier('cars.xml')
+
+    while True:
+        (read_successful, frame) = video_file.read()
+        if read_successful:
+            grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        else:
+            break
+
+        cars = car_tracker.detectMultiScale(grey)
+        for (x, y, w, h) in cars:
+            cv2.rectangle(frame, (x, y), ( x + w, y + h), (0, 0, 255), 2)
+
+        cv2.imshow(' ', frame)
+        cv2.waitKey(19)
+    video_file.release()
+                </code></pre><br />
                 <p class="card-text">
                     Treći primer se bazira na principu klasifikacije kao drugi primer, osim što se radi sa video 
                     klipom, odnosno u realnom vremenu. Jedina biblioteka koja se koristi i u ovom primeru je OpenCV, 
@@ -456,7 +547,7 @@
                     definiše se brzina prikazivanja video klipa.
                 </p>
             </div>
-            <video src="@Url.Content("~/Media/Vezba 6/10 - video5.mp4")" autoplay loop muted></video>
+            <video src="@Url.Content("~/Media/Vezba 6/video.mp4")" autoplay loop muted></video>
           </div>
 
           <br />
@@ -474,10 +565,10 @@
                 <a href="@Url.Content("~/Media/Vezba 6/Cats.zip")" download>Download - Cats.zip</a><br /><br />
                 <h4 align="center">Primer rešenja prvog zadatka</h4><br />
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/cats.JPG.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/vezba6ZadatakSlika.jpg")">
                 </div><br />
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/cats1.JPG.jpg")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/vezba6ZadatakResenje.jpg")">
                 </div><br />
             </div>
           </div>

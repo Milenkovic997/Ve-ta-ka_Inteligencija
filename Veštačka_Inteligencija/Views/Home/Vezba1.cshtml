@@ -11,6 +11,12 @@
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
             <div class="sidebar-sticky sticky">
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Sadržaj</span>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
                 <a class="nav-link active" href="#zadatak1">
@@ -62,12 +68,12 @@
                 </li>
             </ul>
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Zadaci za vežbanje:</span>
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Reference</span>
                 <a class="d-flex align-items-center text-muted" >
                 <span data-feather="plus-circle"></span>
                 </a>
-            </h6>
+            </h4>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                 <a class="nav-link" href="https://pynative.com/python-basic-exercise-for-beginners/" target="_blank">
@@ -103,9 +109,17 @@
             <div class="card-body">
                 <p class="card-text">Napisati kod u kome korisnik unosi jednu reč, 
                 a output mu se ispisuje svaki karakter te reči u obrnutom redosledu:</p><br />
-                <div class="col-md-6 offset-md-3">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 1/1.JPG")">
-                </div>
+                <pre class="python-exec">
+                <code>	
+    tekst = input('Unesite tekst: ')
+    print('Unesen tekst je: ' + tekst)
+
+    def split(string):
+        return [char for char in string]
+
+    print('Niz je: ' + str(split(tekst)))
+    for t in reversed(split(tekst)):
+        print(t)</code>
             </div>
             <div class="alert alert-light" role="alert">
                 <p>
@@ -130,9 +144,17 @@
                     koda u formatu dd-MMM-gggg (mesec ispisati rečima u tri slova) i izračunava koliko 
                     dana je prošlo od prvog januara 1990-te godine. 
                     Koristiti import datetime biblioteku za pronalaženje trenutnog datuma.</p><br />
-               <div class="col-md-10 offset-md-1">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 1/2.JPG")">
-                </div>
+               <pre class="python-exec">
+                <code>	
+    from datetime import date
+
+    danas = date.today()
+    print('Današnji datum: ', danas.strftime('%d-%b-%Y'))
+
+    datum = date(1990, 1, 1)
+    delta = danas - datum
+
+    print('Prošlo je: ' + str(delta.days) + ' dana')</code>
             </div>
             <div class="alert alert-light" role="alert">
                 <p>
@@ -153,9 +175,24 @@
                     korisnik unosi brojeve na kojima dobija odgovor ako je unesen broj veći 
                     ili manji od nasumičnog. Kada korisnik pogodi broj, dobija odgovor koliko 
                     je imao pokušaja.</p><br />
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 1/3.JPG")">
-                </div>
+                <pre class="python-exec">
+                <code>	
+    import random
+
+    r = random.randint(0, 50)
+    counter = 1
+
+    broj = int(input('Unesite broj: '))
+    while(broj != r):
+        if broj > r:
+            print('Broj je manji')
+        else:
+            print('Broj je veći')
+        broj = int(input('Unesite broj: '))
+        counter = counter + 1
+
+    print('\nČestitam! Tačan broj je bio ' + str(r))
+    print('Broj pokušaja je: ' + str(counter))</code>
             </div>
             <div class="alert alert-light" role="alert">
                 <p>
@@ -182,9 +219,27 @@
                 <p class="card-text">Napisati kod u kome se od datog niza sa 
                     devet brojeva formiraju tri nova niza jednakih dužina koja 
                     sadrže vrednosti originalnog niza u rastućem redosledu.</p><br />
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 1/4.JPG")">
-                </div>
+                <pre class="python-exec">
+                <code>	
+    niz = [11, 45, 8, 23, 14, 12, 78, 45, 89]
+    print('Dati niz: ', niz)
+
+    niz.sort()
+    print('Sortiran niz: ', niz, '\n')
+
+    duzina = len(niz)
+    velicina = int(duzina / 3)
+    start = 0
+    end = velicina
+
+    for i in range(velicina):
+        index = slice(start, end)
+
+        brojNiza= niz[index]
+        print("Niz", i, ': ', brojNiza)
+
+        start = end
+        end += velicina</code>
             </div>
             <div class="alert alert-light" role="alert">
                 <p>
@@ -206,9 +261,34 @@
             <div class="card-body">
                 <p class="card-text">Napisati kod pomoću kojeg se rešava kvadratna jednačina 
                     i ispisuju rezultati njenih korena.</p><br />
-                <div class="col-md-10 offset-md-1">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 1/5.JPG")">
-                </div>
+                <pre class="python-exec">
+                <code>	
+    import math
+
+    a = float(input('Unesite prvi koeficijent: '))
+    b = float(input('Unesite drugi koeficijent: '))
+    c = float(input('Unesite treći koeficijent: '))
+
+    if (a!=0.0):
+        d = (b*b)-(4*a*c)
+        if (d==0.0):
+            print('\nVrednosti su realne i jednake.')
+            r = -b/(2*a)
+            print('Koren vrednosti su ', r,' i ', r)
+        elif(d>0.0):
+            print('\nVrednosti su realne i različite.')
+            r1 = (-b+(math.sqrt(d)))/(2*a)
+            r2 = (-b-(math.sqrt(d)))/(2*a)
+            print('Prva vrednost korena je: ', r1)
+            print('Druga vrednost korena je: ', r2)
+        else:
+            print('\nVrednosti su imaginarne.')
+            rp = -b/(2*a)
+            ip = math.sqrt(-d)/(2*a)
+            print('Prva vrednost korena je: ', rp, '+ i', ip)
+            print('Druga vrednost korena je: ', rp, '- i', ip)
+    else:
+        print('Jednačina nije kvadratna.')</code>
             </div>
             <div class="alert alert-light" role="alert">
                 <p>
@@ -230,9 +310,21 @@
             </div>
             <div class="card-body">
                 <p class="card-text">Napisati kod koji proverava da li je unesen tekst palindrom.</p><br />
-                <div class="col-md-10 offset-md-1">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 1/6.JPG")">
-                </div>
+                <pre class="python-exec">
+                <code>	
+    def isPalindrome(inputString):
+        reverseString = inputString[::-1]
+        if (inputString.replace(' ','') == reverseString.replace(' ','')):
+            return True
+        return False
+
+    s = input('Unesite tekst: ')
+    result = isPalindrome(s.lower())
+
+    if result == 1:
+        print('Tekst je palindrom')
+    else:
+        print('Tekst nije palindrom')</code>
             </div>
             <div class="alert alert-light" role="alert">
                 <p>
@@ -253,9 +345,26 @@
                     ispisuje u njoj tri linije teksta (write), nakon toga otvara 
                     ponovo isti fajl i dodaje dve linije teksta (append), čita fajl 
                     i u konzoli ispisuje ono šta sadrži i nakon toga je kompletno obriše.</p><br />
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 1/7.JPG")">
-                </div>
+                <pre class="python-exec">
+                <code>	
+    import os
+
+    file = open('fajl.txt', 'w+')
+    for i in range(3):
+        file.write('Ovo je prepisan tekst: %d\n' % (i+1))
+    file.close()
+    ​
+    file = open('fajl.txt', 'a+')
+    for i in range(2):
+        file.write('Ovo je priložen tekst: %d\n' % (i + 1))
+    file.close()
+
+    file = open('fajl.txt', 'r')
+    if file.mode == 'r':
+        print(file.read())
+    file.close()
+
+    os.remove('fajl.txt')</code>
             </div>
             <div class="alert alert-light" role="alert">
                 <p>
@@ -278,9 +387,38 @@
                 <p class="card-text">Napisati kod koji simulira rad kase u prodavnici 
                     korišćenjem klase za artikle i klase u kome će se svi artikli smestiti. 
                     Nakon unošenja svih artikla, ispisati šta je sve kupljeno i ukupna cena svih artikla.</p><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 1/8.JPG")">
-                </div>
+                <pre class="python-exec">
+                <code>	
+    class artikal:
+        def __init__(self, name, price):
+            self.name = name
+            self.price = price
+
+        def __str__(self):
+            return '{:6.2f} din, {:s} '.format(self.price, self.name)
+
+    class kupovina:
+        def __init__(self):
+            self.items = [ ]
+
+        def add(self, item):
+            self.items.append(item)
+
+        def total(self):
+            return '\nUkupna cena: {:.2f} din'.format(sum(item.price for item in self.items))
+
+        def __str__(self):
+            return '\n'.join(str(item) for item in self.items)
+
+    korpa = kupovina()
+
+    korpa.add(artikal('Čokolada', 120))
+    korpa.add(artikal('Hleb', 45))
+    korpa.add(artikal('Pavlaka', 150))
+    korpa.add(artikal('Jaja 10kom', 140))
+
+    print(korpa)
+    print(korpa.total())</code>
             </div>
             <div class="alert alert-light" role="alert">
                 <p>
@@ -288,7 +426,7 @@
                     120.00 din, Čokolada <br />
                       45.00 din, Hleb  <br />
                     150.00 din, Pavlaka  <br />
-                    140.00 din, Jaja 10kom <br />
+                    140.00 din, Jaja 10kom <br /><br />
                     Ukupna cena: 455.00 din
                 </p>
             </div>

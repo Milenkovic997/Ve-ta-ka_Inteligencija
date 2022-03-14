@@ -11,6 +11,12 @@
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
             <div class="sidebar-sticky sticky">
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Sadržaj</span>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
                 <a class="nav-link active" href="#objasnjenje">
@@ -32,12 +38,12 @@
                 </li>
             </ul>
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Reference:</span>
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Reference</span>
                 <a class="d-flex align-items-center text-muted" >
                 <span data-feather="plus-circle"></span>
                 </a>
-            </h6>
+            </h4>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                 <a class="nav-link" href="https://www.geeksforgeeks.org/underfitting-and-overfitting-in-machine-learning/" target="_blank">
@@ -118,9 +124,14 @@
                 U primeru, da bismo predstavili oblasti underfitting i overfitting, radićemo sa tri različita reda 
                 polinomske regresije.
             </p><br />
-            <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 1.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    from sklearn.pipeline import Pipeline
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
+                </code></pre><br />
             <p class="card-text">
                 Primer koji će biti objašnjen i na kome će biti predstavljen overfitting i underfitting počinjemo standardnim
                 instaliranjem potrebnih biblioteka (numpy, matplotlib i scikit-learn). U ovom primeru, za razliku od vežbe
@@ -129,9 +140,14 @@
                 Kako bismo formirali veću preciznost, ali ne preveliku, moraćemo formirati regresije n-tog reda. U primeru,
                 da bismo predstavili oblasti underfitting i overfitting, radićemo sa tri različita reda polinomske regresije.
             </p>
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 2.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    np.random.seed(0)
+    broj_vrednosti = 30
+    red_jednacine = [1, 4, 30]
+
+    def funkcija(X):
+        return np.cos(1.5 * np.pi * X)
+                </code></pre><br />
             <p class="card-text">
                 U ovom delu koda se odrađuje sledeće:            
             <ul>
@@ -152,9 +168,10 @@
                 </li>
             </ul>
             </p>
-            <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 3.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    X = np.sort(np.random.rand(broj_vrednosti))
+    Y = funkcija(X) + np.random.rand(broj_vrednosti) * 0.1
+                </code></pre><br />
             <p class="card-text">
                 U ovom delu koda se odrađuje sledeće:          
             <ul>
@@ -175,9 +192,13 @@
                 Umesto ovakvog kreiranja vrednosti X i Y niza, učitavanje kolona sa bibliotekom pandas je bio takođe
                 prihvatljiv način dobijanja vrednosti za popunjavanje osa.
             </p>
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 4.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    plt.figure(figsize = (15, 5))
+    for i in range(len(red_jednacine)):
+        ...
+
+    plt.show
+                </code></pre><br />
             <p class="card-text">
                 U ovom delu koda se odrađuje sledeće:      
             <ul>
@@ -198,9 +219,16 @@
             <br />
                 For petlja nam se sastoji od sledećih delova:
             </p>
-            <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 5.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    ax = plt.subplot(1, len(red_jednacine), i + 1)
+    plt.setp(ax, xticks = (), yticks = ())
+
+    polynomial_features = PolynomialFeatures(degree = red_jednacine[i])
+    linear_regression = LinearRegression()
+
+    pipeline = Pipeline([('polynomial_features', polynomial_features), ('linear_regression', linear_regression), ])
+    pipeline.fit(X[:, np.newaxis], Y)
+                </code></pre><br />
             <p class="card-text">
                 U prva dva reda koda definišemo to, da želimo da imamo tri koordinatna sistema na jednom prozoru. 
                 Kroz svaku iteraciju (3 ukupno) definišemo lokacije na mestima 1,2,3. <br /><br />
@@ -218,9 +246,19 @@
                 vrednost X kako bi se popunio dvodimenzionalan koordinatni sistem. Vrednost Y popunjavamo unutar X-a, 
                 tako da nije potrebno povećati dimenziju vrednosti Y, ali bi kod funkcionisao identično ako bi to uradili.
             </p>
-            <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Slika 6.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    plt.plot(X, pipeline.predict(X[:, np.newaxis]), c = 'r')
+    plt.plot(X, funkcija(X))
+    plt.scatter(X, Y, s = 10)
+
+    plt.xlabel('X')
+    plt.ylabel('Y')
+
+    plt.xlim((0, 1))
+    plt.ylim((-2, 2))
+
+    plt.title('Degree {}'.format(red_jednacine[i]))
+                </code></pre><br />
             <p class="card-text">
                 U ovom drugom delu for petlje popunjavamo vrednosti u koordinatnim sistemima kao i linije koje ukazuju 
                 na regresiju. Prvi deo plt.plot popunjava regresijom u odnosu na red polinomske regresije. Drugi plt.plot 
@@ -232,11 +270,50 @@
                 red polinomske regresije.<br /><br />
                 Kompletan kod primera sa rezultatima je ispisan ispod teksta.
             </p>
+            <pre class="python-exec"> <code>	
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    from sklearn.pipeline import Pipeline
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
+
+    np.random.seed(0)
+    broj_vrednosti = 30
+    red_jednacine = [1, 4, 30]
+
+    def funkcija(X):
+        return np.cos(1.5 * np.pi * X)
+
+    X = np.sort(np.random.rand(broj_vrednosti))
+    Y = funkcija(X) + np.random.rand(broj_vrednosti) * 0.1
+
+    plt.figure(figsize = (15, 5))
+    for i in range(len(red_jednacine)):
+        ax = plt.subplot(1, len(red_jednacine), i + 1)
+        plt.setp(ax, xticks = (), yticks = ())
+
+        polynomial_features = PolynomialFeatures(degree = red_jednacine[i])
+        linear_regression = LinearRegression()
+
+        pipeline = Pipeline([('polynomial_features', polynomial_features), ('linear_regression', linear_regression), ])
+        pipeline.fit(X[:, np.newaxis], Y)
+
+        plt.plot(X, pipeline.predict(X[:, np.newaxis]), c = 'r')
+        plt.plot(X, funkcija(X))
+        plt.scatter(X, Y, s = 10)
+
+        plt.xlabel('X')
+        plt.ylabel('Y')
+
+        plt.xlim((0, 1))
+        plt.ylim((-2, 2))
+
+        plt.title('Degree {}'.format(red_jednacine[i]))
+    plt.show()
+                </code></pre><br />
             <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Konacno 1.PNG.png")">
-            </div><br />
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/33.PNG.png")">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba3Slika1.png")">
             </div><br />
             </div>
           </div>
@@ -255,17 +332,50 @@
                     kome je prikazan underfitting. Primer kako rezultat treba da izgleda nakon pokretanja koda je sledeći:
                 </p><br />
                 <div class="col-md-10 offset-md-1">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Zadatak 1 Resenje.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba3Slika2.png")">
                 </div><br />
-                <h4 align="center">Rešenje 1 (korišćenjem Pipeline metode)</h4>
+                <h4 align="center">Rešenje</h4>
                 <a href="@Url.Content("~/Media/Vezba 3/OveriUnder.csv")" download>Download - OveriUnder.csv</a><br /><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Zadatak 1.PNG.png")">
-                </div><br />
-                <h4 align="center">Rešenje 2 (posebno određivanje oba stepena)</h4><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Zadatak 2.PNG.png")">
-                </div><br />
+                <pre class="python-exec"> <code>	
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from sklearn.pipeline import Pipeline
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
+    import pandas as pd
+
+    df = pd.read_csv('OveriUnder.csv')
+    red_jednacine = [1, 2]
+
+    def funkcija(X):
+        return 3 * np.power(X, 2) + 6
+
+    X = df['X']
+    Y = funkcija(X)
+    
+    plt.figure(figsize = (10, 5))
+    for i in range(len(red_jednacine)):
+        ax = plt.subplot(1, len(red_jednacine), i + 1)
+        plt.setp(ax, xticks = (), yticks = ())
+
+        polynomial_features = PolynomialFeatures(degree = red_jednacine[i])
+        linear_regression = LinearRegression()
+
+        pipeline = Pipeline([('polynomial_features', polynomial_features), ('linear_regression', linear_regression), ])
+        pipeline.fit(X[:, np.newaxis], Y)
+
+        plt.plot(X, pipeline.predict(X[:, np.newaxis]), c = 'y')
+        plt.scatter(X, Y, marker = 'X', c = 'g')
+
+        plt.xlabel('X')
+        plt.ylabel('Y')
+
+        plt.xlim((-10, 10))
+        plt.ylim((0, 300))
+
+        plt.title('Stepen: {}'.format(red_jednacine[i]))
+    plt.show()
+                </code></pre>
             </div>
           </div>
         </div>

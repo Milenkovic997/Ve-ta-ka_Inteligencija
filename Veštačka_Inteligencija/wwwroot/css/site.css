@@ -1,6 +1,6 @@
 html {
-  font-size: 14px;
-  text-align: justify;
+    font-size: 14px;
+    text-align: justify;
 }
 
 @media (min-width: 768px) {
@@ -15,7 +15,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 h1{
@@ -39,3 +40,9 @@ h1{
 .bg-sidebar {
     background-color: #E5E5E5;
 }
+
+pre {
+    background-color: #383B40;
+    color: white;
+}
+

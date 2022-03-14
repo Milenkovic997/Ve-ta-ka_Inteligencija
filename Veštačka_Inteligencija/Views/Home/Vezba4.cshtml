@@ -11,6 +11,12 @@
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
             <div class="sidebar-sticky sticky">
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Sadržaj</span>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
                 <a class="nav-link active" href="#objasnjenje">
@@ -32,12 +38,12 @@
                 </li>
             </ul>
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Reference:</span>
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Reference</span>
                 <a class="d-flex align-items-center text-muted" >
                 <span data-feather="plus-circle"></span>
                 </a>
-            </h6>
+            </h4>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                 <a class="nav-link" href="https://medium.com/analytics-vidhya/building-classification-model-with-python-9bdfc13faa4b" target="_blank">
@@ -86,7 +92,7 @@
                     Klasifikacija na ovaj način predstavlja nadgledano mašinsko učenje zato što već postoje podaci po kojima 
                     se klasifikacija izvršava. Primer ose nakon klasifikovanja izgleda kao primer na slici ispod:                </p><br />
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Primer_Klasifikacije.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/vezba4Objasnjenje.png")">
                 </div><br />
                 <p class="card-text">
                     Primer slike predstavlja jednu od klasifikatora koji će se odraditi u narednom delu vežbi (slikane 
@@ -121,17 +127,29 @@
             <p class="card-text">
                 Primer za ovu oblast je predstavljena u nastavku ovih vežbi:
             </p><br />
-            <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 1.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import pandas as pd
+
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.gaussian_process import GaussianProcessClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neural_network import MLPClassifier
+                </code></pre><br />
             <p class="card-text">
                 U prvog grupi importa koju definišemo kako bi koristili u primeru su standardne biblioteke koje 
                 su i do sada bile korišćene, i to numpy za rad sa višedimenzionalnim nizovima, matplotlib za 
                 vizuelno kreiranje koordinatnih osa i pandas za rad sa fajlovima, odnosno CSV fajlom iz kog se 
                 uzimaju podaci za rad. Drugi deo importa se odnosi na sve klasifikatora sa kojima se radi u primeru.            </p>
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 2.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    classifiers = [
+        KNeighborsClassifier(),
+        GaussianProcessClassifier(),
+        DecisionTreeClassifier(),
+        MLPClassifier(max_iter = 1000)
+    ]
+                </code></pre><br />
             <p class="card-text">
                 Na samom početku se definišu svi klasifikatori koji će biti korišćeni. U tekstu iznad su svi
                 klasifikatori dodati u jedan niz zato što će se prolaskom kroz niz, odnosno prolazak kroz sve
@@ -139,9 +157,11 @@
                 nije potrebno formirati ovakav niz. U redu kako su zapisani, klasifikatori kao elementi niza su sledeći:
                 K-Nearest Neighbor, Gausova proces, Binarno stablo i neuronska mreža u tom redosledu.
             </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 3.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    df = pd.read_csv('https://raw.githubusercontent.com/Milenkovic997/CSV/main/Klasifikacija.csv')
+    X = df[['X', 'Y']].values
+    y = df['K'].values
+                </code></pre><br />
             <p class="card-text">
                 Za razliku od prethodnih primera za učitavanje podataka za rad u kome se ili učitao CSV fajl ili su se
                 vrednosti za rad same formirale, u ovom kodu je primer učitavanja podataka sa linka, na kome se nalaze 
@@ -152,9 +172,12 @@
                 klasifikacija (naravno, umesto dvodimenzionalnog niza su se mogla formirati dve posebne promenljive za 
                 svaku kolonu posebno).
             </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 4.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    figure = plt.figure(figsize = (15, 3))
+    x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
+    y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+                </code></pre><br />
             <p class="card-text">
                 Početak ovog dela koda počinje sa definisanje promenljive figure preko koje sa funkcijom plt.figure menjamo
                 veličinu prozora aplikacije nakon pokretanja. Primer će prikazati četri klasifikatora kao i osnovni raspored
@@ -165,9 +188,14 @@
                 na njihov položaj kao pretpostavku za teritoriju nekih vrednosti za koje se može uraditi pretpostavka kojoj 
                 klasi bi ona mogla da pripada, u zavisnosti od njene lokacije u osi.
             </p>
-            <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 5.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    i = 1
+    ax = plt.subplot(1, len(classifiers) + 1, i)
+    ax.scatter(X[:, 0], X[:, 1], c = y, edgecolors = 'k')
+    ax.set_xlim(xx.min(), xx.max())
+    ax.set_ylim(yy.min(), yy.max())
+    i += 1
+                </code></pre><br />
             <p class="card-text">
                 Potrebno je da, s obzirom da je potrebno predstaviti koordinatni sistem za svaku klasifikaciju posebno, 
                 koristiti plt.subplot funkciju koja je bila prikazana na prethodnim vežbama, i ima za cilj da odvoji sve 
@@ -180,57 +208,137 @@
                 završava se sistem, kako bi na svakom koordinatnom sistemu imali identičnu poziciju vrednosti na
                 koordinatnom sistemu.
             </p>
-            <div class="col-md-6 offset-md-3">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 6.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    for clf in classifiers:
+        ...
+
+    plt.tight_layout()
+    plt.show()
+                </code></pre><br />
             <p class="card-text">
                 Pomoću for petlje se primenjuju svi klasifikatori, i for petlja bi napravila četri iteracije, tj. 
                 za svaki klasifikator posebno. Na kraju koda nakon funkcije se dodaje plt.show kako bi prikazao prozor
                 i tight_layout koji približava sve koordinatne sisteme bliže jedan drugom zbog bolje preglednosti rezultata.            </p>
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 7.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    ax = plt.subplot(1, len(classifiers) + 1, i)
+    clf.fit(X, y)
+    score = clf.score(X, y)
+                </code></pre><br />
             <p class="card-text">
                 For petlja počinje novom subplot funkcijom, kako bi odredio poziciju koordinatnog sistema za datu
                 klasifikaciju. Klasifikator je označen promenljivom clf i potrebno je dati klasifikatoru sve podatke
                 za rad i odrediti score tj preciznost klasifikacije koja će biti napisana kasnije, radi uporedjivanja 
                 svih klasifikacija.
             </p>
-            <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 8.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
+    Z = Z.reshape(xx.shape)
+    ax.contourf(xx, yy, Z, alpha = 0.8)
+    ax.scatter(X[:, 0], X[:, 1], c= y, edgecolors = 'k')
+                </code></pre><br />
             <p class="card-text">
                 Pomoću ovog koda odredjujemo 'teritoriju' svake klase, predvidja se njihova pozicija koristeći 
                 klasifikator sa kojim radi, i dodaje ga na koordinatni sistem.
             </p>
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 9.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    ax.set_xlim(xx.min(), xx.max())
+    ax.set_ylim(yy.min(), yy.max())
+    ax.set_xticks(())
+    ax.set_yticks(())
+                </code></pre><br />
             <p class="card-text">
                 Ovaj deo teksta je prethodno odradjen za prvu koordinatnu osu na kome su predstavljene
                 samo tačke, tako da je potrebno to odraditi i za ove ostale ose.
             </p>
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 10.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    if i == 2:
+        ax.set_title('Nearest Neighbors')
+    elif i == 3:
+        ax.set_title('Gaussian Process')
+    elif i == 4:
+        ax.set_title('Decision Tree')
+    elif i == 5:
+        ax.set_title('Neural Net')
+                </code></pre><br />
             <p class="card-text">
                 Prolaskom kroz jednu IF petlju proveriće se sa kojom se klasifikacijom radi, i dodaće tekst 
                 iznad svake koordinatne ose radi bolje preglednosti rezultata.
             </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 11.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    ax.text(xx.max() - 0.3, yy.min() + 0.3, ('%.2f' % score), size = 15, horizontalalignment = 'right')
+    i += 1
+                </code></pre><br />
             <p class="card-text">
                 Poslednji deo koda koji dodaje score, odnosno preciznost klasifikacije u donjem desnom uglu 
                 svakog koordinatnog sistema. Rezultat pri pokretanju koda je sledeći:
             </p>
             <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Rezultat.PNG.png")">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/vezba4PrimerRezultat.png")">
             </div><br />
             <h4 align="center">Kompletan kod primera</h4><br />
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Konačno 1.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import pandas as pd
+
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.gaussian_process import GaussianProcessClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neural_network import MLPClassifier
+
+    classifiers = [
+        KNeighborsClassifier(),
+        GaussianProcessClassifier(),
+        DecisionTreeClassifier(),
+        MLPClassifier(max_iter = 1000)
+    ]
+
+    df = pd.read_csv('https://raw.githubusercontent.com/Milenkovic997/CSV/main/Klasifikacija.csv')
+    X = df[['X', 'Y']].values
+    y = df['K'].values
+
+    figure = plt.figure(figsize = (15, 3))
+    x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
+    y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+
+    i = 1
+    ax = plt.subplot(1, len(classifiers) + 1, i)
+    ax.scatter(X[:, 0], X[:, 1], c = y, edgecolors = 'k')
+    ax.set_xlim(xx.min(), xx.max())
+    ax.set_ylim(yy.min(), yy.max())
+    i += 1
+
+    for clf in classifiers:
+        ax = plt.subplot(1, len(classifiers) + 1, i)
+        clf.fit(X, y)
+        score = clf.score(X, y)
+
+        Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
+        Z = Z.reshape(xx.shape)
+        ax.contourf(xx, yy, Z, alpha = 0.8)
+        ax.scatter(X[:, 0], X[:, 1], c= y, edgecolors = 'k')
+
+        ax.set_xlim(xx.min(), xx.max())
+        ax.set_ylim(yy.min(), yy.max())
+        ax.set_xticks(())
+        ax.set_yticks(())
+
+        if i == 2:
+            ax.set_title('Nearest Neighbors')
+        elif i == 3:
+            ax.set_title('Gaussian Process')
+        elif i == 4:
+            ax.set_title('Decision Tree')
+        elif i == 5:
+            ax.set_title('Neural Net')
+
+        ax.text(xx.max() - 0.3, yy.min() + 0.3, ('%.2f' % score), size = 15, horizontalalignment = 'right')
+        i += 1
+
+    plt.tight_layout()
+    plt.show()
+                </code></pre><br />
             </div>
           </div>
 
@@ -254,12 +362,62 @@
                     Primer kako bi rezultat trebao da izgleda je kao na slici:
                 </p><br />
                 <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Zadatak 1.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/vezba4Zadatak1.png")">
                 </div><br />
                 <h4 align="center">Rešenje zadatka</h4><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/c1.PNG.png")">
-                </div><br />
+                <pre class="python-exec"> <code>	
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import pandas as pd
+    from sklearn.neural_network import MLPClassifier
+
+    broj_iteracija = [50, 1000]
+    classifiers = [
+        MLPClassifier(max_iter = broj_iteracija[0]),
+        MLPClassifier(max_iter = broj_iteracija[1])
+    ]
+
+    df = pd.read_csv('geyser.csv')
+    X = df[['duration', 'waiting']].values
+    y = df['kind'].values
+
+    y = [1 if element == 'short' else element for element in y]
+    y = [0 if element == 'long' else element for element in y]
+
+    figure = plt.figure(figsize = (12, 4))
+    x_min, x_max = X[:, 0].min() - 5, X[:, 0].max() + 5
+    y_min, y_max = X[:, 1].min() - 5, X[:, 1].max() + 5
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+
+    i = 1
+    ax = plt.subplot(1, len(classifiers) + 1, i)
+    ax.scatter(X[:, 0], X[:, 1], c = y, edgecolors = 'k')
+    ax.set_xlim(xx.min(), xx.max())
+    ax.set_ylim(yy.min(), yy.max())
+    i += 1
+
+    for clf in classifiers:
+        ax = plt.subplot(1, len(classifiers) + 1, i)
+        clf.fit(X, y)
+        score = clf.score(X, y)
+
+        Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
+        Z = Z.reshape(xx.shape)
+        ax.contourf(xx, yy, Z, alpha = 0.8)
+        ax.scatter(X[:, 0], X[:, 1], c= y, edgecolors = 'k')
+
+        ax.set_xlim(xx.min(), xx.max())
+        ax.set_ylim(yy.min(), yy.max())
+        ax.set_xticks(())
+        ax.set_yticks(())
+
+        ax.set_title('Neural Net {:d} Iterations'.format(broj_iteracija[i - 2]))
+        ax.text(xx.max() - 0.3, yy.min() + 0.3, ('%.2f' % score), size = 15, horizontalalignment = 'right')
+        i += 1
+
+    plt.tight_layout()
+    plt.show()
+                </code></pre>
             </div>
           </div>
         </div>

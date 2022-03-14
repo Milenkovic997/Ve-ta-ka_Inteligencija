@@ -11,6 +11,12 @@
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
             <div class="sidebar-sticky sticky">
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Sadržaj</span>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
                 <a class="nav-link active" href="#objasnjenje">
@@ -50,12 +56,12 @@
                 </li>
             </ul>
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Reference:</span>
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Reference</span>
                 <a class="d-flex align-items-center text-muted" >
                 <span data-feather="plus-circle"></span>
                 </a>
-            </h6>
+            </h4>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                 <a class="nav-link" href="https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/" target="_blank">
@@ -149,7 +155,7 @@
                 funkcioniše linearna regresija za zadate ulazne vrednosti. Primer kako bi izgledao 
                 koordinatni sistem sa svim ulaznim podacima je sledeći:</p><br />
             <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/1.PNG.png")">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika1.png")">
             </div><br />
             <p class="card-text">Koordinatni sistem je formiran sa podacima koji su u excel tabeli zapisane na sledeći način:</p>
                 
@@ -210,9 +216,11 @@
                     formirali regresiju (komanda za instalaciju biblioteka se nalazi na početku stranice,
                     sa crnom pozadinom teksta). Potrebne biblioteke su pandas, matplotlib i scikit-learn.
                     To radimo na sledeći način:</p>
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Slika 1.PNG.png")">
-                </div><br />
+                <pre class="python-exec"> <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn import linear_model
+                </code></pre><br />
                 <p class="card-text">Reč 'as' nam ukazuje to, da kada koristimo biblioteku, kako bi pozvali
                     neku funkciju koju biblioteka definiše, pozivamo je pomoću reči kojom tu biblioteku 
                     definišemo (ako gledamo prvi red, umesto da pozovemo funkciju kao pandas.funkcija, 
@@ -223,9 +231,16 @@
                     Scikit-learn (sklearn) nam generiše linearnu regresiju pomoću koje možemo vršiti 
                     predvidjanja na vrednostima koje korisnik želi.
                 </p>
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Slika 2.PNG.png")">
-                </div><br />
+                <pre class="python-exec"><code>	
+    df = pd.read_csv('IncomePerHomeAverage.csv')
+
+    plt.scatter(df['year'], df['income'])
+
+    plt.xlabel('Year')
+    plt.ylabel('Income')
+
+    plt.show() 
+                </code></pre><br />
                 <p class="card-text">U ovom delu koda formiramo vizuelni koordinatni sistem. Korišćenjem reči 
                     pd kao biblioteku pandas i funkcije read_csv(), učitavamo sve podatke (fajl sa ekstenzijom
                     .csv čuvamo iz excel tabele tako što, prilikom čuvanja fajla, odaberemo 'save as' sa opcijom
@@ -237,17 +252,21 @@
                     Y osi u vidu labele. plt.show() kreira prozor koji prikazuje koordinatni sistem.<br /><br />
                     Pokretanjem koda, sa csv fajlom koji je dodat ispod ovog teksta, prikazuje nam se sledeći grafik:
                 </p>
-
                 <a href="@Url.Content("~/Media/Vezba 2/IncomePerHomeAverage.csv")" download>Download - IncomePerHomeAverage.csv</a>
                 <div class="col-md-8 offset-md-2"><br />
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/2.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika2.png")">
                 </div><br />
                 <p class="card-text">Nakon formiranja i upisivanja svih vrednosti, potrebno je formirati 
                     linearnu regresiju i napraviti prekiciju. To činimo na sledeći način:
                 </p>
-                <div class="col-md-10 offset-md-1">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Slika 3.PNG.png")">
-                </div><br />
+                <pre class="python-exec">
+                <code>	
+    reg = linear_model.LinearRegression()
+    reg.fit(df[['year']], df[['income']])
+    plt.plot(df.year, reg.predict(df[['year']]), color = 'red')
+
+    predictPrice = reg.predict([[2020]])
+                </code></pre><br />
                 <p class="card-text">Promenljiva reg definišemo kao model linearne regresije. Modelu preko funkcije 
                     fit, dodajemo vrednosti i preko funkcije plot iz matplotlib biblioteke, generišemo pravu liniju 
                     unutar koordinatnog sistema.<br /><br />
@@ -256,9 +275,12 @@
                     će biti prosečna zarada jednog domaćinstva 2020-te godine i tu vrednost pamtimo u promenljivoj 
                     predictPrice. Preostali korak je ispisati te vrednosti: 
                 </p>
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Slika 4.PNG.png")">
-                </div><br />
+                <pre class="python-exec">
+                <code>	
+    print('Predikcija (P) : ', predictPrice)
+    print('Koeficijent (K) : ', reg.coef_)
+    print('Intercept (B) : ', reg.intercept_)
+                </code></pre><br />
                 <p class="card-text">
                     Predikcija se računa pomoću sledeće formule:<br />
                     <h3 align="center">price = k * year + b</h3><br />
@@ -267,17 +289,40 @@
                     dobili rezultat koji pokušavamo da predvidimo, definisano je čisto kako bismo mogli lično proveriti).
                     Rezultat koda nakon pokretanja je:
                 </p>
+                <!---->
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/3.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika3.png")">
                 </div>
                 <p class="card-text"> <br />Dok koordinatni sistem koji je generisan sa plt.show() funkcijom izgleda ovako: </p>
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/4.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika4.png")">
                 </div>
                 <p class="card-text"> <br />Kompletan kod je napisan na sledeći način: </p>
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 1.PNG.png")">
-                </div>
+                <pre class="python-exec">
+                <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn import linear_model
+
+    df = pd.read_csv('IncomePerHomeAverage.csv')
+
+    plt.scatter(df['year'], df['income'])
+
+    plt.xlabel('Year')
+    plt.ylabel('Income')
+
+    reg = linear_model.LinearRegression()
+    reg.fit(df[['year']], df[['income']])
+    plt.plot(df.year, reg.predict(df[['year']]), color = 'red')
+
+    predictPrice = reg.predict([[2020]])
+
+    print('Predikcija (P) : ', predictPrice)
+    print('Koeficijent (K) : ', reg.coef_)
+    print('Intercept (B) : ', reg.intercept_)
+
+    plt.show()
+                </code></pre>
             </div>
           </div>
 
@@ -292,9 +337,35 @@
                     videli razliku izmedju više vrednosti različitih tabela, i kako se regresija razlikuje izmedju 
                     njih, predstavljamo na sledeći način: 
                 </p><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 2.PNG.png")">
-                </div>
+                <pre class="python-exec"> <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn import linear_model
+
+    df1 = pd.read_csv('cig1.csv')
+    df2 = pd.read_csv('cig2.csv')
+    df3 = pd.read_csv('cig3.csv')
+
+    plt.scatter(df1['year'], df1['cigperyear'], color = 'red', marker = '+')
+    plt.scatter(df2['year'], df2['cigperyear'], color = 'blue', marker = '+')
+    plt.scatter(df3['year'], df3['cigperyear'], color = 'green', marker = '+')
+
+    plt.xlabel('Year')
+    plt.ylabel('Cig per person')
+
+    reg = linear_model.LinearRegression()
+
+    reg.fit(df1[['year']], df1.cigperyear)
+    plt.plot(df1.year.values, reg.predict(df1[['year']]), color = 'red')
+    
+    reg.fit(df2[['year']], df2.cigperyear)
+    plt.plot(df2.year.values, reg.predict(df2[['year']]), color = 'blue')
+
+    reg.fit(df3[['year']], df3.cigperyear)
+    plt.plot(df3.year.values, reg.predict(df3[['year']]), color = 'green')
+
+    plt.show()
+                </code></pre>
                 <p class="card-text"><br />
                     U ovom primeru smo koristili tri različite tabele, koje sadrže kolonu za godinu i kolonu koja 
                     beleži prosečan broj cigara po osobi na godišnjem nivou. Tri tabele beleže po 30 vrednosti (za
@@ -311,7 +382,7 @@
                     promenili smo i oblik tačaka iz kružića u +. Pokretanjem koda dobijamo sledeći grafik: 
                 </p><br />
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/5.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika5.png")">
                 </div>
             </div>
           </div>
@@ -332,9 +403,40 @@
                     imali vizuelni prikaz svih vrednosti u tabeli). CSV fajl na kome se radi je prikačen ispod teksta, kao i tekst koda:
                 </p>
                 <a href="@Url.Content("~/Media/Vezba 2/carsSpecifications.csv")" download>Download - carsSpecifications.csv</a><br /><br />
-                <div class="col-md-10 offset-md-1">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 3.PNG.png")">
-                </div>
+                <pre class="python-exec"> <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn import linear_model
+
+    df = pd.read_csv('carsSpecifications.csv')
+    
+    x = df.Volume
+    y = df.Weight
+    z = df.C02
+
+    fig = plt.figure()
+    pltfig = fig.gca(projection = '3d')
+    pltfig.scatter(x, y, z, s = 50)
+    
+    pltfig.set_xlabel('Volume')
+    pltfig.set_ylabel('Weight')
+    pltfig.set_zlabel('C02')
+
+    X = df[['Weight', 'Volume']].values
+    Y = df['C02']
+
+    reg = linear_model.LinearRegression()
+    reg.fit(X, Y)
+
+    pred_weight = 2300
+    pred_volume = 1300
+
+    predictC02 = reg.predict([[pred_weight, pred_volume]])
+
+    print('Predvidjen C02 za: [Weight:', pred_weight, '] i [Volume: ', pred_volume, '] je', predictC02[0])
+
+    plt.show()
+                </code></pre>
                 <p class="card-text"><br />
                     Rezultat pokretanja koda bi dao rezultat "Predvidjen CO2 za: [ Weight: 2300 ] i [ Volume: 1300 ] je 
                     107.20873279892223" u ovoj situaciji. Korišćenjem funkcija reg.coef_ vratiće dva koeficijenta (zato 
@@ -347,7 +449,7 @@
                     Grafik, koji kao što je pomenuto je predstavljem u trodimenzionalnom prostoru, formiran je na sledeći način:
                 </p>
             </div>
-            <video src="@Url.Content("~/Media/Vezba 2/15 - 3D Linearna Regresija.mp4")" controls></video>
+            <video src="@Url.Content("~/Media/Vezba 2/3D Linearna Regresija.mp4")" controls></video>
           </div>
           
           <br />
@@ -363,16 +465,43 @@
                     znače da se vrednost x može naći u drugom, trećem ili nekom drugom stepenu.
                 </p><br />
                 <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/y1.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/PolinominalneRegresije.png")">
                 </div>
                 <p class="card-text"><br />
                     U narednom primeru biće predstavljen kod jednog zadatka u kome se predvidja vrednost sa polinomskom
                     regresijom u kojoj je x na drugom stepenu. Tema pretrage je vlažnost i pritisak vremena.
                 </p>
                 <a href="@Url.Content("~/Media/Vezba 2/WeatherDataP.csv")" download>Download - WeatherDataP.csv</a><br /><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 4.PNG.png")">
-                </div>
+                <pre class="python-exec"> <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
+
+    df = pd.read_csv('WeatherDataP.csv')
+    
+    train_x = df[['Pressure']].values
+    train_y = df[['Humidity']].values
+
+    plt.scatter(df.Pressure.values, df.Humidity.values, color = 'blue')
+    plt.xlabel('Pressure')
+    plt.ylabel('Humidity')
+
+    pre_process = PolynomialFeatures(degree = 2)
+
+    x_poly = pre_process.fit_transform(train_x)
+    pr_model = LinearRegression()
+    pr_model.fit(x_poly, train_y)
+
+    y_pred = pr_model.predict(x_poly)
+    plt.plot(train_x, y_pred, color = 'red')
+    pred_pressure = 1007
+    y_new = pr_model.predict(pre_process.fit_transform([[pred_pressure]]))
+
+    print('Predvidjena vlažnost za [ Pressure: ', pred_pressure, '] je', y_new[0])
+
+    plt.show()
+                </code></pre>
                 <p class="card-text"><br />
                     Kod za polinomnu regresiju, u odnosu na linearnu ima nekoliko razlika koje će sada biti objašnjene. 
                     Počevši od samog početka, sklearn.preprocessing u trećoj liniji koda nam omogućava kreiranje same 
@@ -388,7 +517,7 @@
                     [ Pressure: 1007 ] je [0.7164631]'.
                 </p><br />
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/7.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika6.png")">
                 </div>
                 <p class="card-text"><br />
                     Primer polinomske regresije gde je y = x^3 (x na trećem stepenu) se radi na skoro identičan način, jedina 
@@ -396,15 +525,42 @@
                     CSV fajl za ovaj primer i kod su sledeći:
                 </p>
                 <a href="@Url.Content("~/Media/Vezba 2/testVrednostiTrećiStepen.csv")" download>Download - testVrednostiTrećiStepen.csv</a><br /><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 5.PNG.png")">
-                </div><br />
+                <pre class="python-exec"> <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
+
+    df = pd.read_csv('testVrednostiTrećiStepen.csv')
+    
+    train_x = df[['broj']].values
+    train_y = df[['vrednost']].values
+
+    plt.scatter(df.broj.values, df.vrednost.values, color = 'blue')
+    plt.xlabel('broj')
+    plt.ylabel('vrednost')
+
+    pre_process = PolynomialFeatures(degree = 3)
+
+    x_poly = pre_process.fit_transform(train_x)
+    pr_model = LinearRegression()
+    pr_model.fit(x_poly, train_y)
+
+    y_pred = pr_model.predict(x_poly)
+    plt.plot(train_x, y_pred, color = 'red')
+    pred_broj = 20
+    y_new = pr_model.predict(pre_process.fit_transform([[pred_broj]]))
+
+    print('Predvidjena vrednost za [ broj: ', pred_broj, '] je', y_new[0])
+
+    plt.show()
+                </code></pre> <br />
                 <p class="card-text">
                     Rezultat pokretanja koda u kome se vrši predikcija za broj 20, u konzoli ispisuje 'Predvidjena vrednost za 
                     [ broj : 20 ] je [6601.57575758]' dok bi koordinatni sistem izgledao ovako:
                 </p><br />
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/8.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika7.png")">
                 </div>
             </div>
           </div>

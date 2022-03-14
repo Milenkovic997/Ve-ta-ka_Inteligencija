@@ -11,6 +11,12 @@
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
             <div class="sidebar-sticky sticky">
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Sadržaj</span>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
                 <a class="nav-link active" href="#objasnjenje">
@@ -32,12 +38,12 @@
                 </li>
             </ul>
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Reference:</span>
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" style="background-color: #151515">
+                <span>Reference</span>
                 <a class="d-flex align-items-center text-muted" >
                 <span data-feather="plus-circle"></span>
                 </a>
-            </h6>
+            </h4>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                 <a class="nav-link" href="https://machinelearningmastery.com/clustering-algorithms-with-python/" target="_blank">
@@ -83,7 +89,7 @@
                     u koordinatnom sistemu zato što se koristi k-means odnosno KNearestNeightbour sistem grupisanja.
                 </p><br />
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/example.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/vezba5Objasnjenje.png")">
                 </div><br />
                 <p class="card-text">
                     Slika iznad predstavlja primer jedne klasterizacije u kojoj se iz slike 1 formirala tri klastera 
@@ -104,17 +110,25 @@
                 od ulaznih vrednosti i to po 2, 4 i 6 klastera, nakon koga će biti izvršena predikcija za konkretnu 
                 vrednost [43, 70], kako bi videli kom klasteru ta tačka pripada u sva tri primera.
             </p><br />
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/1.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    from sklearn.cluster import KMeans
+    from matplotlib import pyplot as plt
+    import pandas as pd
+    import random
+                </code></pre><br />
             <p class="card-text">
                 Iz scitlearn biblioteke koristimo KMeans klasu za formiranje klastera, iz matplotlib standardni 
                 pyplot za formiranje koordinatnih sistema za prikazivanje rezultata, pandas za rad sa podacima iz 
                 tabele i random pomoću kog generišemo nasumične boje za svaki od različitih klastera.
             </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/2.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    df = pd.read_csv('data.csv')
+
+    broj_klastera = [2, 4, 6]
+    colors = []
+    for i in range(max(broj_klastera)):
+        colors.append(["#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])])
+                </code></pre><br />
             <a href="@Url.Content("~/Media/Vezba 5/data.csv")" download>Download - data.csv</a>
             <p class="card-text"><br />
                 Prvo se počinje sa učitavanjem fajla koji je okačen iznad. Formira se niz u kome se definiše broj svih
@@ -124,35 +138,54 @@
                 boja za maksimalnu vrednost broja u nizu. Dodavanje nove boje se koristi preko ključne reči append, i u 
                 zagradi se preko random.choice biraju 6 nasumičnih karaktera u listu svih heksadekadnih vrednosti i čuva u nizu.
             </p>
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/3.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    i = 1
+    figure = plt.figure(figsize = (12, 4))
+    for k in broj_klastera:
+        ...
+
+    plt.tight_layout()
+    plt.show()
+                </code></pre><br />
             <p class="card-text">
                 U ovom delu koda se podešava veličina prozora ( svaki koordinatni sistem biće veličine 4x4), 
                 plt.show koji pokreće prozor sa svim rezultatima i for petlja za svaki broj klastera posebno 
                 ( 3 iteracija u našem primeru).
             </p>
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/4.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    ax = plt.subplot(1, len(broj_klastera), i)
+
+    kmeans = KMeans(n_clusters = k)
+    kmeans = kmeans.fit(df)
+    gcenters = kmeans.cluster_centers_
+    labels = kmeans.labels_
+                </code></pre><br />
             <p class="card-text">
                 Funkcija plt.subplot dodeljuje lokaciju, odnosno redosled koordinatnih sistema u figuri, kmeans
                 promenljiva formira sistem koji nam izvršava klasterizaciju ( u kome definišemo k kao broj klastera 
                 koje želimo da formiramo), kmeans.fit koji daje sve podatke algoritmu. Gcenters nam odredjuje sredine 
                 svih klastera dok labels čuva podatke o tome koji red ( X i Y kolone) pripada kom klasteru.
             </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/5.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    kolona = 0
+    for x in labels:
+        plt.scatter(df.iloc[kolona, 0], df.iloc[kolona, 1], color = colors[x])
+        kolona += 1
+    for klaster in range(k):
+        plt.text(gcenters[klaster, 0], gcenters[klaster, 1], klaster, fontsize = 15, weight = 'bold')
+                </code></pre><br />
             <p class="card-text">
                 Formiramo dve for petlje. U prvoj for petlji upisujemo sve vrednosti iz tabele u koordinatni sistem, 
                 koristeći boje koje smo na početku definisali kao boje svakih od vrednosti unutar klastera.<br /><br />
                 Druga for petlja nam upisuje tekst na sredini svakog klastera, u kome je smešten redni broj klastera na
                 koordinatnom sistemu, podešen da mu veličina bude 15 i boldiran.
             </p>
-            <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/6.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    prediction = kmeans.predict([[40, 67]])
+    plt.scatter(40, 67, c = 'k', edgecolors = 'k')
+
+    print('Primeru sa', k, 'klastera, pripada grupi:', prediction)
+                </code></pre><br />
             <p class="card-text">
                 Kao što je to napomenuto na početku, možemo koristiti ove klasterizacije da bi predvideli kom klasteru
                 bi pripadala neka nova vrednost koja prethodno nije definisana u tabeli. Dodeljujemo joj, radi primera,
@@ -163,11 +196,15 @@
                 dodeljen, nakon svakog novog pokretanja koda se raspored rednih brojeva menja).         
             </p>
             <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/rez.PNG.png")">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/vezba5PrimerRezultat.png")">
             </div><br />
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/7.PNG.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    title = 'Broj klastera = {}'.format(k)
+    plt.title(title)
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    i += 1
+                </code></pre><br />
             <p class="card-text">
                 Poslednji korak dodaje naziv iznad koordinatnog sistema da bi bilo preglednije koji primer on izvršava.
                 Xlabel i ylabel postavlja tekst na koordinatnim osama. I na kraju se upisuje kako bi uvećali brojač i 
@@ -175,7 +212,7 @@
                 Rezultat pokretanja koda izgleda kao na slici:
             </p>
             <div class="col-md-10 offset-md-1">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/rezviz.PNG.png")">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/vezba5PrimerGrafik.png")">
             </div><br />
             <p class="card-text">
                 Redni broj klastera je zapisan počevši od nule. Takodje, crna tačka koja je dodata na svim koordinatnim 
@@ -184,9 +221,50 @@
                 iznad, u kome se jasno vidi isti rezultat koji je i ovde predstavljen na prozorima.
             </p>
             <h4 align="center">Kompletan kod primera<br /></h4><br />
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/k1.png")">
-            </div><br />
+            <pre class="python-exec"> <code>	
+    from sklearn.cluster import KMeans
+    from matplotlib import pyplot as plt
+    import pandas as pd
+    import random
+
+    df = pd.read_csv('data.csv')
+
+    broj_klastera = [2, 4, 6]
+    colors = []
+    for i in range(max(broj_klastera)):
+        colors.append(["#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])])
+
+    i = 1
+    figure = plt.figure(figsize = (12, 4))
+    for k in broj_klastera:
+        ax = plt.subplot(1, len(broj_klastera), i)
+
+        kmeans = KMeans(n_clusters = k)
+        kmeans = kmeans.fit(df)
+        gcenters = kmeans.cluster_centers_
+        labels = kmeans.labels_
+
+        kolona = 0
+        for x in labels:
+            plt.scatter(df.iloc[kolona, 0], df.iloc[kolona, 1], color = colors[x])
+            kolona += 1
+        for klaster in range(k):
+            plt.text(gcenters[klaster, 0], gcenters[klaster, 1], klaster, fontsize = 15, weight = 'bold')
+
+        prediction = kmeans.predict([[40, 67]])
+        plt.scatter(40, 67, c = 'k', edgecolors = 'k')
+
+        print('Primeru sa', k, 'klastera, pripada grupi:', prediction)
+
+        title = 'Broj klastera = {}'.format(k)
+        plt.title(title)
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        i += 1
+
+    plt.tight_layout()
+    plt.show()
+                </code></pre>
             </div>
           </div>
 
@@ -204,12 +282,53 @@
                     Primer rezultata ovog zadatka je dat na slici ispod:
                 </p>
                 <div class="col-md-10 offset-md-1">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/Capture.PNG.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/vezba5ZadatakResenje.png")">
                 </div><br />
                 <h4 align="center">Rešenje zadatka</h4><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/RezultatZadatak1.JPG.jpg")">
-                </div><br />
+                <pre class="python-exec"> <code>	
+    from sklearn.cluster import KMeans
+    from matplotlib import pyplot as plt
+    import pandas as pd
+    import random
+
+    df = pd.read_csv('https://raw.githubusercontent.com/Milenkovic997/CSV/main/Klasterizacija.csv')
+
+    broj_klastera = [2, 4, 8, 16]
+    colors = []
+    for i in range(max(broj_klastera)):
+        colors.append(["#"+''.join([random.choice('ABCDEF0123456789') for i in range(6)])])
+
+    i = 1
+    figure = plt.figure(figsize = (8, 8))
+    for k in broj_klastera:
+        ax = plt.subplot(2, len(broj_klastera) - 2, i)
+
+        kmeans = KMeans(n_clusters = k)
+        kmeans = kmeans.fit(df)
+        gcenters = kmeans.cluster_centers_
+        labels = kmeans.labels_
+
+        kolona = 0
+        for x in labels:
+            plt.scatter(df.iloc[kolona, 0], df.iloc[kolona, 1], color = colors[x])
+            kolona += 1
+        for klaster in range(k):
+            plt.text(gcenters[klaster, 0], gcenters[klaster, 1], klaster, fontsize = 15, weight = 'bold')
+
+        prediction = kmeans.predict([[20, 10]])
+        plt.scatter(20, 10, c = 'k', edgecolors = 'k')
+
+        print('Primeru sa', k, 'klastera, pripada grupi:', prediction)
+
+        title = 'Broj klastera = {}'.format(k)
+        plt.title(title)
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        i += 1
+
+    plt.tight_layout()
+    plt.show()
+                </code></pre><br />
             </div>
           </div>
         </div>
