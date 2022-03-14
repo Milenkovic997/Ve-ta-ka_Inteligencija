@@ -117,7 +117,7 @@
                     ova tehnika je veoma korisna. Iako nije uvek savršeno, veoma je zgodno i nekim ljudima mnogo olakšava 
                     i brže obavlja svoj posao.
                 </p><br />
-                <div class="col-md-8">
+                <div class="col-md-6 offset-md-3">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/OCR.png")">
                 </div><br />
                 <p class="card-text">
@@ -166,27 +166,29 @@
                 OCR-a i ispisuje tekst sa slike u PyCharm-u. Slike koje će biti korišćene u prvom primeru su sledeće:
             </p><br />
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6 offset-md-1">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/Informatika.jpg")">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 offset-md-1">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/message.jpg")">
                 </div>
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/jednacina.jpg")">
+                <div class="col-md-8 offset-md-2">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/jednacina.jpg")">
+                </div>
             </div><br />
             <a href="@Url.Content("~/Media/Vezba 6/ReadingTextSlike.zip")" download>Download - ReadingTextSlike.zip</a><br /><br />
             <p class="card-text">
                 Kao što je u prethodnom tekstu napomenuto, prošle biblioteke sada neće biti korišćene, pa je potrebno 
                 pozvati nove biblioteke za ovaj primer na sledeći način:
             </p>
-            <div class="col-md-8">
+            <div class="col-md-5">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/11.JPG.jpg")">
-            </div><br />
+            </div>
             <p class="card-text"><br />
                 Deo koda koji treba da analizira učitanu sliku i ispiše šta ta slika sadrži je relativno prost i zapisuje
                 se sa samo tri linije koda:
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/12.JPG.jpg")">
             </div><br />
             <p class="card-text">
@@ -194,7 +196,7 @@
                 koristeči cv2, odnosno OpenCV biblioteku učitava sliku i u trećem redu je preko funkcije image_to_string(img)
                 analizira i ispisuje u vidu stringe šta ona sadrži. Rezultat zavisi od preciznosti analize.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-10 offset-md-1">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez1.JPG.jpg")">
             </div><br />
             <p class="card-text">
@@ -203,7 +205,7 @@
                 prvom primeru imaju dodatne funkcije koje pomažu u razumevanju kako je sistem analizirao sliku, kako je 
                 sagledao karaktere i dodatne informacije o svakom karakteru ili reči.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/13.JPG.jpg")">
             </div><br />
             <p class="card-text">
@@ -221,7 +223,7 @@
                     </li>
                 </ul>
             </p>
-            <div class="col-md-8">
+            <div class="col-md-10 offset-md-1">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez2.JPG.jpg")">
             </div><br />
             <p class="card-text">
@@ -272,7 +274,7 @@
                     </li>
                 </ul>
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/14.JPG.jpg")">
             </div><br /> 
             <p class="card-text">
@@ -302,11 +304,11 @@
                 Još jedna od mnogih interesantnih stvari koja može biti odrađena je analiziranje jedne matematičke 
                 formule i dobijanje njenog rešenja. To će biti obavljeno korišćenjem biblioteke sympy i njen install 
                 je sledeći:<br />
-                <p class="bgText">pip install sympy</p><br />
+                <p class="bgText">pip install sympy</p>
                 Sympy predstavlja biblioteku za izvršavanje simboličke matematike, u vidu pronalaženja nepoznatih 
                 vrednosti jedne jednačine. Primer kako bi se to odradilo je nastavak već postojećeg koda.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/15.JPG.jpg")">
             </div><br />
             <p class="card-text">
@@ -319,21 +321,21 @@
                 solve(eq1).<br /><br />
                 Rezultat pokretanja ovog koda sa učitanom slikom jednacina.jpg je sledeća:
             </p>
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/jednacina.jpg")">
             </div><br />
-            <div class="col-md-8">
+            <div class="col-md-10 offset-md-1">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez5.JPG.jpg")">
             </div><br />
             <p class="card-text">
                 Na samom kraju potrebno je ispisati kod koji prikazuje prozor u kome se nalazi slika, slično kao što je 
                 plt.show ispisivao koordinatni sistem.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-5">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/16.JPG.jpg")">
             </div><br />
-            <h4>Kompletan kod primera 1</h4>
-            <div class="col-md-8">
+            <h4 align="center">Kompletan kod primera 1</h4><br />
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rezPrimer1.JPG.jpg")">
             </div><br />
             </div>
@@ -351,7 +353,7 @@
                 podataka preuzetih sa interneta koji se koriste za klasifikaciju slika i određivanjem objekta na slici
                 preko OpenCV biblioteke.
             </p><br />
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rezPrimer2.JPG.jpg")">
             </div><br />
             <p class="card-text">
@@ -374,34 +376,34 @@
                 Rezultati svih slika su sledeći:
             </p>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/face.jpg")">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez51.JPG.jpg")">
                 </div>
             </div><br />
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/faces1.jpg")">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez52.JPG.jpg")">
                 </div>
             </div><br />
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/faces2.jpg")">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez53.JPG.jpg")">
                 </div>
             </div><br />
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/faces3.jpg")">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rez54.JPG.jpg")">
                 </div>
             </div><br />
@@ -426,7 +428,7 @@
                     primeru biće korišćen dataset podataka preuzetih sa interneta koji se koriste za klasifikaciju 
                     slika i određivanjem objekta na slici preko OpenCV biblioteke.
                 </p>
-                <div class="col-md-8">
+                <div class="col-md-10 offset-md-1">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/rezPrimer3.JPG.jpg")">
                 </div><br />
                 <p class="card-text">
@@ -470,11 +472,11 @@
                     rešenja se nalazi ispod:
                 </p>
                 <a href="@Url.Content("~/Media/Vezba 6/Cats.zip")" download>Download - Cats.zip</a><br /><br />
-                <h4>Primer rešenja prvog zadatka</h4>
-                <div class="col-md-8">
+                <h4 align="center">Primer rešenja prvog zadatka</h4><br />
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/cats.JPG.jpg")">
                 </div><br />
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 6/cats1.JPG.jpg")">
                 </div><br />
             </div>

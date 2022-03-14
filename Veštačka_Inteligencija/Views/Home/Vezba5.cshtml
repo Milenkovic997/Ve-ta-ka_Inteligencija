@@ -82,7 +82,7 @@
                     mašinskog učenja zato što ne odvaja vrednosti po predefinisanim grupama, već po njenim lokacijama
                     u koordinatnom sistemu zato što se koristi k-means odnosno KNearestNeightbour sistem grupisanja.
                 </p><br />
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/example.png")">
                 </div><br />
                 <p class="card-text">
@@ -104,7 +104,7 @@
                 od ulaznih vrednosti i to po 2, 4 i 6 klastera, nakon koga će biti izvršena predikcija za konkretnu 
                 vrednost [43, 70], kako bi videli kom klasteru ta tačka pripada u sva tri primera.
             </p><br />
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/1.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -112,7 +112,7 @@
                 pyplot za formiranje koordinatnih sistema za prikazivanje rezultata, pandas za rad sa podacima iz 
                 tabele i random pomoću kog generišemo nasumične boje za svaki od različitih klastera.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/2.PNG.png")">
             </div><br />
             <a href="@Url.Content("~/Media/Vezba 5/data.csv")" download>Download - data.csv</a>
@@ -124,7 +124,7 @@
                 boja za maksimalnu vrednost broja u nizu. Dodavanje nove boje se koristi preko ključne reči append, i u 
                 zagradi se preko random.choice biraju 6 nasumičnih karaktera u listu svih heksadekadnih vrednosti i čuva u nizu.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/3.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -132,7 +132,7 @@
                 plt.show koji pokreće prozor sa svim rezultatima i for petlja za svaki broj klastera posebno 
                 ( 3 iteracija u našem primeru).
             </p>
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/4.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -141,7 +141,7 @@
                 koje želimo da formiramo), kmeans.fit koji daje sve podatke algoritmu. Gcenters nam odredjuje sredine 
                 svih klastera dok labels čuva podatke o tome koji red ( X i Y kolone) pripada kom klasteru.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/5.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -150,7 +150,7 @@
                 Druga for petlja nam upisuje tekst na sredini svakog klastera, u kome je smešten redni broj klastera na
                 koordinatnom sistemu, podešen da mu veličina bude 15 i boldiran.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-10 offset-md-1">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/6.png")">
             </div><br />
             <p class="card-text">
@@ -162,10 +162,10 @@
                 Rezultat u konzoli treba da izgleda nalik rezultatu sa naredne slike ( redni broj klastera je nasumično
                 dodeljen, nakon svakog novog pokretanja koda se raspored rednih brojeva menja).         
             </p>
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/rez.PNG.png")">
             </div><br />
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/7.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -174,7 +174,7 @@
                 započeli novu iteraciju (brojač menjamo zbog rasporeda koordinatnih sistema na prozoru.<br /><br />
                 Rezultat pokretanja koda izgleda kao na slici:
             </p>
-            <div class="col-md-8">
+            <div class="col-md-10 offset-md-1">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/rezviz.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -183,8 +183,8 @@
                 drugom takodje 0, a trećem sistemu pripada klasteru 4. Rezultat u terminatu je upisan na jednoj od slika
                 iznad, u kome se jasno vidi isti rezultat koji je i ovde predstavljen na prozorima.
             </p>
-            <h4>Kompletan kod primera<br /></h4>
-            <div class="col-md-8">
+            <h4 align="center">Kompletan kod primera<br /></h4><br />
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/k1.png")">
             </div><br />
             </div>
@@ -203,11 +203,11 @@
                     formiranim koordinatniim sistemima.<br /><br />
                     Primer rezultata ovog zadatka je dat na slici ispod:
                 </p>
-                <div class="col-md-8">
+                <div class="col-md-10 offset-md-1">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/Capture.PNG.png")">
                 </div><br />
-                <h4>Rešenje zadatka</h4><br />
-                <div class="col-md-8">
+                <h4 align="center">Rešenje zadatka</h4><br />
+                <div class="col-md-12">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 5/RezultatZadatak1.JPG.jpg")">
                 </div><br />
             </div>

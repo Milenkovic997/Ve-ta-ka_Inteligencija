@@ -106,7 +106,7 @@
                     Kako bi se ovi logaritmi realizovali u python-u, potrebno je koristiti posebne 
                     biblioteke koje se moraju instalirati unutar samog python projekta. Instalacija 
                     se izvršava unošenjem komande u terminalu PyCharm aplikacije.<br />
-                    Python biblioteke sa kojima se realizuju ove regresije su:<br />
+                    Python biblioteke sa kojima se realizuju ove regresije su:<br /><br />
                     <ul>
                         <li>
                             NumPy: To je matematička biblioteka za rad sa n-dimenzionalnim nizovima u Python-u, 
@@ -114,23 +114,17 @@
                             biblioteku je:
                             <p class="bgText"> pip install numpy </p>
                         </li>
-                    </ul>
-                    <ul>
                         <li>
                             Matplotlib: To je paket za crtanje I kreiranje 2D I 3D grafika. Biblioteku koristimo 
                             kako bismo u kordinatnom sistemu ispisali sve vrednosti za realizovanje regresija.
                             Kod za terminal sa kojim instaliramo biblioteku je:
                             <p class="bgText"> pip install matplotlib </p>
                         </li>
-                    </ul>
-                    <ul>
                         <li>
                             Scikit-learn: To je biblioteka koja sadrži algoritame za klasifikaciju, regresiju i 
                             grupisanje. Kod za terminal sa kojim instaliramo biblioteku je:
                             <p class="bgText"> pip install scikit-learn </p>
                         </li>
-                    </ul>
-                    ​<ul>
                         <li>
                             Pandas: To je Python paket koji obezbeđuje brze, fleksibilne i ekspresivne 
                             strukture podataka. Kod za terminal sa kojim instaliramo biblioteku je:
@@ -154,7 +148,7 @@
                 formiramo koordinatni sistem sa svim vrednostima iz te tabele i odredjujemo kako
                 funkcioniše linearna regresija za zadate ulazne vrednosti. Primer kako bi izgledao 
                 koordinatni sistem sa svim ulaznim podacima je sledeći:</p><br />
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/1.PNG.png")">
             </div><br />
             <p class="card-text">Koordinatni sistem je formiran sa podacima koji su u excel tabeli zapisane na sledeći način:</p>
@@ -202,7 +196,7 @@
                     sam grafik. Linija se automatski dodaje, po uglu takvom da prilikom ispitivanja jedne
                     vrednosti ( nebitno da li se nalazi na X ili Y osi) možemo predvideti drugu vrednosti,
                     korišćenjem te same linije. Podrazumeva se da sa više vrednosti imaćemo što preciznije
-                    rezultate za predvidjanje.</p><br />
+                    rezultate za predvidjanje.</p>
             </div>
           </div>
 
@@ -215,8 +209,8 @@
                 <p class="card-text">Za početak, dodajemo sve biblioteke koje su nam potrebne kako bismo
                     formirali regresiju (komanda za instalaciju biblioteka se nalazi na početku stranice,
                     sa crnom pozadinom teksta). Potrebne biblioteke su pandas, matplotlib i scikit-learn.
-                    To radimo na sledeći način:</p><br />
-                <div class="col-md-8">
+                    To radimo na sledeći način:</p>
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Slika 1.PNG.png")">
                 </div><br />
                 <p class="card-text">Reč 'as' nam ukazuje to, da kada koristimo biblioteku, kako bi pozvali
@@ -229,7 +223,7 @@
                     Scikit-learn (sklearn) nam generiše linearnu regresiju pomoću koje možemo vršiti 
                     predvidjanja na vrednostima koje korisnik želi.
                 </p>
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Slika 2.PNG.png")">
                 </div><br />
                 <p class="card-text">U ovom delu koda formiramo vizuelni koordinatni sistem. Korišćenjem reči 
@@ -245,13 +239,13 @@
                 </p>
 
                 <a href="@Url.Content("~/Media/Vezba 2/IncomePerHomeAverage.csv")" download>Download - IncomePerHomeAverage.csv</a>
-                <div class="col-md-8"><br />
+                <div class="col-md-8 offset-md-2"><br />
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/2.PNG.png")">
                 </div><br />
                 <p class="card-text">Nakon formiranja i upisivanja svih vrednosti, potrebno je formirati 
                     linearnu regresiju i napraviti prekiciju. To činimo na sledeći način:
                 </p>
-                <div class="col-md-8">
+                <div class="col-md-10 offset-md-1">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Slika 3.PNG.png")">
                 </div><br />
                 <p class="card-text">Promenljiva reg definišemo kao model linearne regresije. Modelu preko funkcije 
@@ -262,28 +256,28 @@
                     će biti prosečna zarada jednog domaćinstva 2020-te godine i tu vrednost pamtimo u promenljivoj 
                     predictPrice. Preostali korak je ispisati te vrednosti: 
                 </p>
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Slika 4.PNG.png")">
                 </div><br />
                 <p class="card-text">
-                    Predikcija se računa pomoću sledeće formule:<br /><br />
-                    <h3>price = k * year + b</h3><br /><br />
+                    Predikcija se računa pomoću sledeće formule:<br />
+                    <h3 align="center">price = k * year + b</h3><br />
                     Vrednost pomoću koje radimo predikciju je godina, što smo definisali kada smo generisali plt.plot.
                     K nam predstavlja koeficijent dok B je intercept vrednost (ove vrednosti nam nisu korisne kako bi 
                     dobili rezultat koji pokušavamo da predvidimo, definisano je čisto kako bismo mogli lično proveriti).
                     Rezultat koda nakon pokretanja je:
                 </p>
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/3.PNG.png")">
-                </div><br />
+                </div>
                 <p class="card-text"> <br />Dok koordinatni sistem koji je generisan sa plt.show() funkcijom izgleda ovako: </p>
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/4.PNG.png")">
-                </div><br />
+                </div>
                 <p class="card-text"> <br />Kompletan kod je napisan na sledeći način: </p>
                 <div class="col-md-12">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 1.PNG.png")">
-                </div><br />
+                </div>
             </div>
           </div>
 
@@ -298,10 +292,10 @@
                     videli razliku izmedju više vrednosti različitih tabela, i kako se regresija razlikuje izmedju 
                     njih, predstavljamo na sledeći način: 
                 </p><br />
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 2.PNG.png")">
                 </div>
-                <p class="card-text">
+                <p class="card-text"><br />
                     U ovom primeru smo koristili tri različite tabele, koje sadrže kolonu za godinu i kolonu koja 
                     beleži prosečan broj cigara po osobi na godišnjem nivou. Tri tabele beleže po 30 vrednosti (za
                     svaku godinu od 1970 do 2000) za tri različite države. Sve tri tabele su prikačene ispod ovog 
@@ -316,7 +310,7 @@
                     (plt.plot), definišemo boju koja je različita od ostalih. Nije obavezno, ali čisto radi demonstriranje,
                     promenili smo i oblik tačaka iz kružića u +. Pokretanjem koda dobijamo sledeći grafik: 
                 </p><br />
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/5.PNG.png")">
                 </div>
             </div>
@@ -336,22 +330,22 @@
                     dvodimenzionalni koordinatni sistem predstavljamo u 3D prostoru (nije obavezno formirati i prikazati 
                     koordinatni sistem da bi se došlo do predikcije sa ulaznim vrednostima, grafici se formiraju kako bi 
                     imali vizuelni prikaz svih vrednosti u tabeli). CSV fajl na kome se radi je prikačen ispod teksta, kao i tekst koda:
-                </p><br />
+                </p>
                 <a href="@Url.Content("~/Media/Vezba 2/carsSpecifications.csv")" download>Download - carsSpecifications.csv</a><br /><br />
-                <div class="col-md-8">
+                <div class="col-md-10 offset-md-1">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 3.PNG.png")">
                 </div>
-                <p class="card-text">
+                <p class="card-text"><br />
                     Rezultat pokretanja koda bi dao rezultat "Predvidjen CO2 za: [ Weight: 2300 ] i [ Volume: 1300 ] je 
                     107.20873279892223" u ovoj situaciji. Korišćenjem funkcija reg.coef_ vratiće dva koeficijenta (zato 
                     što predvidjamo sa dve vrednosti) i to [0.00755095 0.00780526] i funkcija reg.intercept_ (vrednosti b
                     iz formule) koja bi vratila vrednost 79.69471929115937. Formula u ovakvoj situaciji bi se postavila 
                     na sledeći način:
-                </p><br />
-                <h3>CO2 = k1 * Weight + k2 * Volume + b</h3><br /><br />
+                </p>
+                <h3 align="center">CO2 = k1 * Weight + k2 * Volume + b</h3><br />
                 <p class="card-text">
                     Grafik, koji kao što je pomenuto je predstavljem u trodimenzionalnom prostoru, formiran je na sledeći način:
-                </p><br />
+                </p>
             </div>
             <video src="@Url.Content("~/Media/Vezba 2/15 - 3D Linearna Regresija.mp4")" controls></video>
           </div>
@@ -368,18 +362,18 @@
                     predvidjanje nekih vrednosti. Dok se linearne predstavljaju formulom y = x, polinomske regresije 
                     znače da se vrednost x može naći u drugom, trećem ili nekom drugom stepenu.
                 </p><br />
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/y1.PNG.png")">
                 </div>
-                <p class="card-text">
+                <p class="card-text"><br />
                     U narednom primeru biće predstavljen kod jednog zadatka u kome se predvidja vrednost sa polinomskom
                     regresijom u kojoj je x na drugom stepenu. Tema pretrage je vlažnost i pritisak vremena.
-                </p><br />
+                </p>
                 <a href="@Url.Content("~/Media/Vezba 2/WeatherDataP.csv")" download>Download - WeatherDataP.csv</a><br /><br />
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 4.PNG.png")">
                 </div>
-                <p class="card-text">
+                <p class="card-text"><br />
                     Kod za polinomnu regresiju, u odnosu na linearnu ima nekoliko razlika koje će sada biti objašnjene. 
                     Počevši od samog početka, sklearn.preprocessing u trećoj liniji koda nam omogućava kreiranje same 
                     polinomne regresije tako što definišemo stepen na kom se nalazi vrednost x. pre_process promenljiva 
@@ -393,23 +387,23 @@
                     biti vlažnost ako nam je pritisak 1007. Pokretanje koda dobijamo ispis u konzoli 'Predvidjena vlažnost za
                     [ Pressure: 1007 ] je [0.7164631]'.
                 </p><br />
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/7.PNG.png")">
                 </div>
-                <p class="card-text">
+                <p class="card-text"><br />
                     Primer polinomske regresije gde je y = x^3 (x na trećem stepenu) se radi na skoro identičan način, jedina 
                     razlika je ta što se kod definisanja opisa polinomske regresije definiše kao treći stepen umesto drugog.
                     CSV fajl za ovaj primer i kod su sledeći:
-                </p><br />
+                </p>
                 <a href="@Url.Content("~/Media/Vezba 2/testVrednostiTrećiStepen.csv")" download>Download - testVrednostiTrećiStepen.csv</a><br /><br />
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/Konacno 5.PNG.png")">
-                </div>
+                </div><br />
                 <p class="card-text">
                     Rezultat pokretanja koda u kome se vrši predikcija za broj 20, u konzoli ispisuje 'Predvidjena vrednost za 
                     [ broj : 20 ] je [6601.57575758]' dok bi koordinatni sistem izgledao ovako:
                 </p><br />
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/8.PNG.png")">
                 </div>
             </div>

@@ -72,7 +72,7 @@
                     X i Y koordinatu (kao u primerima iz prethodnih oblasti) grupiše vrednosti po njihovim odgovarajućim 
                     vrednostima neke treće kolone.<br /><br />Primer tabele po kojoj se može uraditi klasifikacija je sledeća:
                 </p><br />
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Titanic_data_set.PNG.png")">
                 </div><br />
                 <p class="card-text">
@@ -85,7 +85,7 @@
                     pretpostaviti, odnosno predvideti kojoj grupi bi mogla da pripada neka nova vrednost bez dodavanja u osu.<br /><br />
                     Klasifikacija na ovaj način predstavlja nadgledano mašinsko učenje zato što već postoje podaci po kojima 
                     se klasifikacija izvršava. Primer ose nakon klasifikovanja izgleda kao primer na slici ispod:                </p><br />
-                <div class="col-md-8">
+                <div class="col-md-8 offset-md-2">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Primer_Klasifikacije.PNG.png")">
                 </div><br />
                 <p class="card-text">
@@ -121,7 +121,7 @@
             <p class="card-text">
                 Primer za ovu oblast je predstavljena u nastavku ovih vežbi:
             </p><br />
-            <div class="col-md-8">
+            <div class="col-md-10 offset-md-1">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 1.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -129,7 +129,7 @@
                 su i do sada bile korišćene, i to numpy za rad sa višedimenzionalnim nizovima, matplotlib za 
                 vizuelno kreiranje koordinatnih osa i pandas za rad sa fajlovima, odnosno CSV fajlom iz kog se 
                 uzimaju podaci za rad. Drugi deo importa se odnosi na sve klasifikatora sa kojima se radi u primeru.            </p>
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 2.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -139,7 +139,7 @@
                 nije potrebno formirati ovakav niz. U redu kako su zapisani, klasifikatori kao elementi niza su sledeći:
                 K-Nearest Neighbor, Gausova proces, Binarno stablo i neuronska mreža u tom redosledu.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 3.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -152,7 +152,7 @@
                 klasifikacija (naravno, umesto dvodimenzionalnog niza su se mogla formirati dve posebne promenljive za 
                 svaku kolonu posebno).
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 4.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -165,7 +165,7 @@
                 na njihov položaj kao pretpostavku za teritoriju nekih vrednosti za koje se može uraditi pretpostavka kojoj 
                 klasi bi ona mogla da pripada, u zavisnosti od njene lokacije u osi.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-10 offset-md-1">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 5.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -180,14 +180,14 @@
                 završava se sistem, kako bi na svakom koordinatnom sistemu imali identičnu poziciju vrednosti na
                 koordinatnom sistemu.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-6 offset-md-3">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 6.PNG.png")">
             </div><br />
             <p class="card-text">
                 Pomoću for petlje se primenjuju svi klasifikatori, i for petlja bi napravila četri iteracije, tj. 
                 za svaki klasifikator posebno. Na kraju koda nakon funkcije se dodaje plt.show kako bi prikazao prozor
                 i tight_layout koji približava sve koordinatne sisteme bliže jedan drugom zbog bolje preglednosti rezultata.            </p>
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 7.PNG.png")">
             </div><br />
             <p class="card-text">
@@ -196,39 +196,39 @@
                 za rad i odrediti score tj preciznost klasifikacije koja će biti napisana kasnije, radi uporedjivanja 
                 svih klasifikacija.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-10 offset-md-1">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 8.PNG.png")">
             </div><br />
             <p class="card-text">
                 Pomoću ovog koda odredjujemo 'teritoriju' svake klase, predvidja se njihova pozicija koristeći 
                 klasifikator sa kojim radi, i dodaje ga na koordinatni sistem.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 9.PNG.png")">
             </div><br />
             <p class="card-text">
                 Ovaj deo teksta je prethodno odradjen za prvu koordinatnu osu na kome su predstavljene
                 samo tačke, tako da je potrebno to odraditi i za ove ostale ose.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 10.PNG.png")">
             </div><br />
             <p class="card-text">
                 Prolaskom kroz jednu IF petlju proveriće se sa kojom se klasifikacijom radi, i dodaće tekst 
                 iznad svake koordinatne ose radi bolje preglednosti rezultata.
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Slika 11.PNG.png")">
             </div><br />
             <p class="card-text">
                 Poslednji deo koda koji dodaje score, odnosno preciznost klasifikacije u donjem desnom uglu 
                 svakog koordinatnog sistema. Rezultat pri pokretanju koda je sledeći:
             </p>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Rezultat.PNG.png")">
             </div><br />
-            <h4>Kompletan kod primera</h4>
-            <div class="col-md-8">
+            <h4 align="center">Kompletan kod primera</h4><br />
+            <div class="col-md-12">
                 <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Konačno 1.PNG.png")">
             </div><br />
             </div>
@@ -253,11 +253,11 @@
                 <p class="card-text"><br />
                     Primer kako bi rezultat trebao da izgleda je kao na slici:
                 </p><br />
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Zadatak 1.PNG.png")">
                 </div><br />
-                <h4>Rešenje zadatka</h4><br />
-                <div class="col-md-8">
+                <h4 align="center">Rešenje zadatka</h4><br />
+                <div class="col-md-12">
                     <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/c1.PNG.png")">
                 </div><br />
             </div>
