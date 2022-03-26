@@ -1,3 +1,3 @@
-# Ve-ta-ka_Inteligencija
+# Veštačka Inteligencija
 
 https://vestacka-inteligencija.herokuapp.com/
