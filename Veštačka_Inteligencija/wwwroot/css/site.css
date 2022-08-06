@@ -1,11 +1,12 @@
 html {
-    font-size: 14px;
-    text-align: justify;
+    font-size: 15px;
+    text-align: left;
+    text-align:justify;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
@@ -16,7 +17,8 @@ html {
 
 body {
     margin-bottom: 60px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Bahnschrift;
+    background-color: #F0F0F0;
 }
 
 h1{
@@ -38,7 +40,9 @@ h1{
 }
 
 .bg-sidebar {
-    background-color: #E5E5E5;
+    background-color: white;
+    margin-right: 5px;
+    margin-left: -5px;
 }
 
 pre {
@@ -46,3 +50,6 @@ pre {
     color: white;
 }
 
+h4{
+    margin: 5px;
+}
