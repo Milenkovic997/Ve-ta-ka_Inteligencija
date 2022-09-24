@@ -1,4 +1,4 @@
-﻿<title>Vežba 3 - Underfitting i Overfitting</title>
+﻿<title>Vežba 2 - Linearne i Polinomske Regresije</title>
 <style>
       .sticky {
         position: sticky;
@@ -27,21 +27,39 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#primer">
+                <a class="nav-link" href="#linearnaregresija">
                     <span data-feather="file"></span>
-                    Primer
+                    Linearne Regresije
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#zadatak">
+                <a class="nav-link" href="#kodlinearne">
                     <span data-feather="shopping-cart"></span>
-                    Zadatak
+                    Objašnjenje Koda
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#viselinearnih">
+                    <span data-feather="users"></span>
+                    Više Regresija
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#3dlinearne">
+                    <span data-feather="bar-chart-2"></span>
+                    3D Linearne Regresije
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#polinomska">
+                    <span data-feather="layers"></span>
+                    Polinomska Regresija
                 </a>
                 </li>
             </ul>
 
             <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <div class="card-header text-left" style="padding-left:0px; color:black">
+               <div class="card-header text-left" style="padding-left:0px; color:black">
 							<span>Reference</span>
 						</div>
                 <a class="d-flex align-items-center text-muted" >
@@ -50,336 +68,504 @@
             </h4>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
-                <a class="nav-link" href="https://www.geeksforgeeks.org/underfitting-and-overfitting-in-machine-learning/" target="_blank">
+                <a class="nav-link" href="https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/" target="_blank">
                     <span data-feather="file-text"></span>
-                    GeeksForGeeks
+                    Analytics Vidhya
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="https://www.javatpoint.com/overfitting-and-underfitting-in-machine-learning" target="_blank">
+                <a class="nav-link" href="https://www.javatpoint.com/machine-learning-polynomial-regression" target="_blank">
                     <span data-feather="file-text"></span>
                     java T point
                 </a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link" href="https://medium.com/analytics-vidhya/understanding-polynomial-regression-5ac25b970e18" target="_blank">
+                    <span data-feather="file-text"></span>
+                    Medium
+                </a>
             </ul>
             </div>
         </nav>
 
         <div class="col-lg-10 pt-3">
           <div class="text-center card-header">
-              <h4>UNDERFITTING I OVERFITTING</h4>
+              <h4>LINEARNE I POLINOMSKE REGRESIJE</h4>
           </div>
 
           <br />
           <div class="card" id="objasnjenje">
             <div class="card-header text-center">
-            <h4>Objašnjenje termina</h4>
+            <h4 style="color: #151515">Objašnjenje oblasti</h4>
             </div>
             <div class="card-body">
                 <p class="card-text">
-                    Svaki skup podataka će imati neke čudne ili nedostajuće delove ili neuravnotežene podatke. 
-                    Implikacija je da se izvedeni model dobro uklapa u podatke modeliranja, ali da se ne generalizuje
-                    dovoljno na druge uzorke koji nisu uključeni u proces modeliranja. Postoji terminologija koja 
-                    opisuje koliko dobro model mašinskog učenja uči i generalizuje nove podatke, ovo je overfitting 
-                    i underfitting. Cilj dobrog modela mašinskog učenja je da se dobro generalizuje iz skupa podataka
-                    za obuku na bilo koji skup podataka iz domena problema. Ovo nam omogućava da napravimo predviđanja
-                    na osnovu skupa podataka koji model nikada nije video.
-                </p><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Objasnjenje 1.jpg")">
-                </div><br />
-                <p class="card-text">
-                    <b>Overfitting</b> se odnosi na scenario gde model mašinskog učenja ne može da generalizuje ili
-                    da se dobro uklopi u nevidljiv skup podataka. Jasan znak preopterećenja mašinskog učenja je ako 
-                    je njegova greška u skupu podataka za testiranje ili validaciju mnogo veća od greške u skupu podataka
-                    za obuku. To je termin koji se koristi u statistici koji se odnosi na grešku modeliranja koja se
-                    javlja kada funkcija previše odgovara skupu podataka. Kao rezultat toga, prekomerno prilagođavanje
-                    možda neće uspeti da uklopi dodatne podatke, a to može uticati na tačnost predviđanja budućih posmatranja.<br /><br />
-                    Underfitting se odnosi na model koji ne može niti da modelira skup podataka za obuku niti da se 
-                    generalizuje na novi skup podataka. Nedovoljan model mašinskog učenja nije prikladan model i biće 
-                    očigledan jer će imati loše performanse na skupu podataka za obuku.
-                </p><br />
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/Objasnjenje 2.png")">
-                </div><br />
-                <p class="card-text">
-                    Kada iterativno trenirate algoritam učenja, možete izmeriti koliko dobro svaka iteracija modela radi.
-                    Do određenog broja iteracija, nove iteracije poboljšavaju model. Međutim, nakon te tačke, sposobnost
-                    modela da generalizuje može oslabiti jer počne da se uklapa u podatke o obuci. Rano zaustavljanje se 
-                    odnosi na zaustavljanje procesa obuke pre nego što učenik prođe tu tačku. Danas se ova tehnika uglavnom
-                    koristi u dubokom učenju (deep learning), dok se druge tehnike (npr. regularizacija) preferiraju za 
-                    klasično mašinsko učenje.
-                </p><br />
+                    Regresioni logaritmi, u oblastima veštačke inteligencije, se koriste za predvidjanje 
+                    konstantnih vrednosti, koji se formiraju u odnosu na već postojeće vrednosti koje 
+                    korisnik definiše. U materijalu postavljenom na sajtu, radiće se dva različita tipa 
+                    regresija. Te regresije su:
+                    <ul>
+                        <li>
+                            Linearne Regresije 
+                        </li>
+                        <li>
+                            Polinomska Regresije
+                        </li>
+                    </ul>
+
+                    Kako bi se ovi logaritmi realizovali u python-u, potrebno je koristiti posebne 
+                    biblioteke koje se moraju instalirati unutar samog python projekta. Instalacija 
+                    se izvršava unošenjem komande u terminalu PyCharm aplikacije.<br />
+                    Python biblioteke sa kojima se realizuju ove regresije su:<br /><br />
+                    <ul>
+                        <li>
+                            NumPy: To je matematička biblioteka za rad sa n-dimenzionalnim nizovima u Python-u, 
+                            koja nam omogućava da efikasno vršimo proračune. Kod za terminal sa kojim instaliramo 
+                            biblioteku je:
+                            <p class="bgText"> pip install numpy </p>
+                        </li>
+                        <li>
+                            Matplotlib: To je paket za crtanje I kreiranje 2D I 3D grafika. Biblioteku koristimo 
+                            kako bismo u kordinatnom sistemu ispisali sve vrednosti za realizovanje regresija.
+                            Kod za terminal sa kojim instaliramo biblioteku je:
+                            <p class="bgText"> pip install matplotlib </p>
+                        </li>
+                        <li>
+                            Scikit-learn: To je biblioteka koja sadrži algoritame za klasifikaciju, regresiju i 
+                            grupisanje. Kod za terminal sa kojim instaliramo biblioteku je:
+                            <p class="bgText"> pip install scikit-learn </p>
+                        </li>
+                        <li>
+                            Pandas: To je Python paket koji obezbeđuje brze, fleksibilne i ekspresivne 
+                            strukture podataka. Kod za terminal sa kojim instaliramo biblioteku je:
+                            <p class="bgText"> pip install pandas </p>
+                        </li>
+                    </ul>
+                </p>
             </div>
           </div>
 
           <br />
-          <div class="card" id="primer">
+          <div class="card" id="linearnaregresija">
             <div class="card-header text-center">
-                <h4>Primer</h4>
+                <h4 style="color: #151515">Objašnjenje Linearne Regresije</h4>
             </div>
             <div class="card-body">
-            <p class="card-text">
-                Primer koji će biti objašnjen i na kome će biti predstavljen overfitting i underfitting počinjemo 
-                standardnim instaliranjem potrebnih biblioteka (numpy, matplotlib i scikit-learn). U ovom primeru, 
-                za razliku od vežbe 2 u kome se radile regresije, nećemo učitati CSV fajl sa podacima (možemo ako želimo,
-                ali odradićemo primer na drugi način). Podaci sa kojima radimo, biće generisani nizom od 30 brojeva.<br /><br />
-                Kako bismo formirali veću preciznost, ali ne preveliku, moraćemo formirati regresije n-tog reda. 
-                U primeru, da bismo predstavili oblasti underfitting i overfitting, radićemo sa tri različita reda 
-                polinomske regresije.
-            </p><br />
-            <pre class="python-exec"> <code>	
-    import numpy as np
-    import matplotlib.pyplot as plt
-
-    from sklearn.pipeline import Pipeline
-    from sklearn.preprocessing import PolynomialFeatures
-    from sklearn.linear_model import LinearRegression
-                </code></pre><br />
-            <p class="card-text">
-                Primer koji će biti objašnjen i na kome će biti predstavljen overfitting i underfitting počinjemo standardnim
-                instaliranjem potrebnih biblioteka (numpy, matplotlib i scikit-learn). U ovom primeru, za razliku od vežbe
-                2 u kome se radile regresije, nećemo učitati CSV fajl sa podacima (možemo ako želimo, ali odradićemo primer
-                na drugi način). Podaci sa kojima radimo, biće generisani nizom od 30 brojeva.<br /><br />
-                Kako bismo formirali veću preciznost, ali ne preveliku, moraćemo formirati regresije n-tog reda. U primeru,
-                da bismo predstavili oblasti underfitting i overfitting, radićemo sa tri različita reda polinomske regresije.
-            </p>
-            <pre class="python-exec"> <code>	
-    np.random.seed(0)
-    broj_vrednosti = 30
-    red_jednacine = [1, 4, 30]
-
-    def funkcija(X):
-        return np.cos(1.5 * np.pi * X)
-                </code></pre><br />
-            <p class="card-text">
-                U ovom delu koda se odrađuje sledeće:            
-            <ul>
-                <li>
-                    <b>np.random.seed(0) </b>- predefiniše nasumične vrednosti koje ćemo koristiti da bismo popunili
-                    koordinatni sistem sa vrednostima
-                </li>
-                <li>
-                    <b>broj_vrednosti = 30 </b>- definišemo prvih 30 vrednosti koje unosimo u koordinatni sistem
-                </li>
-                <li>
-                    <b>red_jednacine = [1, 4, 30] </b>- definišemo sa koliko broja reda ćemo formirati koordinatni 
-                    sisteme kako bismo testirali da li je overfitting ili underfitting.
-                </li>
-                <li>
-                    <b>funkcija </b>koja nam X vrednost pretvara u Y tako što je pomnoži sa 3.14 (pi) i 1.5 pa 
-                    je pretvori u kosinus.
-                </li>
-            </ul>
-            </p>
-            <pre class="python-exec"> <code>	
-    X = np.sort(np.random.rand(broj_vrednosti))
-    Y = funkcija(X) + np.random.rand(broj_vrednosti) * 0.1
-                </code></pre><br />
-            <p class="card-text">
-                U ovom delu koda se odrađuje sledeće:          
-            <ul>
-                <li>
-                    <b>X = np.sort(np.random.rand(broj_vrednosti)) </b>- generišemo vrednosti koje ćemo uneti u X osu 
-                    koordinatnog sistema. Dobijamo je tako što od generišemo 30 (broj_vrednosti) nasuminih brojeva, 
-                    sortiramo ih, i pamtimo kao vrednosti za X
-                </li>
-                <li>
-                    <b>broj_vrednosti = 30 </b>- definišemo prvih 30 vrednosti koje unosimo u koordinatni sistem
-                </li>
-                <li>
-                    <b>Y = funkcija(X) + np.random.randn(broj_vrednosti) * 0.1 </b>- od X vrednosti formiramo Y 
-                    vrednost, kako bismo formirali odgovarajući raspored vrednosti koordinatnog sistema.
-                </li>
-            </ul>
-            <br />
-                Umesto ovakvog kreiranja vrednosti X i Y niza, učitavanje kolona sa bibliotekom pandas je bio takođe
-                prihvatljiv način dobijanja vrednosti za popunjavanje osa.
-            </p>
-            <pre class="python-exec"> <code>	
-    plt.figure(figsize = (15, 5))
-    for i in range(len(red_jednacine)):
-        ...
-
-    plt.show
-                </code></pre><br />
-            <p class="card-text">
-                U ovom delu koda se odrađuje sledeće:      
-            <ul>
-                <li>
-                    <b>plt.figure(figsize=(15, 5))  </b>- ovom funkcijom definišemo dužinu i širinu prozora u kome
-                    nam se predstavlja koordinatni sistem. S obzirom da ćemo imati tri koordinatna sistema 
-                    (za 1. 4. i 30. red polinomske regresije) postavićemo da je dužina prozora 15 a visina 5.
-                </li>
-                <li>
-                    <b>for i in range(len(red_jednacine)): </b>- for petlja sa kojom formiramo sva tri koordinatna 
-                    sistema zato što len nam vraća dužinu niza, koja sadrži tri elemenata.
-                </li>
-                <li>
-                    <b>plt.show() </b>- funkcija koja pokreće prozor na kome vidimo koordinatne sisteme. 
-                    Ovu funkciju dodajemo na samom kraju van for petlje.
-                </li>
-            </ul>
-            <br />
-                For petlja nam se sastoji od sledećih delova:
-            </p>
-            <pre class="python-exec"> <code>	
-    ax = plt.subplot(1, len(red_jednacine), i + 1)
-    plt.setp(ax, xticks = (), yticks = ())
-
-    polynomial_features = PolynomialFeatures(degree = red_jednacine[i])
-    linear_regression = LinearRegression()
-
-    pipeline = Pipeline([('polynomial_features', polynomial_features), ('linear_regression', linear_regression), ])
-    pipeline.fit(X[:, np.newaxis], Y)
-                </code></pre><br />
-            <p class="card-text">
-                U prva dva reda koda definišemo to, da želimo da imamo tri koordinatna sistema na jednom prozoru. 
-                Kroz svaku iteraciju (3 ukupno) definišemo lokacije na mestima 1,2,3. <br /><br />
-                U trećem redu koda kreiramo regresiju koju koristimo u datom koordinatnom sistemu i gde određujemo
-                red polinomske funkcije (degree) koju smo definisali nizom nazvanom red_jednacine.<br /><br />
-                U narednom delu koristimo Pipeline koja pripada Scikit-learn biblioteci. Svrha pipeline biblioteke
-                je da sklopi nekoliko koraka koji se mogu unakrsno proveriti zajedno dok se postavljaju različiti 
-                parametri. Omogućava nam da kroz korišćenje for petlje proveravamo koji red polinomske regresije 
-                se koristi i kako će ona biti formirana ( prvi red kao linearna, bilo koja nakon toga kao polinomska).<br /><br />
-                Sada testiramo kod za stepen=1 (linearni model), stepen=4 (regresija polinoma 4. reda) i stepen=30 
-                (prilagođavanje polinoma 30. visokog reda). Grafikoni pokazuju predviđene vrednosti i za različite 
-                vrednosti stepena. Jasno je primećeno da stepen=1 dovodi do nedovoljnog prilagođavanja (underfitting
-                kao sinusna funkcija), dok stepen=30 dovodi do preteranog prilagođavanja (overfitting kao kosinusna 
-                funkcija). np.newaxis nam uvećava dimenziju nekog niza, što je potrebno iskoristiti u fit funkciji za
-                vrednost X kako bi se popunio dvodimenzionalan koordinatni sistem. Vrednost Y popunjavamo unutar X-a, 
-                tako da nije potrebno povećati dimenziju vrednosti Y, ali bi kod funkcionisao identično ako bi to uradili.
-            </p>
-            <pre class="python-exec"> <code>	
-    plt.plot(X, pipeline.predict(X[:, np.newaxis]), c = 'r')
-    plt.plot(X, funkcija(X))
-    plt.scatter(X, Y, s = 10)
-
-    plt.xlabel('X')
-    plt.ylabel('Y')
-
-    plt.xlim((0, 1))
-    plt.ylim((-2, 2))
-
-    plt.title('Degree {}'.format(red_jednacine[i]))
-                </code></pre><br />
-            <p class="card-text">
-                U ovom drugom delu for petlje popunjavamo vrednosti u koordinatnim sistemima kao i linije koje ukazuju 
-                na regresiju. Prvi deo plt.plot popunjava regresijom u odnosu na red polinomske regresije. Drugi plt.plot 
-                popunjava regresiju u zavisnosti od vrednosti koje su unesene u koordinatni sistem. Plt.scatter popunjava
-                tačkama koordinatni sistem iz vrednosti X i Y. <br /><br />
-                plt.xlabel i plt.ylabel definiše naziv X i Y ose dok plt.xlim i plt.ylim definiše od koje do koje 
-                vrednosti se prikazuje koordinatni sistem (vrednosti sa kojima se radi u ovom primeru su uglavnom u
-                decimalnom zapisu od nule do jedinice).  Plt.title ispisuje naziv iznad koordinatnog sistema koji je
-                red polinomske regresije.<br /><br />
-                Kompletan kod primera sa rezultatima je ispisan ispod teksta.
-            </p>
-            <pre class="python-exec"> <code>	
-    import numpy as np
-    import matplotlib.pyplot as plt
-
-    from sklearn.pipeline import Pipeline
-    from sklearn.preprocessing import PolynomialFeatures
-    from sklearn.linear_model import LinearRegression
-
-    np.random.seed(0)
-    broj_vrednosti = 30
-    red_jednacine = [1, 4, 30]
-
-    def funkcija(X):
-        return np.cos(1.5 * np.pi * X)
-
-    X = np.sort(np.random.rand(broj_vrednosti))
-    Y = funkcija(X) + np.random.rand(broj_vrednosti) * 0.1
-
-    plt.figure(figsize = (15, 5))
-    for i in range(len(red_jednacine)):
-        ax = plt.subplot(1, len(red_jednacine), i + 1)
-        plt.setp(ax, xticks = (), yticks = ())
-
-        polynomial_features = PolynomialFeatures(degree = red_jednacine[i])
-        linear_regression = LinearRegression()
-
-        pipeline = Pipeline([('polynomial_features', polynomial_features), ('linear_regression', linear_regression), ])
-        pipeline.fit(X[:, np.newaxis], Y)
-
-        plt.plot(X, pipeline.predict(X[:, np.newaxis]), c = 'r')
-        plt.plot(X, funkcija(X))
-        plt.scatter(X, Y, s = 10)
-
-        plt.xlabel('X')
-        plt.ylabel('Y')
-
-        plt.xlim((0, 1))
-        plt.ylim((-2, 2))
-
-        plt.title('Degree {}'.format(red_jednacine[i]))
-    plt.show()
-                </code></pre><br />
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba3Slika1.png")">
+            <p class="card-text">Linearna regresija je statistički pristup koji modelira odnos 
+                između ulaznih karakteristika i izlaza. Naš cilj ovde je da predvidimo vrednost
+                izlaza na osnovu ulaznih karakteristika množenjem sa njegovim optimalnim koeficijentima.
+                Korišćenjem matplotlib biblioteke kao i tabele koju učitavamo u CSV formatu, 
+                formiramo koordinatni sistem sa svim vrednostima iz te tabele i odredjujemo kako
+                funkcioniše linearna regresija za zadate ulazne vrednosti. Primer kako bi izgledao 
+                koordinatni sistem sa svim ulaznim podacima je sledeći:</p><br />
+            <div class="col-md-8 offset-md-2">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba2Slika1.png")">
             </div><br />
+            <p class="card-text">Koordinatni sistem je formiran sa podacima koji su u excel tabeli zapisane na sledeći način:</p>
+                
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th scope="col">Kolona 1</th>
+                        <th scope="col">Kolona 2</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1986</td>
+                        <td>1485</td>
+                    </tr>
+                    <tr>
+                        <td>1987</td>
+                        <td>2846</td>
+                    </tr>
+                    <tr>
+                        <td>1988</td>
+                        <td>5790</td>
+                    </tr>
+                    <tr>
+                        <td>1989</td>
+                        <td>6240</td>
+                    </tr>
+                    <tr>
+                        <td>1990</td>
+                        <td>7156</td>
+                    </tr>
+                    <tr>
+                        <td>1991</td>
+                        <td>5846</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+                <p class="card-text">Nakon popunjavanja samog koordinatnog sistema sa podacima iz tabele,
+                    formiramo pravu liniju (zato što pronalazimo <b>linearnu</b> regresiju) i dodajemo je na
+                    sam grafik. Linija se automatski dodaje, po uglu takvom da prilikom ispitivanja jedne
+                    vrednosti ( nebitno da li se nalazi na X ili Y osi) možemo predvideti drugu vrednosti,
+                    korišćenjem te same linije. Podrazumeva se da sa više vrednosti imaćemo što preciznije
+                    rezultate za predvidjanje.</p>
             </div>
           </div>
 
           <br />
-          <div class="card" id="zadatak">
+          <div class="card" id="kodlinearne">
             <div class="card-header text-center">
-            <h4>Zadatak</h4>
+            <h4 style="color: #151515">Kod u Python-u i Objašnjenje Koda</h4>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    Napraviti polinomsku regresiju drugog stepena sa CSV fajlom koji sadrži samo kolonu X sa
-                    vrednostima od -10 do 10. Napisati funkciju koja formira vrednost Y dobijenu funkcijom 
-                    Y = 3X^2 + 6. Vrednosti koje se unose u koordinatni sistem obeležiti velikim slovom X zelenom 
-                    bojom, dok regresiju obeležiti žutom bojom. Na prozoru dodati još jedan koordinatni sistem na
-                    kome je prikazan underfitting. Primer kako rezultat treba da izgleda nakon pokretanja koda je sledeći:
-                </p><br />
-                <div class="col-md-10 offset-md-1">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba3Slika2.png")">
-                </div><br />
-                <h4 align="center">Rešenje</h4>
-                <a href="@Url.Content("~/Media/Vezba 3/OveriUnder.csv")" download>Download - OveriUnder.csv</a><br /><br />
+                <p class="card-text">Za početak, dodajemo sve biblioteke koje su nam potrebne kako bismo
+                    formirali regresiju (komanda za instalaciju biblioteka se nalazi na početku stranice,
+                    sa crnom pozadinom teksta). Potrebne biblioteke su pandas, matplotlib i scikit-learn.
+                    To radimo na sledeći način:</p>
                 <pre class="python-exec"> <code>	
-    import numpy as np
-    import matplotlib.pyplot as plt
-    from sklearn.pipeline import Pipeline
-    from sklearn.preprocessing import PolynomialFeatures
-    from sklearn.linear_model import LinearRegression
     import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn import linear_model
+                </code></pre><br />
+                <p class="card-text">Reč 'as' nam ukazuje to, da kada koristimo biblioteku, kako bi pozvali
+                    neku funkciju koju biblioteka definiše, pozivamo je pomoću reči kojom tu biblioteku 
+                    definišemo (ako gledamo prvi red, umesto da pozovemo funkciju kao pandas.funkcija, 
+                    rekli bi pd.funkcija, čisto kako bismo skratili samu reč i napravili kod preglednijim).<br /><br />
+                    Od ovih 3 biblioteka, pandas nam omogućuje da dodamo tabelu sa podacimo koje želimo da 
+                    raspodelimo na koordinatnom sistemu. Matplotlib nam vizuelno kreira koordinatni sistem 
+                    kako bi korisnik mogao da vidi kako izgleda raspored svih vrednosti u koordinatnom sistemu.
+                    Scikit-learn (sklearn) nam generiše linearnu regresiju pomoću koje možemo vršiti 
+                    predvidjanja na vrednostima koje korisnik želi.
+                </p>
+                <pre class="python-exec"><code>	
+    df = pd.read_csv('IncomePerHomeAverage.csv')
 
-    df = pd.read_csv('OveriUnder.csv')
-    red_jednacine = [1, 2]
+    plt.scatter(df['year'], df['income'])
 
-    def funkcija(X):
-        return 3 * np.power(X, 2) + 6
+    plt.xlabel('Year')
+    plt.ylabel('Income')
 
-    X = df['X']
-    Y = funkcija(X)
-    
-    plt.figure(figsize = (10, 5))
-    for i in range(len(red_jednacine)):
-        ax = plt.subplot(1, len(red_jednacine), i + 1)
-        plt.setp(ax, xticks = (), yticks = ())
+    plt.show() 
+                </code></pre><br />
+                <p class="card-text">U ovom delu koda formiramo vizuelni koordinatni sistem. Korišćenjem reči 
+                    pd kao biblioteku pandas i funkcije read_csv(), učitavamo sve podatke (fajl sa ekstenzijom
+                    .csv čuvamo iz excel tabele tako što, prilikom čuvanja fajla, odaberemo 'save as' sa opcijom
+                    'CSV (comma delimited)' i čuvamo u projektnom folderu u kome nam se nalazi python kod).<br /><br />
+                    plt.scatter() (funkcija iz biblioteke matplotlib) uzima vrednosti iz tabele i rasporedjuje
+                    u koordinatni sistem. Označavamo prvu kolonu (naziv kolone) kao vrednosti koje odgovaraju 
+                    X osi, dok druga kolona odgovara Y osi.<br /><br />
+                    plt.xlabel i plt.ylabel nam jednostavno obeležbava koje vrednosti se nalaze na X a koje na 
+                    Y osi u vidu labele. plt.show() kreira prozor koji prikazuje koordinatni sistem.<br /><br />
+                    Pokretanjem koda, sa csv fajlom koji je dodat ispod ovog teksta, prikazuje nam se sledeći grafik:
+                </p>
+                <a href="@Url.Content("~/Media/Vezba 3/IncomePerHomeAverage.csv")" download>Download - IncomePerHomeAverage.csv</a>
+                <div class="col-md-8 offset-md-2"><br />
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba2Slika2.png")">
+                </div><br />
+                <p class="card-text">Nakon formiranja i upisivanja svih vrednosti, potrebno je formirati 
+                    linearnu regresiju i napraviti prekiciju. To činimo na sledeći način:
+                </p>
+                <pre class="python-exec">
+                <code>	
+    reg = linear_model.LinearRegression()
+    reg.fit(df[['year']], df[['income']])
+    plt.plot(df.year, reg.predict(df[['year']]), color = 'red')
 
-        polynomial_features = PolynomialFeatures(degree = red_jednacine[i])
-        linear_regression = LinearRegression()
+    predictPrice = reg.predict([[2020]])
+                </code></pre><br />
+                <p class="card-text">Promenljiva reg definišemo kao model linearne regresije. Modelu preko funkcije 
+                    fit, dodajemo vrednosti i preko funkcije plot iz matplotlib biblioteke, generišemo pravu liniju 
+                    unutar koordinatnog sistema.<br /><br />
+                    U .CSV fajlu imamo definisanu kolonu 1 za godinu koja se prati i kolonu 2 koja nam ukazuje koliko
+                    dolara ($) prosečno zaradjuje jedno domaćinstvo. Korišćenjem funkcije predict, predvidjamo kolika
+                    će biti prosečna zarada jednog domaćinstva 2020-te godine i tu vrednost pamtimo u promenljivoj 
+                    predictPrice. Preostali korak je ispisati te vrednosti: 
+                </p>
+                <pre class="python-exec">
+                <code>	
+    print('Predikcija (P) : ', predictPrice)
+    print('Koeficijent (K) : ', reg.coef_)
+    print('Intercept (B) : ', reg.intercept_)
+                </code></pre><br />
+                <p class="card-text">
+                    Predikcija se računa pomoću sledeće formule:<br />
+                    <h3 align="center">price = k * year + b</h3><br />
+                    Vrednost pomoću koje radimo predikciju je godina, što smo definisali kada smo generisali plt.plot.
+                    K nam predstavlja koeficijent dok B je intercept vrednost (ove vrednosti nam nisu korisne kako bi 
+                    dobili rezultat koji pokušavamo da predvidimo, definisano je čisto kako bismo mogli lično proveriti).
+                    Rezultat koda nakon pokretanja je:
+                </p>
+                <!---->
+                <div class="col-md-8 offset-md-2">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba2Slika3.png")">
+                </div>
+                <p class="card-text"> <br />Dok koordinatni sistem koji je generisan sa plt.show() funkcijom izgleda ovako: </p>
+                <div class="col-md-8 offset-md-2">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba2Slika4.png")">
+                </div>
+                <p class="card-text"> <br />Kompletan kod je napisan na sledeći način: </p>
+                <pre class="python-exec">
+                <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn import linear_model
 
-        pipeline = Pipeline([('polynomial_features', polynomial_features), ('linear_regression', linear_regression), ])
-        pipeline.fit(X[:, np.newaxis], Y)
+    df = pd.read_csv('IncomePerHomeAverage.csv')
 
-        plt.plot(X, pipeline.predict(X[:, np.newaxis]), c = 'y')
-        plt.scatter(X, Y, marker = 'X', c = 'g')
+    plt.scatter(df['year'], df['income'])
 
-        plt.xlabel('X')
-        plt.ylabel('Y')
+    plt.xlabel('Year')
+    plt.ylabel('Income')
 
-        plt.xlim((-10, 10))
-        plt.ylim((0, 300))
+    reg = linear_model.LinearRegression()
+    reg.fit(df[['year']], df[['income']])
+    plt.plot(df.year, reg.predict(df[['year']]), color = 'red')
 
-        plt.title('Stepen: {}'.format(red_jednacine[i]))
+    predictPrice = reg.predict([[2020]])
+
+    print('Predikcija (P) : ', predictPrice)
+    print('Koeficijent (K) : ', reg.coef_)
+    print('Intercept (B) : ', reg.intercept_)
+
     plt.show()
                 </code></pre>
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="viselinearnih">
+            <div class="card-header text-center">
+            <h4 style="color: #151515">Više linearnih regresija na jednom grafiku</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Ukoliko želimo da prikažemo više različitih linearnih regresija na jednom grafiku, kako bismo 
+                    videli razliku izmedju više vrednosti različitih tabela, i kako se regresija razlikuje izmedju 
+                    njih, predstavljamo na sledeći način: 
+                </p><br />
+                <pre class="python-exec"> <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn import linear_model
+
+    df1 = pd.read_csv('cig1.csv')
+    df2 = pd.read_csv('cig2.csv')
+    df3 = pd.read_csv('cig3.csv')
+
+    plt.scatter(df1['year'], df1['cigperyear'], color = 'red', marker = '+')
+    plt.scatter(df2['year'], df2['cigperyear'], color = 'blue', marker = '+')
+    plt.scatter(df3['year'], df3['cigperyear'], color = 'green', marker = '+')
+
+    plt.xlabel('Year')
+    plt.ylabel('Cig per person')
+
+    reg = linear_model.LinearRegression()
+
+    reg.fit(df1[['year']], df1.cigperyear)
+    plt.plot(df1.year.values, reg.predict(df1[['year']]), color = 'red')
+    
+    reg.fit(df2[['year']], df2.cigperyear)
+    plt.plot(df2.year.values, reg.predict(df2[['year']]), color = 'blue')
+
+    reg.fit(df3[['year']], df3.cigperyear)
+    plt.plot(df3.year.values, reg.predict(df3[['year']]), color = 'green')
+
+    plt.show()
+                </code></pre>
+                <p class="card-text"><br />
+                    U ovom primeru smo koristili tri različite tabele, koje sadrže kolonu za godinu i kolonu koja 
+                    beleži prosečan broj cigara po osobi na godišnjem nivou. Tri tabele beleže po 30 vrednosti (za
+                    svaku godinu od 1970 do 2000) za tri različite države. Sve tri tabele su prikačene ispod ovog 
+                    teksta, spremne za preuzimanje. 
+                </p>
+                <a href="@Url.Content("~/Media/Vezba 3/cig1.csv")" download>Download - cig1.csv</a><br />
+                <a href="@Url.Content("~/Media/Vezba 3/cig2.csv")" download>Download - cig2.csv</a><br />
+                <a href="@Url.Content("~/Media/Vezba 3/cig3.csv")" download>Download - cig3.csv</a><br /><br />
+                <p class="card-text">
+                    Razliku izmedju sve tri grupe vrednosti dobijamo tako što, prilikom popunjavanja vrednosti u 
+                    koordinatnom sistemu (plt.scatter) i formiranjem linije koja ukazule na linearnu regresiju 
+                    (plt.plot), definišemo boju koja je različita od ostalih. Nije obavezno, ali čisto radi demonstriranje,
+                    promenili smo i oblik tačaka iz kružića u +. Pokretanjem koda dobijamo sledeći grafik: 
+                </p><br />
+                <div class="col-md-8 offset-md-2">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba2Slika5.png")">
+                </div>
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="3dlinearne">
+            <div class="card-header text-center">
+            <h4 style="color: #151515">Linearne regresije sa više vrednosti i formiranje trodimenzionalnih grafika</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    U nekim situacijama nam dve kolone nisu dovoljne, i predikcije moramo raditi sa više parametara. 
+                    U nastavku će biti objašnjen primer u kome se koristi .CSV fajl sa pet kolona koje opisuju razne
+                    automobile (naziv auta, model, zapremina, težina, CO2) i formira se predikcija za CO2 nad vrednostima 
+                    za zapreminu i težinu koje korisnik unosi. Sobzirom da se sada radi sa tri vrednosti umesto sa dve,
+                    dvodimenzionalni koordinatni sistem predstavljamo u 3D prostoru (nije obavezno formirati i prikazati 
+                    koordinatni sistem da bi se došlo do predikcije sa ulaznim vrednostima, grafici se formiraju kako bi 
+                    imali vizuelni prikaz svih vrednosti u tabeli). CSV fajl na kome se radi je prikačen ispod teksta, kao i tekst koda:
+                </p>
+                <a href="@Url.Content("~/Media/Vezba 3/carsSpecifications.csv")" download>Download - carsSpecifications.csv</a><br /><br />
+                <pre class="python-exec"> <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn import linear_model
+
+    df = pd.read_csv('carsSpecifications.csv')
+    
+    x = df.Volume
+    y = df.Weight
+    z = df.C02
+
+    fig = plt.figure()
+    pltfig = fig.gca(projection = '3d')
+    pltfig.scatter(x, y, z, s = 50)
+    
+    pltfig.set_xlabel('Volume')
+    pltfig.set_ylabel('Weight')
+    pltfig.set_zlabel('C02')
+
+    X = df[['Weight', 'Volume']].values
+    Y = df['C02']
+
+    reg = linear_model.LinearRegression()
+    reg.fit(X, Y)
+
+    pred_weight = 2300
+    pred_volume = 1300
+
+    predictC02 = reg.predict([[pred_weight, pred_volume]])
+
+    print('Predvidjen C02 za: [Weight:', pred_weight, '] i [Volume: ', pred_volume, '] je', predictC02[0])
+
+    plt.show()
+                </code></pre>
+                <p class="card-text"><br />
+                    Rezultat pokretanja koda bi dao rezultat "Predvidjen CO2 za: [ Weight: 2300 ] i [ Volume: 1300 ] je 
+                    107.20873279892223" u ovoj situaciji. Korišćenjem funkcija reg.coef_ vratiće dva koeficijenta (zato 
+                    što predvidjamo sa dve vrednosti) i to [0.00755095 0.00780526] i funkcija reg.intercept_ (vrednosti b
+                    iz formule) koja bi vratila vrednost 79.69471929115937. Formula u ovakvoj situaciji bi se postavila 
+                    na sledeći način:
+                </p>
+                <h3 align="center">CO2 = k1 * Weight + k2 * Volume + b</h3><br />
+                <p class="card-text">
+                    Grafik, koji kao što je pomenuto je predstavljem u trodimenzionalnom prostoru, formiran je na sledeći način:
+                </p>
+            </div>
+            <video src="@Url.Content("~/Media/Vezba 3/3D Linearna Regresija.mp4")" controls></video>
+          </div>
+          
+          <br />
+          <div class="card" id="polinomska">
+            <div class="card-header text-center">
+            <h4 style="color: #151515">Polinomska Regresija</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Polinomske regresije se, za razliku od linearnih, ne izražavaju pravom linijom već zakrivljenom, 
+                    koja u odnosu na sve vrednosti predstavljene u koordinatnom sistemu predstavljaju preciznije
+                    predvidjanje nekih vrednosti. Dok se linearne predstavljaju formulom y = x, polinomske regresije 
+                    znače da se vrednost x može naći u drugom, trećem ili nekom drugom stepenu.
+                </p><br />
+                <div class="col-md-12">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/PolinominalneRegresije.png")">
+                </div>
+                <p class="card-text"><br />
+                    U narednom primeru biće predstavljen kod jednog zadatka u kome se predvidja vrednost sa polinomskom
+                    regresijom u kojoj je x na drugom stepenu. Tema pretrage je vlažnost i pritisak vremena.
+                </p>
+                <a href="@Url.Content("~/Media/Vezba 3/WeatherDataP.csv")" download>Download - WeatherDataP.csv</a><br /><br />
+                <pre class="python-exec"> <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
+
+    df = pd.read_csv('WeatherDataP.csv')
+    
+    train_x = df[['Pressure']].values
+    train_y = df[['Humidity']].values
+
+    plt.scatter(df.Pressure.values, df.Humidity.values, color = 'blue')
+    plt.xlabel('Pressure')
+    plt.ylabel('Humidity')
+
+    pre_process = PolynomialFeatures(degree = 2)
+
+    x_poly = pre_process.fit_transform(train_x)
+    pr_model = LinearRegression()
+    pr_model.fit(x_poly, train_y)
+
+    y_pred = pr_model.predict(x_poly)
+    plt.plot(train_x, y_pred, color = 'red')
+    pred_pressure = 1007
+    y_new = pr_model.predict(pre_process.fit_transform([[pred_pressure]]))
+
+    print('Predvidjena vlažnost za [ Pressure: ', pred_pressure, '] je', y_new[0])
+
+    plt.show()
+                </code></pre>
+                <p class="card-text"><br />
+                    Kod za polinomnu regresiju, u odnosu na linearnu ima nekoliko razlika koje će sada biti objašnjene. 
+                    Počevši od samog početka, sklearn.preprocessing u trećoj liniji koda nam omogućava kreiranje same 
+                    polinomne regresije tako što definišemo stepen na kom se nalazi vrednost x. pre_process promenljiva 
+                    koju smo definisali tako da kreira grupu dizajniranu na drugom stepenu nekog broja primenjujemo na 
+                    vrednost x, koja u promenljivoj x_poly formira nove kolone koje se prate za 1, x i x na kvadrat. <br /><br />
+                    Formiranjem polinomske regresije se u grafiku definiše kao veliki broj linearnih regresije ( lako se može 
+                    primetiti po grafiku u rezultatu da linija ima uglove, umesto da je standardna kriva linija) i to se dešava
+                    oko formiranja promenljive pr_model koji definiše model koji će se prikazati kao konstantne linearne regresije
+                    od x_poly koji smo rekli da je skup kolona sa vrednostima 1, x, x^2 i naše vrednosti y.<br /><br />
+                    Jedini preostali korak je da, pošto nam je cilj da formiramo neko predvidjanje, predvidimo kolika će 
+                    biti vlažnost ako nam je pritisak 1007. Pokretanje koda dobijamo ispis u konzoli 'Predvidjena vlažnost za
+                    [ Pressure: 1007 ] je [0.7164631]'.
+                </p><br />
+                <div class="col-md-8 offset-md-2">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba2Slika6.png")">
+                </div>
+                <p class="card-text"><br />
+                    Primer polinomske regresije gde je y = x^3 (x na trećem stepenu) se radi na skoro identičan način, jedina 
+                    razlika je ta što se kod definisanja opisa polinomske regresije definiše kao treći stepen umesto drugog.
+                    CSV fajl za ovaj primer i kod su sledeći:
+                </p>
+                <a href="@Url.Content("~/Media/Vezba 3/testVrednostiTrećiStepen.csv")" download>Download - testVrednostiTrećiStepen.csv</a><br /><br />
+                <pre class="python-exec"> <code>	
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
+
+    df = pd.read_csv('testVrednostiTrećiStepen.csv')
+    
+    train_x = df[['broj']].values
+    train_y = df[['vrednost']].values
+
+    plt.scatter(df.broj.values, df.vrednost.values, color = 'blue')
+    plt.xlabel('broj')
+    plt.ylabel('vrednost')
+
+    pre_process = PolynomialFeatures(degree = 3)
+
+    x_poly = pre_process.fit_transform(train_x)
+    pr_model = LinearRegression()
+    pr_model.fit(x_poly, train_y)
+
+    y_pred = pr_model.predict(x_poly)
+    plt.plot(train_x, y_pred, color = 'red')
+    pred_broj = 20
+    y_new = pr_model.predict(pre_process.fit_transform([[pred_broj]]))
+
+    print('Predvidjena vrednost za [ broj: ', pred_broj, '] je', y_new[0])
+
+    plt.show()
+                </code></pre> <br />
+                <p class="card-text">
+                    Rezultat pokretanja koda u kome se vrši predikcija za broj 20, u konzoli ispisuje 'Predvidjena vrednost za 
+                    [ broj : 20 ] je [6601.57575758]' dok bi koordinatni sistem izgledao ovako:
+                </p><br />
+                <div class="col-md-8 offset-md-2">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 3/vezba2Slika7.png")">
+                </div>
             </div>
           </div>
         </div>

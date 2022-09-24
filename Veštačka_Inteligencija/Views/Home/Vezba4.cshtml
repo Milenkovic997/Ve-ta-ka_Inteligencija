@@ -1,10 +1,10 @@
-﻿<title>Vežba 4 - Klasifikacija</title>
+﻿<title>Vežba 3 - Underfitting i Overfitting</title>
 <style>
       .sticky {
         position: sticky;
         top: 75px;
       }
-</style> 
+</style>
 
 <body>
     <div class="container-fluid">
@@ -12,7 +12,7 @@
         <nav class="col-md-2 d-none d-md-block bg-sidebar sidebar">
             <div class="sidebar-sticky sticky">
             <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-               <div class="card-header text-left" style="padding-left:0px; color:black">
+                <div class="card-header text-left" style="padding-left:0px; color:black">
 							<span>Sadržaj</span>
 						</div>
                 <a class="d-flex align-items-center text-muted" >
@@ -50,15 +50,15 @@
             </h4>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
-                <a class="nav-link" href="https://medium.com/analytics-vidhya/building-classification-model-with-python-9bdfc13faa4b" target="_blank">
+                <a class="nav-link" href="https://www.geeksforgeeks.org/underfitting-and-overfitting-in-machine-learning/" target="_blank">
                     <span data-feather="file-text"></span>
-                    Medium
+                    GeeksForGeeks
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="https://developer.ibm.com/tutorials/learn-classification-algorithms-using-python-and-scikit-learn/" target="_blank">
+                <a class="nav-link" href="https://www.javatpoint.com/overfitting-and-underfitting-in-machine-learning" target="_blank">
                     <span data-feather="file-text"></span>
-                    IBM Developer
+                    java T point
                 </a>
                 </li>
             </ul>
@@ -67,7 +67,7 @@
 
         <div class="col-lg-10 pt-3">
           <div class="text-center card-header">
-              <h4>KLASIFIKACIJE</h4>
+              <h4>UNDERFITTING I OVERFITTING</h4>
           </div>
 
           <br />
@@ -77,199 +77,38 @@
             </div>
             <div class="card-body">
                 <p class="card-text">
-                    Klasifikacija se, u oblastima veštačke inteligencije, koristi da bi se na koordinatnom sistemu 
-                    predstavile grupe ulaznih vrednosti jedne baze znanja, koja pored dve kolone koja definiše kao
-                    X i Y koordinatu (kao u primerima iz prethodnih oblasti) grupiše vrednosti po njihovim odgovarajućim 
-                    vrednostima neke treće kolone.<br /><br />Primer tabele po kojoj se može uraditi klasifikacija je sledeća:
-                </p>
+                    Svaki skup podataka će imati neke čudne ili nedostajuće delove ili neuravnotežene podatke. 
+                    Implikacija je da se izvedeni model dobro uklapa u podatke modeliranja, ali da se ne generalizuje
+                    dovoljno na druge uzorke koji nisu uključeni u proces modeliranja. Postoji terminologija koja 
+                    opisuje koliko dobro model mašinskog učenja uči i generalizuje nove podatke, ovo je overfitting 
+                    i underfitting. Cilj dobrog modela mašinskog učenja je da se dobro generalizuje iz skupa podataka
+                    za obuku na bilo koji skup podataka iz domena problema. Ovo nam omogućava da napravimo predviđanja
+                    na osnovu skupa podataka koji model nikada nije video.
+                </p><br />
                 <div class="col-md-12">
-                    <div class="row justify-content-center">
-                    <div class="col-auto">
-                        <table class="table table-responsive">
-                            <thead>
-                            <tr>
-                                <th scope="col">Survived</th>
-                                <th scope="col">Class</th>
-                                <th scope="col">Gender</th>
-                                <th scope="col">Age</th>
-                                <th scope="col">Parch</th>
-                                <th scope="col">Fare</th>
-                                <th scope="col">Embarked</th>
-                                <th scope="col">Class</th>
-                                <th scope="col">Who</th>
-                                <th scope="col">Adult_Male</th>
-                                <th scope="col">Deck</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>3</td>
-                                <td>male</td>
-                                <td>22</td>
-                                <td>0</td>
-                                <td>7.25</td>
-                                <td>S</td>
-                                <td>third</td>
-                                <td>man</td>
-                                <td>TRUE</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>female</td>
-                                <td>38</td>
-                                <td>0</td>
-                                <td>71.2833</td>
-                                <td>C</td>
-                                <td>first</td>
-                                <td>woman</td>
-                                <td>FALSE</td>
-                                <td>C</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>female</td>
-                                <td>26</td>
-                                <td>0</td>
-                                <td>7.925</td>
-                                <td>S</td>
-                                <td>third</td>
-                                <td>woman</td>
-                                <td>FALSE</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>female</td>
-                                <td>35</td>
-                                <td>0</td>
-                                <td>53.1</td>
-                                <td>S</td>
-                                <td>first</td>
-                                <td>woman</td>
-                                <td>FALSE</td>
-                                <td>C</td>
-                            </tr>
-                            <tr>
-                                <td>0</td>
-                                <td>3</td>
-                                <td>male</td>
-                                <td>35</td>
-                                <td>0</td>
-                                <td>8.05</td>
-                                <td>Q</td>
-                                <td>third</td>
-                                <td>man</td>
-                                <td>TRUE</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>male</td>
-                                <td>15</td>
-                                <td>0</td>
-                                <td>37.25</td>
-                                <td>S</td>
-                                <td>second</td>
-                                <td>man</td>
-                                <td>FALSE</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>male</td>
-                                <td>75</td>
-                                <td>0</td>
-                                <td>6.55</td>
-                                <td>C</td>
-                                <td>third</td>
-                                <td>man</td>
-                                <td>TRUE</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>female</td>
-                                <td>27</td>
-                                <td>0</td>
-                                <td>28.25</td>
-                                <td>S</td>
-                                <td>second</td>
-                                <td>woman</td>
-                                <td>TRUE</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>0</td>
-                                <td>1</td>
-                                <td>womale</td>
-                                <td>77</td>
-                                <td>0</td>
-                                <td>12.165</td>
-                                <td>Q</td>
-                                <td>third</td>
-                                <td>woman</td>
-                                <td>TRUE</td>
-                                <td>A</td>
-                            </tr>
-                            <tr>
-                                <td>0</td>
-                                <td>3</td>
-                                <td>female</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>57.25</td>
-                                <td>S</td>
-                                <td>first</td>
-                                <td>woman</td>
-                                <td>FALSE</td>
-                                <td>G</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Objasnjenje 1.jpg")">
                 </div><br />
                 <p class="card-text">
-                    Navedena tabela sa podacima koja prikazuje putnike na titaniku se može koristiti za klasifikaciju zato 
-                    što po njoj možemo popuniti koordinatne sisteme vrednostima ( npr. klasa i godine se koriste za X i Y 
-                    osu) i da onda se izvrši klasifikacija npr. po polu gde bi tačke jedne boje ukazale da je putnik bio 
-                    muško tj. ili žensko.<br /><br />
-                    Nakon odredjivanja i bojenja tačaka u koordinatnom sistemu odgovarajućih bojama, potrebno je dodati
-                    klasifikator koji će vizuelno odvojiti dve grupe vrednosti i obojiti pozadinu na taj način da se može
-                    pretpostaviti, odnosno predvideti kojoj grupi bi mogla da pripada neka nova vrednost bez dodavanja u osu.<br /><br />
-                    Klasifikacija na ovaj način predstavlja nadgledano mašinsko učenje zato što već postoje podaci po kojima 
-                    se klasifikacija izvršava. Primer ose nakon klasifikovanja izgleda kao primer na slici ispod:                </p><br />
+                    <b>Overfitting</b> se odnosi na scenario gde model mašinskog učenja ne može da generalizuje ili
+                    da se dobro uklopi u nevidljiv skup podataka. Jasan znak preopterećenja mašinskog učenja je ako 
+                    je njegova greška u skupu podataka za testiranje ili validaciju mnogo veća od greške u skupu podataka
+                    za obuku. To je termin koji se koristi u statistici koji se odnosi na grešku modeliranja koja se
+                    javlja kada funkcija previše odgovara skupu podataka. Kao rezultat toga, prekomerno prilagođavanje
+                    možda neće uspeti da uklopi dodatne podatke, a to može uticati na tačnost predviđanja budućih posmatranja.<br /><br />
+                    Underfitting se odnosi na model koji ne može niti da modelira skup podataka za obuku niti da se 
+                    generalizuje na novi skup podataka. Nedovoljan model mašinskog učenja nije prikladan model i biće 
+                    očigledan jer će imati loše performanse na skupu podataka za obuku.
+                </p><br />
                 <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/vezba4Objasnjenje.png")">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/Objasnjenje 2.png")">
                 </div><br />
                 <p class="card-text">
-                    Primer slike predstavlja jednu od klasifikatora koji će se odraditi u narednom delu vežbi (slikane 
-                    odgovara tabeli za putnike na titanuku, data je radi primera klasifikacije). Klasifikatori koji će
-                    biti odradjeni su:
-                    <ul>
-                        <li>
-                            K-nearest Neighbors Klasifikacija
-                        </li>
-                        <li>
-                            Gausov Proces Klasifikacije
-                        </li>
-                        <li>
-                            Klasifikacija Binarnog Stabla
-                        </li>
-                        <li>
-                            Klasifikacija Neuronskih Mreža
-                        </li>
-                    </ul>
-                    Pored ova četri klasifikatora postoje mnogo više njih koji neče biti radjeni uokviru ovih vežbi,
-                    ali princip rada u kodu je identičan kao svi ostali klasifikatori.
+                    Kada iterativno trenirate algoritam učenja, možete izmeriti koliko dobro svaka iteracija modela radi.
+                    Do određenog broja iteracija, nove iteracije poboljšavaju model. Međutim, nakon te tačke, sposobnost
+                    modela da generalizuje može oslabiti jer počne da se uklapa u podatke o obuci. Rano zaustavljanje se 
+                    odnosi na zaustavljanje procesa obuke pre nego što učenik prođe tu tačku. Danas se ova tehnika uglavnom
+                    koristi u dubokom učenju (deep learning), dok se druge tehnike (npr. regularizacija) preferiraju za 
+                    klasično mašinsko učenje.
                 </p><br />
             </div>
           </div>
@@ -281,220 +120,205 @@
             </div>
             <div class="card-body">
             <p class="card-text">
-                Primer za ovu oblast je predstavljena u nastavku ovih vežbi:
+                Primer koji će biti objašnjen i na kome će biti predstavljen overfitting i underfitting počinjemo 
+                standardnim instaliranjem potrebnih biblioteka (numpy, matplotlib i scikit-learn). U ovom primeru, 
+                za razliku od vežbe 2 u kome se radile regresije, nećemo učitati CSV fajl sa podacima (možemo ako želimo,
+                ali odradićemo primer na drugi način). Podaci sa kojima radimo, biće generisani nizom od 30 brojeva.<br /><br />
+                Kako bismo formirali veću preciznost, ali ne preveliku, moraćemo formirati regresije n-tog reda. 
+                U primeru, da bismo predstavili oblasti underfitting i overfitting, radićemo sa tri različita reda 
+                polinomske regresije.
             </p><br />
             <pre class="python-exec"> <code>	
     import numpy as np
     import matplotlib.pyplot as plt
-    import pandas as pd
 
-    from sklearn.neighbors import KNeighborsClassifier
-    from sklearn.gaussian_process import GaussianProcessClassifier
-    from sklearn.tree import DecisionTreeClassifier
-    from sklearn.neural_network import MLPClassifier
+    from sklearn.pipeline import Pipeline
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
                 </code></pre><br />
             <p class="card-text">
-                U prvog grupi importa koju definišemo kako bi koristili u primeru su standardne biblioteke koje 
-                su i do sada bile korišćene, i to numpy za rad sa višedimenzionalnim nizovima, matplotlib za 
-                vizuelno kreiranje koordinatnih osa i pandas za rad sa fajlovima, odnosno CSV fajlom iz kog se 
-                uzimaju podaci za rad. Drugi deo importa se odnosi na sve klasifikatora sa kojima se radi u primeru.            </p>
-            <pre class="python-exec"> <code>	
-    classifiers = [
-        KNeighborsClassifier(),
-        GaussianProcessClassifier(),
-        DecisionTreeClassifier(),
-        MLPClassifier(max_iter = 1000)
-    ]
-                </code></pre><br />
-            <p class="card-text">
-                Na samom početku se definišu svi klasifikatori koji će biti korišćeni. U tekstu iznad su svi
-                klasifikatori dodati u jedan niz zato što će se prolaskom kroz niz, odnosno prolazak kroz sve
-                iteracije uraditi svaki element niza posebno. Ukoliko je potreno raditi sa samo jednim klasifikatorom,
-                nije potrebno formirati ovakav niz. U redu kako su zapisani, klasifikatori kao elementi niza su sledeći:
-                K-Nearest Neighbor, Gausova proces, Binarno stablo i neuronska mreža u tom redosledu.
+                Primer koji će biti objašnjen i na kome će biti predstavljen overfitting i underfitting počinjemo standardnim
+                instaliranjem potrebnih biblioteka (numpy, matplotlib i scikit-learn). U ovom primeru, za razliku od vežbe
+                2 u kome se radile regresije, nećemo učitati CSV fajl sa podacima (možemo ako želimo, ali odradićemo primer
+                na drugi način). Podaci sa kojima radimo, biće generisani nizom od 30 brojeva.<br /><br />
+                Kako bismo formirali veću preciznost, ali ne preveliku, moraćemo formirati regresije n-tog reda. U primeru,
+                da bismo predstavili oblasti underfitting i overfitting, radićemo sa tri različita reda polinomske regresije.
             </p>
             <pre class="python-exec"> <code>	
-    df = pd.read_csv('https://raw.githubusercontent.com/Milenkovic997/CSV/main/Klasifikacija.csv')
-    X = df[['X', 'Y']].values
-    y = df['K'].values
+    np.random.seed(0)
+    broj_vrednosti = 30
+    red_jednacine = [1, 4, 30]
+
+    def funkcija(X):
+        return np.cos(1.5 * np.pi * X)
                 </code></pre><br />
             <p class="card-text">
-                Za razliku od prethodnih primera za učitavanje podataka za rad u kome se ili učitao CSV fajl ili su se
-                vrednosti za rad same formirale, u ovom kodu je primer učitavanja podataka sa linka, na kome se nalaze 
-                podaci jednog excel fajla.<br /><br />
-                Nakon učitavanja, promenljiva df funkcioniše isto kao i prethodnim primerima sa običnim CSV fajlom. Od 
-                te promenljive, u kome se nalaze tri kolone, prve dve se definišu kao X vrednost (dvodimenzionalni niz 
-                koji će dodati tačke u koordinatni sistem) i Y promenljiva koja predstavlja vrednost na kojoj se vrši 
-                klasifikacija (naravno, umesto dvodimenzionalnog niza su se mogla formirati dve posebne promenljive za 
-                svaku kolonu posebno).
+                U ovom delu koda se odrađuje sledeće:            
+            <ul>
+                <li>
+                    <b>np.random.seed(0) </b>- predefiniše nasumične vrednosti koje ćemo koristiti da bismo popunili
+                    koordinatni sistem sa vrednostima
+                </li>
+                <li>
+                    <b>broj_vrednosti = 30 </b>- definišemo prvih 30 vrednosti koje unosimo u koordinatni sistem
+                </li>
+                <li>
+                    <b>red_jednacine = [1, 4, 30] </b>- definišemo sa koliko broja reda ćemo formirati koordinatni 
+                    sisteme kako bismo testirali da li je overfitting ili underfitting.
+                </li>
+                <li>
+                    <b>funkcija </b>koja nam X vrednost pretvara u Y tako što je pomnoži sa 3.14 (pi) i 1.5 pa 
+                    je pretvori u kosinus.
+                </li>
+            </ul>
             </p>
             <pre class="python-exec"> <code>	
-    figure = plt.figure(figsize = (15, 3))
-    x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
-    y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+    X = np.sort(np.random.rand(broj_vrednosti))
+    Y = funkcija(X) + np.random.rand(broj_vrednosti) * 0.1
                 </code></pre><br />
             <p class="card-text">
-                Početak ovog dela koda počinje sa definisanje promenljive figure preko koje sa funkcijom plt.figure menjamo
-                veličinu prozora aplikacije nakon pokretanja. Primer će prikazati četri klasifikatora kao i osnovni raspored
-                tačaka tako da, ako se uzme u obzir da veličina svakog koordinatnog sistema je veličine 3x3, postaviće se
-                dužina 15x3.<br /><br />Definiše se promenljiva x_min, x_max, y_min, y_max koji će podesiti početak i kraj
-                koordinatnog sistema kako bi se prilikom pokretanja koda tačno videla razlika svih klasifikacija bez potrebe
-                da se zoomira ili zoomout-uje sa ose.<br /><br />Meshgrid u poslednjem redu će obojiti pozadinu da bi ukazalo
-                na njihov položaj kao pretpostavku za teritoriju nekih vrednosti za koje se može uraditi pretpostavka kojoj 
-                klasi bi ona mogla da pripada, u zavisnosti od njene lokacije u osi.
+                U ovom delu koda se odrađuje sledeće:          
+            <ul>
+                <li>
+                    <b>X = np.sort(np.random.rand(broj_vrednosti)) </b>- generišemo vrednosti koje ćemo uneti u X osu 
+                    koordinatnog sistema. Dobijamo je tako što od generišemo 30 (broj_vrednosti) nasuminih brojeva, 
+                    sortiramo ih, i pamtimo kao vrednosti za X
+                </li>
+                <li>
+                    <b>broj_vrednosti = 30 </b>- definišemo prvih 30 vrednosti koje unosimo u koordinatni sistem
+                </li>
+                <li>
+                    <b>Y = funkcija(X) + np.random.randn(broj_vrednosti) * 0.1 </b>- od X vrednosti formiramo Y 
+                    vrednost, kako bismo formirali odgovarajući raspored vrednosti koordinatnog sistema.
+                </li>
+            </ul>
+            <br />
+                Umesto ovakvog kreiranja vrednosti X i Y niza, učitavanje kolona sa bibliotekom pandas je bio takođe
+                prihvatljiv način dobijanja vrednosti za popunjavanje osa.
             </p>
             <pre class="python-exec"> <code>	
-    i = 1
-    ax = plt.subplot(1, len(classifiers) + 1, i)
-    ax.scatter(X[:, 0], X[:, 1], c = y, edgecolors = 'k')
-    ax.set_xlim(xx.min(), xx.max())
-    ax.set_ylim(yy.min(), yy.max())
-    i += 1
-                </code></pre><br />
-            <p class="card-text">
-                Potrebno je da, s obzirom da je potrebno predstaviti koordinatni sistem za svaku klasifikaciju posebno, 
-                koristiti plt.subplot funkciju koja je bila prikazana na prethodnim vežbama, i ima za cilj da odvoji sve 
-                koordinatne sisteme i poredja ih jedan do drugog. U ovom delu koda je definisan samo koordinatni sistem u 
-                kome su predstavljene samo tačke, bez pozadine ili rada klasifikatora.<br /><br />
-                Scatter rasporedjuje tačke po koordinatnom sistemu tako da prva vrednost X-a odgovara x osi dok druga 
-                vrednost odgovara Y osi, a za boju tačaka se koristi treća kolona. Edgecolors koji je definisan obeležava 
-                obim tačaka i označava ih crne boje (k). <br /><br />
-                set_xlim i ylim podešava pogled na koordinatni sistem, odnosno od koje do koje vrednosti počinje i 
-                završava se sistem, kako bi na svakom koordinatnom sistemu imali identičnu poziciju vrednosti na
-                koordinatnom sistemu.
-            </p>
-            <pre class="python-exec"> <code>	
-    for clf in classifiers:
+    plt.figure(figsize = (15, 5))
+    for i in range(len(red_jednacine)):
         ...
 
-    plt.tight_layout()
-    plt.show()
+    plt.show
                 </code></pre><br />
             <p class="card-text">
-                Pomoću for petlje se primenjuju svi klasifikatori, i for petlja bi napravila četri iteracije, tj. 
-                za svaki klasifikator posebno. Na kraju koda nakon funkcije se dodaje plt.show kako bi prikazao prozor
-                i tight_layout koji približava sve koordinatne sisteme bliže jedan drugom zbog bolje preglednosti rezultata.            </p>
-            <pre class="python-exec"> <code>	
-    ax = plt.subplot(1, len(classifiers) + 1, i)
-    clf.fit(X, y)
-    score = clf.score(X, y)
-                </code></pre><br />
-            <p class="card-text">
-                For petlja počinje novom subplot funkcijom, kako bi odredio poziciju koordinatnog sistema za datu
-                klasifikaciju. Klasifikator je označen promenljivom clf i potrebno je dati klasifikatoru sve podatke
-                za rad i odrediti score tj preciznost klasifikacije koja će biti napisana kasnije, radi uporedjivanja 
-                svih klasifikacija.
+                U ovom delu koda se odrađuje sledeće:      
+            <ul>
+                <li>
+                    <b>plt.figure(figsize=(15, 5))  </b>- ovom funkcijom definišemo dužinu i širinu prozora u kome
+                    nam se predstavlja koordinatni sistem. S obzirom da ćemo imati tri koordinatna sistema 
+                    (za 1. 4. i 30. red polinomske regresije) postavićemo da je dužina prozora 15 a visina 5.
+                </li>
+                <li>
+                    <b>for i in range(len(red_jednacine)): </b>- for petlja sa kojom formiramo sva tri koordinatna 
+                    sistema zato što len nam vraća dužinu niza, koja sadrži tri elemenata.
+                </li>
+                <li>
+                    <b>plt.show() </b>- funkcija koja pokreće prozor na kome vidimo koordinatne sisteme. 
+                    Ovu funkciju dodajemo na samom kraju van for petlje.
+                </li>
+            </ul>
+            <br />
+                For petlja nam se sastoji od sledećih delova:
             </p>
             <pre class="python-exec"> <code>	
-    Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
-    Z = Z.reshape(xx.shape)
-    ax.contourf(xx, yy, Z, alpha = 0.8)
-    ax.scatter(X[:, 0], X[:, 1], c= y, edgecolors = 'k')
+    ax = plt.subplot(1, len(red_jednacine), i + 1)
+    plt.setp(ax, xticks = (), yticks = ())
+
+    polynomial_features = PolynomialFeatures(degree = red_jednacine[i])
+    linear_regression = LinearRegression()
+
+    pipeline = Pipeline([('polynomial_features', polynomial_features), ('linear_regression', linear_regression), ])
+    pipeline.fit(X[:, np.newaxis], Y)
                 </code></pre><br />
             <p class="card-text">
-                Pomoću ovog koda odredjujemo 'teritoriju' svake klase, predvidja se njihova pozicija koristeći 
-                klasifikator sa kojim radi, i dodaje ga na koordinatni sistem.
+                U prva dva reda koda definišemo to, da želimo da imamo tri koordinatna sistema na jednom prozoru. 
+                Kroz svaku iteraciju (3 ukupno) definišemo lokacije na mestima 1,2,3. <br /><br />
+                U trećem redu koda kreiramo regresiju koju koristimo u datom koordinatnom sistemu i gde određujemo
+                red polinomske funkcije (degree) koju smo definisali nizom nazvanom red_jednacine.<br /><br />
+                U narednom delu koristimo Pipeline koja pripada Scikit-learn biblioteci. Svrha pipeline biblioteke
+                je da sklopi nekoliko koraka koji se mogu unakrsno proveriti zajedno dok se postavljaju različiti 
+                parametri. Omogućava nam da kroz korišćenje for petlje proveravamo koji red polinomske regresije 
+                se koristi i kako će ona biti formirana ( prvi red kao linearna, bilo koja nakon toga kao polinomska).<br /><br />
+                Sada testiramo kod za stepen=1 (linearni model), stepen=4 (regresija polinoma 4. reda) i stepen=30 
+                (prilagođavanje polinoma 30. visokog reda). Grafikoni pokazuju predviđene vrednosti i za različite 
+                vrednosti stepena. Jasno je primećeno da stepen=1 dovodi do nedovoljnog prilagođavanja (underfitting
+                kao sinusna funkcija), dok stepen=30 dovodi do preteranog prilagođavanja (overfitting kao kosinusna 
+                funkcija). np.newaxis nam uvećava dimenziju nekog niza, što je potrebno iskoristiti u fit funkciji za
+                vrednost X kako bi se popunio dvodimenzionalan koordinatni sistem. Vrednost Y popunjavamo unutar X-a, 
+                tako da nije potrebno povećati dimenziju vrednosti Y, ali bi kod funkcionisao identično ako bi to uradili.
             </p>
             <pre class="python-exec"> <code>	
-    ax.set_xlim(xx.min(), xx.max())
-    ax.set_ylim(yy.min(), yy.max())
-    ax.set_xticks(())
-    ax.set_yticks(())
+    plt.plot(X, pipeline.predict(X[:, np.newaxis]), c = 'r')
+    plt.plot(X, funkcija(X))
+    plt.scatter(X, Y, s = 10)
+
+    plt.xlabel('X')
+    plt.ylabel('Y')
+
+    plt.xlim((0, 1))
+    plt.ylim((-2, 2))
+
+    plt.title('Degree {}'.format(red_jednacine[i]))
                 </code></pre><br />
             <p class="card-text">
-                Ovaj deo teksta je prethodno odradjen za prvu koordinatnu osu na kome su predstavljene
-                samo tačke, tako da je potrebno to odraditi i za ove ostale ose.
+                U ovom drugom delu for petlje popunjavamo vrednosti u koordinatnim sistemima kao i linije koje ukazuju 
+                na regresiju. Prvi deo plt.plot popunjava regresijom u odnosu na red polinomske regresije. Drugi plt.plot 
+                popunjava regresiju u zavisnosti od vrednosti koje su unesene u koordinatni sistem. Plt.scatter popunjava
+                tačkama koordinatni sistem iz vrednosti X i Y. <br /><br />
+                plt.xlabel i plt.ylabel definiše naziv X i Y ose dok plt.xlim i plt.ylim definiše od koje do koje 
+                vrednosti se prikazuje koordinatni sistem (vrednosti sa kojima se radi u ovom primeru su uglavnom u
+                decimalnom zapisu od nule do jedinice).  Plt.title ispisuje naziv iznad koordinatnog sistema koji je
+                red polinomske regresije.<br /><br />
+                Kompletan kod primera sa rezultatima je ispisan ispod teksta.
             </p>
-            <pre class="python-exec"> <code>	
-    if i == 2:
-        ax.set_title('Nearest Neighbors')
-    elif i == 3:
-        ax.set_title('Gaussian Process')
-    elif i == 4:
-        ax.set_title('Decision Tree')
-    elif i == 5:
-        ax.set_title('Neural Net')
-                </code></pre><br />
-            <p class="card-text">
-                Prolaskom kroz jednu IF petlju proveriće se sa kojom se klasifikacijom radi, i dodaće tekst 
-                iznad svake koordinatne ose radi bolje preglednosti rezultata.
-            </p>
-            <pre class="python-exec"> <code>	
-    ax.text(xx.max() - 0.3, yy.min() + 0.3, ('%.2f' % score), size = 15, horizontalalignment = 'right')
-    i += 1
-                </code></pre><br />
-            <p class="card-text">
-                Poslednji deo koda koji dodaje score, odnosno preciznost klasifikacije u donjem desnom uglu 
-                svakog koordinatnog sistema. Rezultat pri pokretanju koda je sledeći:
-            </p>
-            <div class="col-md-12">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/vezba4PrimerRezultat.png")">
-            </div><br />
-            <h4 align="center">Kompletan kod primera</h4><br />
             <pre class="python-exec"> <code>	
     import numpy as np
     import matplotlib.pyplot as plt
-    import pandas as pd
 
-    from sklearn.neighbors import KNeighborsClassifier
-    from sklearn.gaussian_process import GaussianProcessClassifier
-    from sklearn.tree import DecisionTreeClassifier
-    from sklearn.neural_network import MLPClassifier
+    from sklearn.pipeline import Pipeline
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
 
-    classifiers = [
-        KNeighborsClassifier(),
-        GaussianProcessClassifier(),
-        DecisionTreeClassifier(),
-        MLPClassifier(max_iter = 1000)
-    ]
+    np.random.seed(0)
+    broj_vrednosti = 30
+    red_jednacine = [1, 4, 30]
 
-    df = pd.read_csv('https://raw.githubusercontent.com/Milenkovic997/CSV/main/Klasifikacija.csv')
-    X = df[['X', 'Y']].values
-    y = df['K'].values
+    def funkcija(X):
+        return np.cos(1.5 * np.pi * X)
 
-    figure = plt.figure(figsize = (15, 3))
-    x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
-    y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+    X = np.sort(np.random.rand(broj_vrednosti))
+    Y = funkcija(X) + np.random.rand(broj_vrednosti) * 0.1
 
-    i = 1
-    ax = plt.subplot(1, len(classifiers) + 1, i)
-    ax.scatter(X[:, 0], X[:, 1], c = y, edgecolors = 'k')
-    ax.set_xlim(xx.min(), xx.max())
-    ax.set_ylim(yy.min(), yy.max())
-    i += 1
+    plt.figure(figsize = (15, 5))
+    for i in range(len(red_jednacine)):
+        ax = plt.subplot(1, len(red_jednacine), i + 1)
+        plt.setp(ax, xticks = (), yticks = ())
 
-    for clf in classifiers:
-        ax = plt.subplot(1, len(classifiers) + 1, i)
-        clf.fit(X, y)
-        score = clf.score(X, y)
+        polynomial_features = PolynomialFeatures(degree = red_jednacine[i])
+        linear_regression = LinearRegression()
 
-        Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
-        Z = Z.reshape(xx.shape)
-        ax.contourf(xx, yy, Z, alpha = 0.8)
-        ax.scatter(X[:, 0], X[:, 1], c= y, edgecolors = 'k')
+        pipeline = Pipeline([('polynomial_features', polynomial_features), ('linear_regression', linear_regression), ])
+        pipeline.fit(X[:, np.newaxis], Y)
 
-        ax.set_xlim(xx.min(), xx.max())
-        ax.set_ylim(yy.min(), yy.max())
-        ax.set_xticks(())
-        ax.set_yticks(())
+        plt.plot(X, pipeline.predict(X[:, np.newaxis]), c = 'r')
+        plt.plot(X, funkcija(X))
+        plt.scatter(X, Y, s = 10)
 
-        if i == 2:
-            ax.set_title('Nearest Neighbors')
-        elif i == 3:
-            ax.set_title('Gaussian Process')
-        elif i == 4:
-            ax.set_title('Decision Tree')
-        elif i == 5:
-            ax.set_title('Neural Net')
+        plt.xlabel('X')
+        plt.ylabel('Y')
 
-        ax.text(xx.max() - 0.3, yy.min() + 0.3, ('%.2f' % score), size = 15, horizontalalignment = 'right')
-        i += 1
+        plt.xlim((0, 1))
+        plt.ylim((-2, 2))
 
-    plt.tight_layout()
+        plt.title('Degree {}'.format(red_jednacine[i]))
     plt.show()
                 </code></pre><br />
+            <div class="col-md-12">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/vezba3Slika1.png")">
+            </div><br />
             </div>
           </div>
 
@@ -505,73 +329,55 @@
             </div>
             <div class="card-body">
                 <p class="card-text">
-                    Korišćene CSV fajla koji je dodat ispod teksta, potrebno je formirati klasifikaciju za gejzere, 
-                    koja po podacima za njeno trajanje, vreme čekanja i tipa, formirati klasifikaciju koja odvaja dva
-                    tipa koristeći klasifikaciju neuronskih mreža. Napraviti tri koordinatna sistema gde bi prvi predstavio
-                    vrednosti sa tačkama, drugi kao klasifikaciju NM sa 50 i 1000 iteracija.<br /><br />
-                    <i>*Napomena*</i><br />
-                    S obzirom da se boje obeležavaju vrednostima za tip, pre dodele vrednosti promenljivama potrebno 
-                    je zameniti sve vrednosti tipa string u brojne vrednosti 0 i 1.
-                </p>
-                <a href="@Url.Content("~/Media/Vezba 4/geyser.csv")" download>Download - geyser.csv</a>
-                <p class="card-text"><br />
-                    Primer kako bi rezultat trebao da izgleda je kao na slici:
+                    Napraviti polinomsku regresiju drugog stepena sa CSV fajlom koji sadrži samo kolonu X sa
+                    vrednostima od -10 do 10. Napisati funkciju koja formira vrednost Y dobijenu funkcijom 
+                    Y = 3X^2 + 6. Vrednosti koje se unose u koordinatni sistem obeležiti velikim slovom X zelenom 
+                    bojom, dok regresiju obeležiti žutom bojom. Na prozoru dodati još jedan koordinatni sistem na
+                    kome je prikazan underfitting. Primer kako rezultat treba da izgleda nakon pokretanja koda je sledeći:
                 </p><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/vezba4Zadatak1.png")">
+                <div class="col-md-10 offset-md-1">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 4/vezba3Slika2.png")">
                 </div><br />
-                <h4 align="center">Rešenje zadatka</h4><br />
+                <h4 align="center">Rešenje</h4>
+                <a href="@Url.Content("~/Media/Vezba 4/OveriUnder.csv")" download>Download - OveriUnder.csv</a><br /><br />
                 <pre class="python-exec"> <code>	
     import numpy as np
     import matplotlib.pyplot as plt
+    from sklearn.pipeline import Pipeline
+    from sklearn.preprocessing import PolynomialFeatures
+    from sklearn.linear_model import LinearRegression
     import pandas as pd
-    from sklearn.neural_network import MLPClassifier
 
-    broj_iteracija = [50, 1000]
-    classifiers = [
-        MLPClassifier(max_iter = broj_iteracija[0]),
-        MLPClassifier(max_iter = broj_iteracija[1])
-    ]
+    df = pd.read_csv('OveriUnder.csv')
+    red_jednacine = [1, 2]
 
-    df = pd.read_csv('geyser.csv')
-    X = df[['duration', 'waiting']].values
-    y = df['kind'].values
+    def funkcija(X):
+        return 3 * np.power(X, 2) + 6
 
-    y = [1 if element == 'short' else element for element in y]
-    y = [0 if element == 'long' else element for element in y]
+    X = df['X']
+    Y = funkcija(X)
+    
+    plt.figure(figsize = (10, 5))
+    for i in range(len(red_jednacine)):
+        ax = plt.subplot(1, len(red_jednacine), i + 1)
+        plt.setp(ax, xticks = (), yticks = ())
 
-    figure = plt.figure(figsize = (12, 4))
-    x_min, x_max = X[:, 0].min() - 5, X[:, 0].max() + 5
-    y_min, y_max = X[:, 1].min() - 5, X[:, 1].max() + 5
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+        polynomial_features = PolynomialFeatures(degree = red_jednacine[i])
+        linear_regression = LinearRegression()
 
-    i = 1
-    ax = plt.subplot(1, len(classifiers) + 1, i)
-    ax.scatter(X[:, 0], X[:, 1], c = y, edgecolors = 'k')
-    ax.set_xlim(xx.min(), xx.max())
-    ax.set_ylim(yy.min(), yy.max())
-    i += 1
+        pipeline = Pipeline([('polynomial_features', polynomial_features), ('linear_regression', linear_regression), ])
+        pipeline.fit(X[:, np.newaxis], Y)
 
-    for clf in classifiers:
-        ax = plt.subplot(1, len(classifiers) + 1, i)
-        clf.fit(X, y)
-        score = clf.score(X, y)
+        plt.plot(X, pipeline.predict(X[:, np.newaxis]), c = 'y')
+        plt.scatter(X, Y, marker = 'X', c = 'g')
 
-        Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1]
-        Z = Z.reshape(xx.shape)
-        ax.contourf(xx, yy, Z, alpha = 0.8)
-        ax.scatter(X[:, 0], X[:, 1], c= y, edgecolors = 'k')
+        plt.xlabel('X')
+        plt.ylabel('Y')
 
-        ax.set_xlim(xx.min(), xx.max())
-        ax.set_ylim(yy.min(), yy.max())
-        ax.set_xticks(())
-        ax.set_yticks(())
+        plt.xlim((-10, 10))
+        plt.ylim((0, 300))
 
-        ax.set_title('Neural Net {:d} Iterations'.format(broj_iteracija[i - 2]))
-        ax.text(xx.max() - 0.3, yy.min() + 0.3, ('%.2f' % score), size = 15, horizontalalignment = 'right')
-        i += 1
-
-    plt.tight_layout()
+        plt.title('Stepen: {}'.format(red_jednacine[i]))
     plt.show()
                 </code></pre>
             </div>

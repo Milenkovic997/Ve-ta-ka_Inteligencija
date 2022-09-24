@@ -1,4 +1,4 @@
-﻿<title>Vežba 2 - Linearne i Polinomske Regresije</title>
+﻿<title>Vežba 2 - Binarna Stabla Pretrage</title>
 <style>
       .sticky {
         position: sticky;
@@ -21,45 +21,45 @@
             </h4>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                <a class="nav-link active" href="#objasnjenje">
+                <a class="nav-link active" href="#oblast">
                     <span data-feather="home"></span>
-                    Objašnjenje
+                    Objašnjenje oblasti 
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#linearnaregresija">
+                <a class="nav-link" href="#kod">
                     <span data-feather="file"></span>
-                    Linearne Regresije
+                    Objašnjenje koda
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#kodlinearne">
+                <a class="nav-link" href="#node ">
                     <span data-feather="shopping-cart"></span>
-                    Objašnjenje Koda
+                    Node 
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#viselinearnih">
+                <a class="nav-link" href="#build ">
                     <span data-feather="users"></span>
-                    Više Regresija
+                    Build 
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#3dlinearne">
+                <a class="nav-link" href="#tree">
                     <span data-feather="bar-chart-2"></span>
-                    3D Linearne Regresije
+                    Tree 
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#polinomska">
+                <a class="nav-link" href="#ispis">
                     <span data-feather="layers"></span>
-                    Polinomska Regresija
+                    Ispis čvorova
                 </a>
                 </li>
             </ul>
 
             <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-               <div class="card-header text-left" style="padding-left:0px; color:black">
+                <div class="card-header text-left" style="padding-left:0px; color:black">
 							<span>Reference</span>
 						</div>
                 <a class="d-flex align-items-center text-muted" >
@@ -68,21 +68,21 @@
             </h4>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
-                <a class="nav-link" href="https://www.analyticsvidhya.com/blog/2021/07/all-you-need-to-know-about-polynomial-regression/" target="_blank">
+                <a class="nav-link" href="https://www.geeksforgeeks.org/binarytree-module-in-python/" target="_blank">
                     <span data-feather="file-text"></span>
-                    Analytics Vidhya
+                    GeeksForGeeks
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="https://www.javatpoint.com/machine-learning-polynomial-regression" target="_blank">
+                <a class="nav-link" href="https://www.tutorialspoint.com/python_data_structure/python_binary_tree.htm" target="_blank">
                     <span data-feather="file-text"></span>
-                    java T point
+                    tutorialspoint
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="https://medium.com/analytics-vidhya/understanding-polynomial-regression-5ac25b970e18" target="_blank">
+                <a class="nav-link" href="https://www.programiz.com/dsa/binary-tree" target="_blank">
                     <span data-feather="file-text"></span>
-                    Medium
+                    Programiz
                 </a>
             </ul>
             </div>
@@ -90,482 +90,224 @@
 
         <div class="col-lg-10 pt-3">
           <div class="text-center card-header">
-              <h4>LINEARNE I POLINOMSKE REGRESIJE</h4>
+              <h4>BINARNA STABLA PRETRAGE</h4>
           </div>
 
           <br />
-          <div class="card" id="objasnjenje">
+          <div class="card" id="oblast">
             <div class="card-header text-center">
             <h4 style="color: #151515">Objašnjenje oblasti</h4>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    Regresioni logaritmi, u oblastima veštačke inteligencije, se koriste za predvidjanje 
-                    konstantnih vrednosti, koji se formiraju u odnosu na već postojeće vrednosti koje 
-                    korisnik definiše. U materijalu postavljenom na sajtu, radiće se dva različita tipa 
-                    regresija. Te regresije su:
-                    <ul>
-                        <li>
-                            Linearne Regresije 
-                        </li>
-                        <li>
-                            Polinomska Regresije
-                        </li>
-                    </ul>
-
-                    Kako bi se ovi logaritmi realizovali u python-u, potrebno je koristiti posebne 
-                    biblioteke koje se moraju instalirati unutar samog python projekta. Instalacija 
-                    se izvršava unošenjem komande u terminalu PyCharm aplikacije.<br />
-                    Python biblioteke sa kojima se realizuju ove regresije su:<br /><br />
-                    <ul>
-                        <li>
-                            NumPy: To je matematička biblioteka za rad sa n-dimenzionalnim nizovima u Python-u, 
-                            koja nam omogućava da efikasno vršimo proračune. Kod za terminal sa kojim instaliramo 
-                            biblioteku je:
-                            <p class="bgText"> pip install numpy </p>
-                        </li>
-                        <li>
-                            Matplotlib: To je paket za crtanje I kreiranje 2D I 3D grafika. Biblioteku koristimo 
-                            kako bismo u kordinatnom sistemu ispisali sve vrednosti za realizovanje regresija.
-                            Kod za terminal sa kojim instaliramo biblioteku je:
-                            <p class="bgText"> pip install matplotlib </p>
-                        </li>
-                        <li>
-                            Scikit-learn: To je biblioteka koja sadrži algoritame za klasifikaciju, regresiju i 
-                            grupisanje. Kod za terminal sa kojim instaliramo biblioteku je:
-                            <p class="bgText"> pip install scikit-learn </p>
-                        </li>
-                        <li>
-                            Pandas: To je Python paket koji obezbeđuje brze, fleksibilne i ekspresivne 
-                            strukture podataka. Kod za terminal sa kojim instaliramo biblioteku je:
-                            <p class="bgText"> pip install pandas </p>
-                        </li>
-                    </ul>
+                <p class="card-text">Binarno stablo je struktura podataka u kojoj svaki čvor <b>(Node)</b> ili vrh <b>(Leaf)</b> ima najviše dve grane <b>(Branch)</b>. 
+                    U Python-u, binarno stablo može biti predstavljeno na različite načine sa različitim strukturama podataka
+                    i prikazima klasa za čvor. Biblioteka binarnog stabla pomaže u direktnoj implementaciji
+                    binarnog stabla i importuje sa sledećim kodom:
+                    <p class="bgText"> pip install binarytree </p>
+                    Primer jednog ovakvog binarnog stabla pretrage se može videti na slici ispod:
+                    <div class="col-md-8 offset-md-2">
+                        <br />
+                        <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba1slika1.png")">
+                    </div>
                 </p>
             </div>
           </div>
 
           <br />
-          <div class="card" id="linearnaregresija">
-            <div class="card-header text-center">
-                <h4 style="color: #151515">Objašnjenje Linearne Regresije</h4>
-            </div>
-            <div class="card-body">
-            <p class="card-text">Linearna regresija je statistički pristup koji modelira odnos 
-                između ulaznih karakteristika i izlaza. Naš cilj ovde je da predvidimo vrednost
-                izlaza na osnovu ulaznih karakteristika množenjem sa njegovim optimalnim koeficijentima.
-                Korišćenjem matplotlib biblioteke kao i tabele koju učitavamo u CSV formatu, 
-                formiramo koordinatni sistem sa svim vrednostima iz te tabele i odredjujemo kako
-                funkcioniše linearna regresija za zadate ulazne vrednosti. Primer kako bi izgledao 
-                koordinatni sistem sa svim ulaznim podacima je sledeći:</p><br />
-            <div class="col-md-8 offset-md-2">
-                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika1.png")">
-            </div><br />
-            <p class="card-text">Koordinatni sistem je formiran sa podacima koji su u excel tabeli zapisane na sledeći način:</p>
-                
-            <div class="row justify-content-center">
-                <div class="col-auto">
-                <table class="table table-responsive">
-                    <thead>
-                    <tr>
-                        <th scope="col">Kolona 1</th>
-                        <th scope="col">Kolona 2</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1986</td>
-                        <td>1485</td>
-                    </tr>
-                    <tr>
-                        <td>1987</td>
-                        <td>2846</td>
-                    </tr>
-                    <tr>
-                        <td>1988</td>
-                        <td>5790</td>
-                    </tr>
-                    <tr>
-                        <td>1989</td>
-                        <td>6240</td>
-                    </tr>
-                    <tr>
-                        <td>1990</td>
-                        <td>7156</td>
-                    </tr>
-                    <tr>
-                        <td>1991</td>
-                        <td>5846</td>
-                    </tr>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-                <p class="card-text">Nakon popunjavanja samog koordinatnog sistema sa podacima iz tabele,
-                    formiramo pravu liniju (zato što pronalazimo <b>linearnu</b> regresiju) i dodajemo je na
-                    sam grafik. Linija se automatski dodaje, po uglu takvom da prilikom ispitivanja jedne
-                    vrednosti ( nebitno da li se nalazi na X ili Y osi) možemo predvideti drugu vrednosti,
-                    korišćenjem te same linije. Podrazumeva se da sa više vrednosti imaćemo što preciznije
-                    rezultate za predvidjanje.</p>
-            </div>
-          </div>
-
-          <br />
-          <div class="card" id="kodlinearne">
+          <div class="card" id="kod">
             <div class="card-header text-center">
             <h4 style="color: #151515">Kod u Python-u i Objašnjenje Koda</h4>
             </div>
             <div class="card-body">
-                <p class="card-text">Za početak, dodajemo sve biblioteke koje su nam potrebne kako bismo
-                    formirali regresiju (komanda za instalaciju biblioteka se nalazi na početku stranice,
-                    sa crnom pozadinom teksta). Potrebne biblioteke su pandas, matplotlib i scikit-learn.
-                    To radimo na sledeći način:</p>
-                <pre class="python-exec"> <code>	
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    from sklearn import linear_model
-                </code></pre><br />
-                <p class="card-text">Reč 'as' nam ukazuje to, da kada koristimo biblioteku, kako bi pozvali
-                    neku funkciju koju biblioteka definiše, pozivamo je pomoću reči kojom tu biblioteku 
-                    definišemo (ako gledamo prvi red, umesto da pozovemo funkciju kao pandas.funkcija, 
-                    rekli bi pd.funkcija, čisto kako bismo skratili samu reč i napravili kod preglednijim).<br /><br />
-                    Od ovih 3 biblioteka, pandas nam omogućuje da dodamo tabelu sa podacimo koje želimo da 
-                    raspodelimo na koordinatnom sistemu. Matplotlib nam vizuelno kreira koordinatni sistem 
-                    kako bi korisnik mogao da vidi kako izgleda raspored svih vrednosti u koordinatnom sistemu.
-                    Scikit-learn (sklearn) nam generiše linearnu regresiju pomoću koje možemo vršiti 
-                    predvidjanja na vrednostima koje korisnik želi.
-                </p>
-                <pre class="python-exec"><code>	
-    df = pd.read_csv('IncomePerHomeAverage.csv')
-
-    plt.scatter(df['year'], df['income'])
-
-    plt.xlabel('Year')
-    plt.ylabel('Income')
-
-    plt.show() 
-                </code></pre><br />
-                <p class="card-text">U ovom delu koda formiramo vizuelni koordinatni sistem. Korišćenjem reči 
-                    pd kao biblioteku pandas i funkcije read_csv(), učitavamo sve podatke (fajl sa ekstenzijom
-                    .csv čuvamo iz excel tabele tako što, prilikom čuvanja fajla, odaberemo 'save as' sa opcijom
-                    'CSV (comma delimited)' i čuvamo u projektnom folderu u kome nam se nalazi python kod).<br /><br />
-                    plt.scatter() (funkcija iz biblioteke matplotlib) uzima vrednosti iz tabele i rasporedjuje
-                    u koordinatni sistem. Označavamo prvu kolonu (naziv kolone) kao vrednosti koje odgovaraju 
-                    X osi, dok druga kolona odgovara Y osi.<br /><br />
-                    plt.xlabel i plt.ylabel nam jednostavno obeležbava koje vrednosti se nalaze na X a koje na 
-                    Y osi u vidu labele. plt.show() kreira prozor koji prikazuje koordinatni sistem.<br /><br />
-                    Pokretanjem koda, sa csv fajlom koji je dodat ispod ovog teksta, prikazuje nam se sledeći grafik:
-                </p>
-                <a href="@Url.Content("~/Media/Vezba 2/IncomePerHomeAverage.csv")" download>Download - IncomePerHomeAverage.csv</a>
-                <div class="col-md-8 offset-md-2"><br />
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika2.png")">
-                </div><br />
-                <p class="card-text">Nakon formiranja i upisivanja svih vrednosti, potrebno je formirati 
-                    linearnu regresiju i napraviti prekiciju. To činimo na sledeći način:
-                </p>
-                <pre class="python-exec">
+                <p class="card-text">Da bi se realizovalo jedno binarno stablo u python-u, na samom početku je potrebno uvesti samu biblioteku
+                    koju ste prethodno instalirali u svom projektu i povući sve funkcije koje se nalaze u toj biblioteci
+                </p><br />
+               <pre class="python-exec">
                 <code>	
-    reg = linear_model.LinearRegression()
-    reg.fit(df[['year']], df[['income']])
-    plt.plot(df.year, reg.predict(df[['year']]), color = 'red')
-
-    predictPrice = reg.predict([[2020]])
-                </code></pre><br />
-                <p class="card-text">Promenljiva reg definišemo kao model linearne regresije. Modelu preko funkcije 
-                    fit, dodajemo vrednosti i preko funkcije plot iz matplotlib biblioteke, generišemo pravu liniju 
-                    unutar koordinatnog sistema.<br /><br />
-                    U .CSV fajlu imamo definisanu kolonu 1 za godinu koja se prati i kolonu 2 koja nam ukazuje koliko
-                    dolara ($) prosečno zaradjuje jedno domaćinstvo. Korišćenjem funkcije predict, predvidjamo kolika
-                    će biti prosečna zarada jednog domaćinstva 2020-te godine i tu vrednost pamtimo u promenljivoj 
-                    predictPrice. Preostali korak je ispisati te vrednosti: 
-                </p>
-                <pre class="python-exec">
-                <code>	
-    print('Predikcija (P) : ', predictPrice)
-    print('Koeficijent (K) : ', reg.coef_)
-    print('Intercept (B) : ', reg.intercept_)
-                </code></pre><br />
-                <p class="card-text">
-                    Predikcija se računa pomoću sledeće formule:<br />
-                    <h3 align="center">price = k * year + b</h3><br />
-                    Vrednost pomoću koje radimo predikciju je godina, što smo definisali kada smo generisali plt.plot.
-                    K nam predstavlja koeficijent dok B je intercept vrednost (ove vrednosti nam nisu korisne kako bi 
-                    dobili rezultat koji pokušavamo da predvidimo, definisano je čisto kako bismo mogli lično proveriti).
-                    Rezultat koda nakon pokretanja je:
-                </p>
-                <!---->
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika3.png")">
-                </div>
-                <p class="card-text"> <br />Dok koordinatni sistem koji je generisan sa plt.show() funkcijom izgleda ovako: </p>
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika4.png")">
-                </div>
-                <p class="card-text"> <br />Kompletan kod je napisan na sledeći način: </p>
-                <pre class="python-exec">
-                <code>	
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    from sklearn import linear_model
-
-    df = pd.read_csv('IncomePerHomeAverage.csv')
-
-    plt.scatter(df['year'], df['income'])
-
-    plt.xlabel('Year')
-    plt.ylabel('Income')
-
-    reg = linear_model.LinearRegression()
-    reg.fit(df[['year']], df[['income']])
-    plt.plot(df.year, reg.predict(df[['year']]), color = 'red')
-
-    predictPrice = reg.predict([[2020]])
-
-    print('Predikcija (P) : ', predictPrice)
-    print('Koeficijent (K) : ', reg.coef_)
-    print('Intercept (B) : ', reg.intercept_)
-
-    plt.show()
-                </code></pre>
-            </div>
-          </div>
-
-          <br />
-          <div class="card" id="viselinearnih">
-            <div class="card-header text-center">
-            <h4 style="color: #151515">Više linearnih regresija na jednom grafiku</h4>
+    from binarytree import *</code>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    Ukoliko želimo da prikažemo više različitih linearnih regresija na jednom grafiku, kako bismo 
-                    videli razliku izmedju više vrednosti različitih tabela, i kako se regresija razlikuje izmedju 
-                    njih, predstavljamo na sledeći način: 
-                </p><br />
-                <pre class="python-exec"> <code>	
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    from sklearn import linear_model
-
-    df1 = pd.read_csv('cig1.csv')
-    df2 = pd.read_csv('cig2.csv')
-    df3 = pd.read_csv('cig3.csv')
-
-    plt.scatter(df1['year'], df1['cigperyear'], color = 'red', marker = '+')
-    plt.scatter(df2['year'], df2['cigperyear'], color = 'blue', marker = '+')
-    plt.scatter(df3['year'], df3['cigperyear'], color = 'green', marker = '+')
-
-    plt.xlabel('Year')
-    plt.ylabel('Cig per person')
-
-    reg = linear_model.LinearRegression()
-
-    reg.fit(df1[['year']], df1.cigperyear)
-    plt.plot(df1.year.values, reg.predict(df1[['year']]), color = 'red')
-    
-    reg.fit(df2[['year']], df2.cigperyear)
-    plt.plot(df2.year.values, reg.predict(df2[['year']]), color = 'blue')
-
-    reg.fit(df3[['year']], df3.cigperyear)
-    plt.plot(df3.year.values, reg.predict(df3[['year']]), color = 'green')
-
-    plt.show()
-                </code></pre>
-                <p class="card-text"><br />
-                    U ovom primeru smo koristili tri različite tabele, koje sadrže kolonu za godinu i kolonu koja 
-                    beleži prosečan broj cigara po osobi na godišnjem nivou. Tri tabele beleže po 30 vrednosti (za
-                    svaku godinu od 1970 do 2000) za tri različite države. Sve tri tabele su prikačene ispod ovog 
-                    teksta, spremne za preuzimanje. 
-                </p>
-                <a href="@Url.Content("~/Media/Vezba 2/cig1.csv")" download>Download - cig1.csv</a><br />
-                <a href="@Url.Content("~/Media/Vezba 2/cig2.csv")" download>Download - cig2.csv</a><br />
-                <a href="@Url.Content("~/Media/Vezba 2/cig3.csv")" download>Download - cig3.csv</a><br /><br />
-                <p class="card-text">
-                    Razliku izmedju sve tri grupe vrednosti dobijamo tako što, prilikom popunjavanja vrednosti u 
-                    koordinatnom sistemu (plt.scatter) i formiranjem linije koja ukazule na linearnu regresiju 
-                    (plt.plot), definišemo boju koja je različita od ostalih. Nije obavezno, ali čisto radi demonstriranje,
-                    promenili smo i oblik tačaka iz kružića u +. Pokretanjem koda dobijamo sledeći grafik: 
-                </p><br />
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika5.png")">
-                </div>
-            </div>
-          </div>
-
-          <br />
-          <div class="card" id="3dlinearne">
-            <div class="card-header text-center">
-            <h4 style="color: #151515">Linearne regresije sa više vrednosti i formiranje trodimenzionalnih grafika</h4>
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                    U nekim situacijama nam dve kolone nisu dovoljne, i predikcije moramo raditi sa više parametara. 
-                    U nastavku će biti objašnjen primer u kome se koristi .CSV fajl sa pet kolona koje opisuju razne
-                    automobile (naziv auta, model, zapremina, težina, CO2) i formira se predikcija za CO2 nad vrednostima 
-                    za zapreminu i težinu koje korisnik unosi. Sobzirom da se sada radi sa tri vrednosti umesto sa dve,
-                    dvodimenzionalni koordinatni sistem predstavljamo u 3D prostoru (nije obavezno formirati i prikazati 
-                    koordinatni sistem da bi se došlo do predikcije sa ulaznim vrednostima, grafici se formiraju kako bi 
-                    imali vizuelni prikaz svih vrednosti u tabeli). CSV fajl na kome se radi je prikačen ispod teksta, kao i tekst koda:
-                </p>
-                <a href="@Url.Content("~/Media/Vezba 2/carsSpecifications.csv")" download>Download - carsSpecifications.csv</a><br /><br />
-                <pre class="python-exec"> <code>	
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    from sklearn import linear_model
-
-    df = pd.read_csv('carsSpecifications.csv')
-    
-    x = df.Volume
-    y = df.Weight
-    z = df.C02
-
-    fig = plt.figure()
-    pltfig = fig.gca(projection = '3d')
-    pltfig.scatter(x, y, z, s = 50)
-    
-    pltfig.set_xlabel('Volume')
-    pltfig.set_ylabel('Weight')
-    pltfig.set_zlabel('C02')
-
-    X = df[['Weight', 'Volume']].values
-    Y = df['C02']
-
-    reg = linear_model.LinearRegression()
-    reg.fit(X, Y)
-
-    pred_weight = 2300
-    pred_volume = 1300
-
-    predictC02 = reg.predict([[pred_weight, pred_volume]])
-
-    print('Predvidjen C02 za: [Weight:', pred_weight, '] i [Volume: ', pred_volume, '] je', predictC02[0])
-
-    plt.show()
-                </code></pre>
-                <p class="card-text"><br />
-                    Rezultat pokretanja koda bi dao rezultat "Predvidjen CO2 za: [ Weight: 2300 ] i [ Volume: 1300 ] je 
-                    107.20873279892223" u ovoj situaciji. Korišćenjem funkcija reg.coef_ vratiće dva koeficijenta (zato 
-                    što predvidjamo sa dve vrednosti) i to [0.00755095 0.00780526] i funkcija reg.intercept_ (vrednosti b
-                    iz formule) koja bi vratila vrednost 79.69471929115937. Formula u ovakvoj situaciji bi se postavila 
-                    na sledeći način:
-                </p>
-                <h3 align="center">CO2 = k1 * Weight + k2 * Volume + b</h3><br />
-                <p class="card-text">
-                    Grafik, koji kao što je pomenuto je predstavljem u trodimenzionalnom prostoru, formiran je na sledeći način:
+                <p class="card-text">Na ovaj način ste uvezli sve potrebne funkcije od kojih su [ Node, build, tree]. Node funkciju ćemo koristiti 
+                    za konkretno definisanje Node-a, odnosno čvora jednog stabla. Build se koristi da bi se kreiralo stablo od niza podataka i 
+                    tree za kreiranje nasumičnih vrednosti stabla sa dodatnim specifikacijama koji se mogu dodatno definisati. O ovim funkcijama će detaljno
+                    biti rečeno u narednom delu stranice.
                 </p>
             </div>
-            <video src="@Url.Content("~/Media/Vezba 2/3D Linearna Regresija.mp4")" controls></video>
           </div>
           
           <br />
-          <div class="card" id="polinomska">
+          <div class="card" id="node">
             <div class="card-header text-center">
-            <h4 style="color: #151515">Polinomska Regresija</h4>
+            <h4 style="color: #151515">Node</h4>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    Polinomske regresije se, za razliku od linearnih, ne izražavaju pravom linijom već zakrivljenom, 
-                    koja u odnosu na sve vrednosti predstavljene u koordinatnom sistemu predstavljaju preciznije
-                    predvidjanje nekih vrednosti. Dok se linearne predstavljaju formulom y = x, polinomske regresije 
-                    znače da se vrednost x može naći u drugom, trećem ili nekom drugom stepenu.
+                <p class="card-text">Node se koristi za kreiranje svakog zasebnog čvora stabla. Za dodelu vrednosti jednog node-a 
+                    mora se pre toga definisati "koren" tj root čvor kao početak stabla. Na taj root node se kasnije dodaju dodatni čvorovi
+                    koji su kategorizovani kao leva strana (left) i desna strana (right), na kojima se opet mogu dodavati isti itd. Primer
+                    kako bi se kreiralo jedno stablo na ovaj način je:
                 </p><br />
-                <div class="col-md-12">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/PolinominalneRegresije.png")">
-                </div>
-                <p class="card-text"><br />
-                    U narednom primeru biće predstavljen kod jednog zadatka u kome se predvidja vrednost sa polinomskom
-                    regresijom u kojoj je x na drugom stepenu. Tema pretrage je vlažnost i pritisak vremena.
-                </p>
-                <a href="@Url.Content("~/Media/Vezba 2/WeatherDataP.csv")" download>Download - WeatherDataP.csv</a><br /><br />
-                <pre class="python-exec"> <code>	
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    from sklearn.preprocessing import PolynomialFeatures
-    from sklearn.linear_model import LinearRegression
+                <pre class="python-exec">
+                <code>	
+    root = Node(1)
 
-    df = pd.read_csv('WeatherDataP.csv')
+    root.left = Node(2)
+    root.right = Node(3)
     
-    train_x = df[['Pressure']].values
-    train_y = df[['Humidity']].values
+    root.left.left = Node(4)
+    root.left.right = Node(5)
+    root.right.left = Node(6)
+    root.right.right = Node(7)
 
-    plt.scatter(df.Pressure.values, df.Humidity.values, color = 'blue')
-    plt.xlabel('Pressure')
-    plt.ylabel('Humidity')
+    root.right.right.left = Node(8)
 
-    pre_process = PolynomialFeatures(degree = 2)
 
-    x_poly = pre_process.fit_transform(train_x)
-    pr_model = LinearRegression()
-    pr_model.fit(x_poly, train_y)
+    print('Binary tree :', root)</code>                
+            </div>
+            <div class="alert alert-light" role="alert">
+                <p>Output:
+                <pre class="python-exec">
+                <code> 
+    Binary tree : 
+        __1__
+       /     \
+      2       3__
+     / \     /   \
+    4   5   6     7
+                 /
+                8</code></p>
+            </div>
+          </div>
 
-    y_pred = pr_model.predict(x_poly)
-    plt.plot(train_x, y_pred, color = 'red')
-    pred_pressure = 1007
-    y_new = pr_model.predict(pre_process.fit_transform([[pred_pressure]]))
-
-    print('Predvidjena vlažnost za [ Pressure: ', pred_pressure, '] je', y_new[0])
-
-    plt.show()
-                </code></pre>
-                <p class="card-text"><br />
-                    Kod za polinomnu regresiju, u odnosu na linearnu ima nekoliko razlika koje će sada biti objašnjene. 
-                    Počevši od samog početka, sklearn.preprocessing u trećoj liniji koda nam omogućava kreiranje same 
-                    polinomne regresije tako što definišemo stepen na kom se nalazi vrednost x. pre_process promenljiva 
-                    koju smo definisali tako da kreira grupu dizajniranu na drugom stepenu nekog broja primenjujemo na 
-                    vrednost x, koja u promenljivoj x_poly formira nove kolone koje se prate za 1, x i x na kvadrat. <br /><br />
-                    Formiranjem polinomske regresije se u grafiku definiše kao veliki broj linearnih regresije ( lako se može 
-                    primetiti po grafiku u rezultatu da linija ima uglove, umesto da je standardna kriva linija) i to se dešava
-                    oko formiranja promenljive pr_model koji definiše model koji će se prikazati kao konstantne linearne regresije
-                    od x_poly koji smo rekli da je skup kolona sa vrednostima 1, x, x^2 i naše vrednosti y.<br /><br />
-                    Jedini preostali korak je da, pošto nam je cilj da formiramo neko predvidjanje, predvidimo kolika će 
-                    biti vlažnost ako nam je pritisak 1007. Pokretanje koda dobijamo ispis u konzoli 'Predvidjena vlažnost za
-                    [ Pressure: 1007 ] je [0.7164631]'.
+          <br />
+          <div class="card" id="build">
+            <div class="card-header text-center">
+            <h4 style="color: #151515">Build</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Build funkciju koristimo kada želimo da generišemo binarno stablo od niza podataka. Kada se stablo generiše ono
+                    teži da kreira "savršeno" stablo, odnosno da svaki čvor ima levu i desnu stranu. Ukoliko želimo da ne doda čvor, koristimo reč
+                    None, ali imajući u vidu da ako kroz generisanje stabla naiđemo na taj čvor, nije moguće dodati na njega dalji čvor. Generisanje
+                    stabla se vrši redom, sa leva na desno kroz svaki red redom. Primer koda je sledeći:
                 </p><br />
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika6.png")">
-                </div>
-                <p class="card-text"><br />
-                    Primer polinomske regresije gde je y = x^3 (x na trećem stepenu) se radi na skoro identičan način, jedina 
-                    razlika je ta što se kod definisanja opisa polinomske regresije definiše kao treći stepen umesto drugog.
-                    CSV fajl za ovaj primer i kod su sledeći:
-                </p>
-                <a href="@Url.Content("~/Media/Vezba 2/testVrednostiTrećiStepen.csv")" download>Download - testVrednostiTrećiStepen.csv</a><br /><br />
-                <pre class="python-exec"> <code>	
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    from sklearn.preprocessing import PolynomialFeatures
-    from sklearn.linear_model import LinearRegression
+                <pre class="python-exec">
+                <code>	
+    nodes = [1, 2, 3, 4, 5, 6, 7, None, 9, 10]
+    root = build(nodes)
+    print('Binary tree :', root)</code>
+            </div>
+           <div class="alert alert-light" role="alert">
+                <p>Output:
+                <pre class="python-exec">
+                <code> 
+    Binary tree : 
+          _____1__
+         /        \
+      __2___       3
+     /      \     / \
+    4       _5   6   7
+     \     /
+      9   10</code></p>
+            </div>
+          </div>
+          
+          <br />
+          <div class="card" id="tree">
+            <div class="card-header text-center">
+            <h4 style="color: #151515">Tree</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Tree funkcija se koristi za random generisanje stabla sa posebnim opcijama koje možemo sami definisati.
+                     Kod pomocu kojeg to možemo uraditi je: 
+                </p><br />
+                <pre class="python-exec">
+                <code>	
+    root = tree(height = 4, is_perfect = True)</code>
+            </div> 
+            <div class="card-body">
+            <p class="card-text">U ovom delu smo kreirali nasumično stablo sa 4 nivoa (ne računajući root), i osobinom da bude "savršeno", što znači
+                da svaki čvor ima levi i desni čvor ne računajući one u 4tom nivou. Rezultat pokretanja koda je sledeći: 
+                </p><br /></div>
+           <div class="alert alert-light" role="alert">
+                <p>Output:
+                <pre class="python-exec">
+                <code> 
+    Binary tree : 
+                        _____________________10__________________
+             _________27________                          ________5________
+            /                   \                        /                 \
+         __28___              ___12___               ___9__              ___13__
+        /       \            /        \             /      \            /       \
+      _1        _20        _29        _23         _11       24        _18        14
+     /  \      /   \      /   \      /   \       /   \     /  \      /   \      /  \
+    30   7    22    4    26    8    17    19    21    6   3    15   25    0    2    16</code></p>
+            </div>
+          </div>
 
-    df = pd.read_csv('testVrednostiTrećiStepen.csv')
-    
-    train_x = df[['broj']].values
-    train_y = df[['vrednost']].values
-
-    plt.scatter(df.broj.values, df.vrednost.values, color = 'blue')
-    plt.xlabel('broj')
-    plt.ylabel('vrednost')
-
-    pre_process = PolynomialFeatures(degree = 3)
-
-    x_poly = pre_process.fit_transform(train_x)
-    pr_model = LinearRegression()
-    pr_model.fit(x_poly, train_y)
-
-    y_pred = pr_model.predict(x_poly)
-    plt.plot(train_x, y_pred, color = 'red')
-    pred_broj = 20
-    y_new = pr_model.predict(pre_process.fit_transform([[pred_broj]]))
-
-    print('Predvidjena vrednost za [ broj: ', pred_broj, '] je', y_new[0])
-
-    plt.show()
-                </code></pre> <br />
+          <br />
+          <div class="card" id="ispis">
+            <div class="card-header text-center">
+            <h4 style="color: #151515">Ispis čvorova</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Sada kada znamo sve ove načine kako formirati stablo moramo znati i kako da predstavimo rezultate u terminalu.
+                    Prvi deo je već bio predstavljen gde se samo ispisuje stablo u terminalu i "slikovitom" prikazu. Da bi se lakše predstavili čvorovi
+                    stabla postoje tri različita načina sortiranja čvorova pri njihovom ispisu u terminalu. Ta tri tipa sortiranja su:
+                    <ul>
+                        <li>
+                           <p> <b>Preorder Traversal</b> - Način sortiranja koji ispisuje čvorove krenuvši od koren čvora pa redom na levu stranu.
+                               Kada se dodje do kraja leve strane, vraća se u jedan čvor unazad pa se ispituje čvor sa desne strane, kada se tu dodje
+                               do kraja, opet se vraća polje unazad pa ispituje desni čvor i sve tako dok se ne ispišu svi čvorovi stabla. Ovaj stil
+                               sortiranja se drugačije naziva i pretraga stabla u dubinu.</p>
+                        </li>
+                        <li>
+                           <p> <b>Inorder Traversal</b> - Ovaj tip sortiranja je teško definisati kada koristik ispisuje čvorove na listu papira.
+                               Rezultat ovog sortiranja se dobija kada se na stablo ispisuju vizuelno redom čvorovi sa leva na desno tako kako 
+                               su predstavljeni u temrinalu.</p>
+                        </li>
+                        <li>
+                           <p> <b>Postorder Traversal</b> - Ovaj tip sortiranja se gleda tako što se gledajući sa leva na desno ispisuju svi čvorovi
+                               koji pripadaju čvoru koje oni nasleđuju. Kada se ispišu svi ti čvorovi onda se na isti način gleda čvor koji su nasledili.</p>
+                        </li>
+                        <li>
+                           <p> <b>Jednostavan print</b> - Ovo u suštini nije sortiranje nego jednostavan ispis svih čvorova pomoću liste. Ispisuje se tako što se gledajući
+                               sa leva na desno ispisuju redom svi čvorovi redom po novoima. Ovaj tip ispisa drugačije naziva pretraga u širinu.</p>
+                        </li>
+                    </ul>
+                </p><br />
+                <pre class="python-exec">
+                <code>	
+   Stablo : 
+             ______12________
+            /                \
+        ___3__             ___7___
+       /      \           /       \
+      6        5        _14       _9
+     / \      / \      /   \     /  \
+    8   10   0   2    11    4   13   1</code>
+            </div>
+             <div class="card-body">
                 <p class="card-text">
-                    Rezultat pokretanja koda u kome se vrši predikcija za broj 20, u konzoli ispisuje 'Predvidjena vrednost za 
-                    [ broj : 20 ] je [6601.57575758]' dok bi koordinatni sistem izgledao ovako:
-                </p><br />
-                <div class="col-md-8 offset-md-2">
-                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 2/vezba2Slika7.png")">
-                </div>
+    Lista : 12, 3, 7, 6, 5, 14, 9, 8, 10, 0, 2, 11, 4, 13, 1<br />
+    Preorder : 12, 3, 6, 8, 10, 5, 0, 2, 7, 14, 11, 4, 9, 13, 1<br />
+    Inorder : 8, 6, 10, 3, 0, 5, 2, 12, 11, 14, 4, 7, 13, 9, 1<br />
+    Postorder : 8, 10, 6, 0, 2, 5, 3, 11, 4, 14, 13, 1, 9, 7, 12<br /><br />
+    Uz običan ispis samih čvorova se dodatno može ispisati i specifikacija samog stabla. Neki od tih specifikacija su:
+                    <ul>
+                        <li>
+                           <p> <b>.size</b> - Metoda koja ispisuje broj čvorova stabla.</p>
+                        </li>
+                        <li>
+                           <p> <b>.height</b> - Metoda koja ispisuje broj nivoa stabla.</p>
+                        </li>
+                        <li>
+                           <p> <b>.leaf_count</b> - Metoda za ispis koliko lista (leaf) sadrži stablo.</p>
+                        </li>
+                        <li>
+                           <p> <b>.leaves</b> - Metoda za ispis svih lista stabla.</p>
+                        </li>
+                    </ul>
+                    Postoje još mnogo drugih metoda koje se mogu koristiti. Za širi ispis većine korisnih informacija jednog stabla se koristi .properties metoda.
+                </p>
             </div>
           </div>
         </div>

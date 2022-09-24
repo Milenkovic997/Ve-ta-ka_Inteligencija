@@ -1,0 +1,587 @@
+﻿<title>Vežba 6 - Analize i Detekcije</title>
+<style>
+      .sticky {
+        position: sticky;
+        top: 75px;
+      }
+</style>
+
+<body>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block sidebar bg-sidebar">
+            <div class="sidebar-sticky sticky">
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <div class="card-header text-left" style="padding-left:0px; color:black">
+							<span>Sadržaj</span>
+						</div>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h4>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                <a class="nav-link active" href="#objasnjenje">
+                    <span data-feather="home"></span>
+                    Objašnjenje
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#biblioteke">
+                    <span data-feather="file"></span>
+                    Biblioteke
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#primer1">
+                    <span data-feather="shopping-cart"></span>
+                    Primer 1
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#primer2">
+                    <span data-feather="shopping-cart"></span>
+                    Primer 2
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#primer3">
+                    <span data-feather="shopping-cart"></span>
+                    Primer 3
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#zadatak">
+                    <span data-feather="shopping-cart"></span>
+                    Zadatak
+                </a>
+                </li>
+            </ul>
+
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <div class="card-header text-left" style="padding-left:0px; color:black">
+							<span>Reference</span>
+						</div>
+                <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+                </a>
+            </h4>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                <a class="nav-link" href="https://towardsdatascience.com/implementing-real-time-object-detection-system-using-pytorch-and-opencv-70bac41148f7" target="_blank">
+                    <span data-feather="file-text"></span>
+                    TowardsDataScience
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="https://pyimagesearch.com/2017/09/18/real-time-object-detection-with-deep-learning-and-opencv/" target="_blank">
+                    <span data-feather="file-text"></span>
+                    PyImageSearch
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="https://data-flair.training/blogs/python-project-real-time-human-detection-counting/" target="_blank">
+                    <span data-feather="file-text"></span>
+                    DataFlair
+                </a>
+                </li>
+            </ul>
+            </div>
+        </nav>
+
+        <div class="col-lg-10 pt-3">
+          <div class="text-center card-header">
+              <h4>ANALIZE I DETEKCIJE</h4>
+          </div>
+
+          <br />
+          <div class="card" id="objasnjenje">
+            <div class="card-header text-center">
+            <h4>Objašnjenje termina</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Ljudi mogu razumeti sadržaj slike jednostavnim gledanjem. Tekst na slici doživljavamo kao tekst i možemo
+                    ga pročitati. Računari ne rade na isti način, kao i sa objektima koji su definisani na način da je samo
+                    ljudima jasno o čemu je reč. Njima je potrebno nešto konkretnije, organizovano na način koji oni razumeju.<br /><br />
+                    U prvom delu vežbi će se raditi optičko prepoznavanje znakova (OCR). Bilo da se radi o prepoznavanju
+                    tablica automobila sa kamere ili rukom pisanih dokumenata koje treba pretvoriti u digitalnu kopiju, 
+                    ova tehnika je veoma korisna. Iako nije uvek savršeno, veoma je zgodno i nekim ljudima mnogo olakšava 
+                    i brže obavlja svoj posao.
+                </p><br />
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="biblioteke">
+            <div class="card-header text-center">
+            <h4>Biblioteke</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Ljudi mogu razumeti sadržaj slike jednostavnim gledanjem. Tekst na slici doživljavamo kao tekst i možemo
+                    ga pročitati. Računari ne rade na isti način, kao i sa objektima koji su definisani na način da je samo
+                    ljudima jasno o čemu je reč. Njima je potrebno nešto konkretnije, organizovano na način koji oni razumeju.<br /><br />
+                    U prvom delu vežbi će se raditi optičko prepoznavanje znakova (OCR). Bilo da se radi o prepoznavanju
+                    tablica automobila sa kamere ili rukom pisanih dokumenata koje treba pretvoriti u digitalnu kopiju, 
+                    ova tehnika je veoma korisna. Iako nije uvek savršeno, veoma je zgodno i nekim ljudima mnogo olakšava 
+                    i brže obavlja svoj posao.
+                </p><br />
+                <div class="col-md-6 offset-md-3">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/OCR.png")">
+                </div><br />
+                <p class="card-text">
+                    Primer dat na slici iznad prikazuje tekst "Optical Character Recognition" napisanom u specifičnom fontu,
+                    koje računar analizira, i ispisuje tekst koji on predstavlja. Ovakve analize se baziraju na preciznošću,
+                    na kom utiču mnogo faktora kao što je veličina karaktera, pismo, tip fonta, rezolucija i mnogi drugi.<br /><br />
+                    U prvom python primeru koji će biti objašnjen, koristi se OCR pod nazivom Tesseract koji se mora manuelno
+                    preuzeti sa interneta i dodati u projektnom folderu na sličan način kao CSV fajlovi prethodnih nedelja. 
+                    Ovaj OCR možete preuzeti <a href="https://tesseract-ocr.github.io/tessdoc/Downloads.html" target="_blank">ovde</a>  ili 
+                    preuzeti sa dodatih .zip i .rar fajlova ispod teksta (moguće da u budučnosti, okačeni fajlovi će biti 
+                    starijih verzija, i izazvati greške u PyCharmu).
+                </p>
+                <a href="@Url.Content("~/Media/Vezba 7/Tesseract.zip")" download>Download - Tesseract.zip</a><br /><br />
+                <p class="card-text">
+                    Za razliku od prethodnih nedelja, rezultati dobijeni u ovim vežbama neće biti ispisani u koordnatim 
+                    sistemima, tako da nije potrebno koristiti matplotlib, pandas i scitlearn biblioteke. Umesto njih, 
+                    koriste se biblioteke OpenCV i Tesseract čiji importi su sledeći:
+                    <ul>
+                        <li>
+                            OpenCV:<br />
+                            <p class="bgText">pip install opencv-python</p>
+                        </li>
+                        <li>
+                            Tesseract:<br />
+                            <p class="bgText">pip install pytesseract</p>
+                        </li>
+                    </ul>
+                    OpenCV je ogromna biblioteka otvorenog koda za kompjuterski vid, mašinsko učenje i obradu slika i 
+                    sada igra glavnu ulogu u radu u realnom vremenu što je veoma važno u današnjim sistemima. Koristeći
+                    ga, možete obraditi slike i video zapise da biste identifikovali objekte, lica ili čak rukopis čoveka.
+                    Kada se integriše sa različitim bibliotekama, kao što je NumPi, pithon je sposoban da obradi strukturu 
+                    OpenCV niza za analizu. Da bismo identifikovali obrazac slike i njegove različite karakteristike,
+                    koristimo vektorski prostor i izvodimo matematičke operacije na ovim karakteristikama.
+                </p><br />
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="primer1">
+            <div class="card-header text-center">
+                <h4>Primer 1</h4>
+            </div>
+            <div class="card-body">
+            <p class="card-text">
+                U prvom primeru biće predstavljen i objašnjem python kod koji analizira sliku korišćenjem Tesseract 
+                OCR-a i ispisuje tekst sa slike u PyCharm-u. Slike koje će biti korišćene u prvom primeru su sledeće:
+            </p><br />
+            <div class="row">
+                <div class="col-md-6 offset-md-1">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/Informatika.jpg")">
+                </div>
+                <div class="col-md-4 offset-md-1">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/message.jpg")">
+                </div>
+                <div class="col-md-8 offset-md-2">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/jednacina.jpg")">
+                </div>
+            </div><br />
+            <a href="@Url.Content("~/Media/Vezba 7/ReadingTextSlike.zip")" download>Download - ReadingTextSlike.zip</a><br /><br />
+            <p class="card-text">
+                Kao što je u prethodnom tekstu napomenuto, prošle biblioteke sada neće biti korišćene, pa je potrebno 
+                pozvati nove biblioteke za ovaj primer na sledeći način:
+            </p>
+            <pre class="python-exec"> <code>	
+    import cv2
+    import pytesseract
+                </code></pre>
+            <p class="card-text"><br />
+                Deo koda koji treba da analizira učitanu sliku i ispiše šta ta slika sadrži je relativno prost i zapisuje
+                se sa samo tri linije koda:
+            </p>
+            <pre class="python-exec"> <code>	
+    pytesseract.pytesseract.tesseract_cmd = 'Tesseract/tesseract.exe'
+    img = cv2.imread('Informatika.jpg')
+    print(pytesseract.image_to_string(img))
+                </code></pre><br />
+            <p class="card-text">
+                Prva linija koda povezuje OCR koji ste prethodno preuzeli i postavili u projektni folder rada. Druga linija,
+                koristeči cv2, odnosno OpenCV biblioteku učitava sliku i u trećem redu je preko funkcije image_to_string(img)
+                analizira i ispisuje u vidu stringe šta ona sadrži. Rezultat zavisi od preciznosti analize.
+            </p>
+            <div class="col-md-10 offset-md-1">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/vezba6Resenje1.jpg")">
+            </div><br />
+            <p class="card-text">
+                Rezultat pokretanja koda daje ispis kao na slici iznad. Rezultat je poprilično precizan, što nije neobično
+                računajući da je slika sa jasnim fontom i dobrom rezolucijom. Ostali kodovi koji će biti razmotreni u ovom
+                prvom primeru imaju dodatne funkcije koje pomažu u razumevanju kako je sistem analizirao sliku, kako je 
+                sagledao karaktere i dodatne informacije o svakom karakteru ili reči.
+            </p>
+            <pre class="python-exec"> <code>	
+    boxes = pytesseract.image_to_data(img)
+    for x, b in enumerate(boxes.splitlines()):
+        if x != 0:
+            b = b.split()
+            if len(b) == 12:
+                x, y, w, h = int(b[6]), int(b[7]), int(b[8]), int(b[9])
+                cv2.rectangle(img, (x, y), (w + x, h + y), (0, 0, 255), 1)
+                cv2.putText(img, b[11], (x, y), cv2.WINDOW_NORMAL, 0.5, (50, 50, 255), 2)
+                </code></pre><br />
+            <p class="card-text">
+                Ovaj deo koda predstavlja jednu od dve varijante kako možemo videti rad OCR sistema i u kodu primera treba
+                dodati samo jedan ili drugi način analize u kome se postavljaju pravougaonici na slovima ili rečima 
+                detektovanim na slici. U ovom kodu se pravougaonici postavljaju na slovima i to funkcioniše na sledeći način:
+                <ul>
+                    <li>
+                        promeljiva boxes nam sliži kao niz koji sadrži sve potrebne podatke o lokaciji gde trebaju 
+                        pravougaonici biti smešteni, njene dužine, preciznost da to što označavaju znači nešto i njena vrednost.
+                    </li>
+                    <li>
+                        for petlju koristimo da bi se ispisale sve vrednosti, odnosne svi pravougaonici na slici. Od 
+                        funkcije boxes.splitlines() formiramo niz b, čijim pozivanjem dobija se sledeći ispis:
+                    </li>
+                </ul>
+            </p>
+            <div class="col-md-10 offset-md-1">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/vezba6Resenje2.jpg")">
+            </div><br />
+            <p class="card-text">
+                <ul>
+                    <li>
+                        Vrednosti koje su ovde od značaja za posmatranje su sledeći (prvi red koji ukazuje na to koju vrednost predstavlja nije u ravni sa ispisanim brojevima):
+                        <ul>
+                            <li>
+                                left - dvodimenzionalni niz koji predstavlja koordinate gde se nalazi pravougaonik.
+                            </li>
+                            <li>
+                                top width - dužina pravougaonika
+                            </li>
+                            <li>
+                                height - visina pravougaonika
+                            </li>
+                            <li>
+                                conf - preciznost analize (-1 ukazuje na novi red)
+                            </li>
+                            <li>
+                                text - string koji treba ispisati
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        b.split() funkcija će podeliti sve vrednosti i smestiti iz tabele u jedan dvodimenzionalan niz, 
+                        kako bi bilo lakše za korišćenje konkretnih vrednosti jednog reda
+                    </li>
+                    <li>
+                        if petlja koja proverava da li red u promenljivoj b je dužine 12 kolona ima funkciju da proveri 
+                        da li se u tom redu nalazi tekst koji je OCR pronašao i ispisao ili se radi o novom redu kog nije
+                        potrebno ispisati.
+                    </li>
+                    <li>
+                        x, y, w, h su promenljive koje definišu lokaciju, visinu i dužinu pravougaonika kog je potrebno
+                        ispisati, i te vrednosti se nalaze u redu promenljive b.
+                    </li>
+                    <li>
+                        cv2.rectange() je funkcija cv2 biblioteke koja ispisuje pravougaonik na slici. U zagradama se
+                        definiše na kojoj slici je potrebno ispisati, x i y koordinata za njenu lokaciju na slici, dužina
+                        i visina koja se definiše kao krajnje pozicije koordinata gde se nalaze, boja koja se definiše u 
+                        BGR sistemu ((0, 0, 255) predstavlja crvenu boju, 255 na prvom mestu bi bila plava boja itd), i 
+                        debljina pravougaonika.
+                    </li>
+                    <li>
+                        cv2.putText() jednostavno ispisuje tekst koji je analiziran i ispisuje se isto kao i rectange
+                        funkcija, osim što je potrebno definisati koji tekst se ispisuje (b[11]).
+                    </li>
+                </ul>
+            </p>
+            <pre class="python-exec"> <code>	
+    hImg, wImg, _ = img.shape
+    boxes = pytesseract.image_to_boxes(img)
+    for b in boxes.splitlines():
+        b = b.split(' ')
+        x, y, w, h = int(b[1]), int(b[2]), int(b[3]), int(b[4])
+        cv2.rectangle(img, (x, hImg - y), (w, hImg - h), (0, 0, 255), 1)
+        cv2.putText(img, b[0], (x, hImg - y + 10), cv2.WINDOW_NORMAL, 0.5, (50, 50, 255), 2)
+                </code></pre><br /> 
+            <p class="card-text">
+                Drugi način na kome se može ispisati pravougaonici kako bi se video rad OCR-a je da se formiraju i 
+                posave na lokaciji svakog karaktera. Kod je relativno isti, osim što se sada kod promenljive boxes
+                navodi funkcija image_to_boxes() koji definiše promenljivu malo drugačije, tako da je potrebno redefinisati
+                koji index odgovara kojoj vrednosti.​<br /><br />
+                Rezultati pokretanja koda uz oba koda posebno za slike Informatika.jpg i message.jpg su sledeće:
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/vezba6Resenje4.jpg")">
+                </div>
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/vezba6Resenje3.jpg")">
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/vezba6Resenje5.jpg")">
+                </div>
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/vezba6Resenje6.jpg")">
+                </div>
+            </div><br />
+            <p class="card-text">
+                Još jedna od mnogih interesantnih stvari koja može biti odrađena je analiziranje jedne matematičke 
+                formule i dobijanje njenog rešenja. To će biti obavljeno korišćenjem biblioteke sympy i njen install 
+                je sledeći:<br />
+                <p class="bgText">pip install sympy</p>
+                Sympy predstavlja biblioteku za izvršavanje simboličke matematike, u vidu pronalaženja nepoznatih 
+                vrednosti jedne jednačine. Primer kako bi se to odradilo je nastavak već postojećeg koda.
+            </p>
+            <pre class="python-exec"> <code>	
+    from sympy import symbols, solve, Eq, sympify
+
+    text = pytesseract.image_to_string(img).replace("\n\x0c","")
+    left, right = text.split("=")
+    x = symbols('x')
+    eq1 = Eq(sympify(left), sympify(right))
+    print('Za jednačinu: ', text.replace('**', '^'), ' rešenje je: ', solve(eq1))
+                </code></pre><br />
+            <p class="card-text">
+                Na samom početku je import za sympy biblioteku, koja uključuje funkcije koje će biti korišćene nadalje. 
+                Promenljiva tekst jednostavno uzima tekst sa slike koju učitavamo sa funkcijom replace koja će zameniti 
+                nove redove za praznim stringom, kako bi cela jednačina bila u jednom redu.<br />
+                left i right formiraju levu i desnu stranu jednačine, u zavisnosti od lokacije znaka jednakosti. 
+                Promenljiva x predstavlja simbol koji se prati u jednačini dok promenljiva eq1 formiraja pojednostavljen
+                oblik jednačine koja treba da se izračuna. Unutar print funkcije se zapisuje rezultat u vidu funkcije 
+                solve(eq1).<br /><br />
+                Rezultat pokretanja ovog koda sa učitanom slikom jednacina.jpg je sledeća:
+            </p>
+            <div class="col-md-8 offset-md-2">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/jednacina.jpg")">
+            </div><br />
+            <div class="col-md-10 offset-md-1">
+                <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/vezba6Resenje7.jpg")">
+            </div><br />
+            <p class="card-text">
+                Na samom kraju potrebno je ispisati kod koji prikazuje prozor u kome se nalazi slika, slično kao što je 
+                plt.show ispisivao koordinatni sistem.
+            </p>
+            <pre class="python-exec"> <code>	
+    cv2.imshow('', img)
+    cv2.waitKey(0)
+                </code></pre><br />
+            <h4 align="center">Kompletan kod primera 1</h4><br />
+            <pre class="python-exec"> <code>	
+    import cv2
+    import pytesseract
+
+    pytesseract.pytesseract.tesseract_cmd = 'Tesseract/tesseract.exe'
+    img = cv2.imread('Informatika.jpg')
+    print(pytesseract.image_to_string(img))
+
+    #boxes = pytesseract.image_to_data(img)
+    #for x, b in enumerate(boxes.splitlines()):
+    #    if x != 0:
+    #        b = b.split()
+    #        if len(b) == 12:
+    #            x, y, w, h = int(b[6]), int(b[7]), int(b[8]), int(b[9])
+    #            cv2.rectangle(img, (x, y), (w + x, h + y), (0, 0, 255), 1)
+    #            cv2.putText(img, b[11], (x, y), cv2.WINDOW_NORMAL, 0.5, (50, 50, 255), 2)
+
+    #hImg, wImg, _ = img.shape
+    #boxes = pytesseract.image_to_boxes(img)
+    #for b in boxes.splitlines():
+    #    b = b.split(' ')
+    #    x, y, w, h = int(b[1]), int(b[2]), int(b[3]), int(b[4])
+    #    cv2.rectangle(img, (x, hImg - y), (w, hImg - h), (0, 0, 255), 1)
+    #    cv2.putText(img, b[0], (x, hImg - y + 10), cv2.WINDOW_NORMAL, 0.5, (50, 50, 255), 2)
+
+    #from sympy import symbols, solve, Eq, sympify
+    #
+    #text = pytesseract.image_to_string(img).replace("\n\x0c","")
+    #left, right = text.split("=")
+    #x = symbols('x')
+    #eq1 = Eq(sympify(left), sympify(right))
+    #print('Za jednačinu: ', text.replace('**', '^'), ' rešenje je: ', solve(eq1))
+
+    cv2.imshow('', img)
+    cv2.waitKey(0)
+                </code></pre><br />
+            </div>
+          </div>
+
+          <br />
+          <div class="card" id="primer2">
+            <div class="card-header text-center">
+                <h4>Primer 2</h4>
+            </div>
+            <div class="card-body">
+            <p class="card-text">
+                U primeru 2, biće predstavljen sistem koji prepoznaje lica na slici i obeležava ih zelenim pravougaonikom.
+                Umesto tesseract OCR koji se koristi samo za simbole i karaktere, u ovom primeru biće korišćen dataset
+                podataka preuzetih sa interneta koji se koriste za klasifikaciju slika i određivanjem objekta na slici
+                preko OpenCV biblioteke.
+            </p><br />
+            <pre class="python-exec"> <code>	
+    import cv2
+
+    trained_face_data = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
+    img = cv2.imread('face1.jpg')
+    face_coordinates = trained_face_data.detectMultiScale(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY))
+
+    for(x, y, w, h) in face_coordinates:
+        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 3)
+
+    cv2.imshow(' ',img)
+    cv2.waitKey()
+                </code></pre><br />
+            <p class="card-text">
+                Slika iznad predstavlja kompletan kod drugog primera. Kao klasifikacija koristi se fajl koji je definisan
+                u trćem redu. Počinje se promenljivom kojoj se dodljuje klasifikator, čija je lokacija smeštena u projektnom
+                folderu. Taj fajl je prikačen ispod ovog teksta:
+            </p>
+            <a href="@Url.Content("~/Media/Vezba 7/haarcascade_frontalface_default.zip")" download>Download - haarcascade_frontalface_default.zip</a>
+            <p class="card-text"><br />
+                Nakon dodavanja dataseta za klasifikaciju, potrebno je dodati i sliku. Slike se mogu preuzeti ispod:
+            </p>
+            <a href="@Url.Content("~/Media/Vezba 7/SlikeLica.zip")" download>Download - SlikeLica.zip</a>
+            <p class="card-text"><br />
+                U šestom redu se izvršava klasifikacija i formira tabela, odnosno dvodimenzionalni niz sa x, y koordinatom
+                kao i dužinu i visinu pravougaonika koji treba biti formiran. For petlja određuje sve te vrednosti iz 
+                face_coordinates promenljive i svaka iteracija predstavlja novi red. Unutar for petlje se formira 
+                pravougaonik korišćenjem cv2.rectangle() funkcije u kojoj se dodeljuju vrednosti slike, x i y koordinate,
+                visine i dužine, boje u BGR sistemu i debljina pravougaonika. Na samom kraju se koristi cv2.imshow() koja
+                nakon pokretanja koda prikazuje sliku sa upisanim pravougaonicima.<br /><br />
+                Rezultati svih slika su sledeći:
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/face1.jpg")">
+                </div>
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/face1Resenje.jpg")">
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/face2.jpg")">
+                </div>
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/face2Resenje.jpg")">
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/face3.jpg")">
+                </div>
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/face3Resenje.jpg")">
+                </div>
+            </div><br />
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/face4.jpg")">
+                </div>
+                <div class="col-md-6">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/face4Resenje.jpg")">
+                </div>
+            </div><br />
+            <p class="card-text"><br />
+                Vidimo da je klasifikator veoma precizno odredio lokaciju svih lica na slikama. Jedina greška se javlja 
+                u poslednjoj slici gde se formiraju dva pravougaonika jedan pored drugog. Rezultati su generalno veoma
+                precizni i računaju se kao tačno testiranje. Dodavanjem više podataka za testiranje u datasetu dovodi do 
+                što preciznijih rezultata.
+            </p>
+            </div>
+          </div>
+          
+          <br />
+          <div class="card" id="primer3">
+            <div class="card-header text-center">
+                <h4>Primer 3</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    U primeru 2, biće predstavljen sistem koji prepoznaje lica na slici i obeležava ih zelenim 
+                    pravougaonikom. Umesto tesseract OCR koji se koristi samo za simbole i karaktere, u ovom 
+                    primeru biće korišćen dataset podataka preuzetih sa interneta koji se koriste za klasifikaciju 
+                    slika i određivanjem objekta na slici preko OpenCV biblioteke.
+                </p>
+                <pre class="python-exec"> <code>	
+    import cv2
+
+    video_file = cv2.VideoCapture('video.mp4')
+    car_tracker = cv2.CascadeClassifier('cars.xml')
+
+    while True:
+        (read_successful, frame) = video_file.read()
+        if read_successful:
+            grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        else:
+            break
+
+        cars = car_tracker.detectMultiScale(grey)
+        for (x, y, w, h) in cars:
+            cv2.rectangle(frame, (x, y), ( x + w, y + h), (0, 0, 255), 2)
+
+        cv2.imshow(' ', frame)
+        cv2.waitKey(19)
+    video_file.release()
+                </code></pre><br />
+                <p class="card-text">
+                    Treći primer se bazira na principu klasifikacije kao drugi primer, osim što se radi sa video 
+                    klipom, odnosno u realnom vremenu. Jedina biblioteka koja se koristi i u ovom primeru je OpenCV, 
+                    zajedno sa datasetom za automobile i video klipom koji je prikačen ispod ovog teksta.
+                </p>
+                <a href="@Url.Content("~/Media/Vezba 7/CarDetection.zip")" download>Download - CarDetection.zip</a><br />
+                <p class="card-text"><br />
+                    Na samom početku se učitava video i dataset za klasifikaciju u dve promenljive. While true se obavezno 
+                    definiše zato što radimo sa video klipom, koji konstantno prolazi kroz frame-ove. read_successful i frame 
+                    su dve promenljive koje se dobijaju od čitanja video klipa, koji definiše da je čitanje bilo uspešno, i 
+                    koji rastavlja video na frame-ove.<br /><br />
+                    Nakon toga se ispituje da li je čitanje bilo uspešno, i ako jeste čuva pročitan frame, sa promenjenom bojom 
+                    u crno-belu. Ovo se radi da bi se dobile što preciznije klasifikacije na slici, i što preciznija određivanje
+                    šta je uopšte na ekranu automobil. Ukoliko čitanje nije uspelo, izaćiće iz petlje.<br /><br />
+                    Formira se promenljiva cars koja koristi klasifikator po datasetu koja je učitana i detektuje svaki frame 
+                    posebno. Ukoliko postoji identifikovan objekat na slici, odnosno frame-u, vratiće jedno dimenzioni niz, sa
+                    podacima za lokaciju gde je identifikovan automobil i na sledećoj liniji se kreira pravougaonik koji se 
+                    smešta na tu lokaciju.<br /><br />
+                    Na kraju while petlje se postavlja imshow() funkcija koja pokreće video i waitKey koji se postavlja na 19.
+                    waitKey() je funkcija povezivanja ključnih reči i prihvata samo vreme u milisekundama kao argument. Kada
+                    dodate bilo koje vreme kao argument (u ovom slučaju 19), ono čeka određeno vreme i onda program nastavlja,
+                    odnosno pokazuje sledeći frame. Ako se prosledi 0, čeka se neograničeno dok se ne pritisne taster. U suštini
+                    definiše se brzina prikazivanja video klipa.
+                </p>
+            </div>
+            <video src="@Url.Content("~/Media/Vezba 7/video.mp4")" autoplay loop muted></video>
+          </div>
+
+          <br />
+          <div class="card" id="zadatak">
+            <div class="card-header text-center">
+            <h4>Zadatak</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Po datasetu i slici dodatom ispod teksta, izvršiti analizu slike na kojoj se nalaze četri mačke.
+                    Postaviti pravougaonike na svakoj od njih, obojene ljubičastom bojom, i dodati brojač iznad 
+                    svake obojeno žutom bojom. U konzoli ispisati koliko ukupno mačaka se nalaze na ekranu. Primer 
+                    rešenja se nalazi ispod:
+                </p>
+                <a href="@Url.Content("~/Media/Vezba 7/Cats.zip")" download>Download - Cats.zip</a><br /><br />
+                <h4 align="center">Primer rešenja prvog zadatka</h4><br />
+                <div class="col-md-8 offset-md-2">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/vezba6ZadatakSlika.jpg")">
+                </div><br />
+                <div class="col-md-8 offset-md-2">
+                    <img class="card-img-top" src="@Url.Content("~/Media/Vezba 7/vezba6ZadatakResenje.jpg")">
+                </div><br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+</body>
